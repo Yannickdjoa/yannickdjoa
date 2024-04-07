@@ -1,6 +1,10 @@
+import Navbar from './components/Navbar';
+
 function App() {
   return (
-    <div className="text-red-600">Welcome to my portfolio web application</div>
+    <div>
+      <Navbar />
+    </div>
   );
 }
 
