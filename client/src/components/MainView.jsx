@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button } from '@material-tailwind/react';
-import greenimage from "../assets/greenimage.png"
+
+import greenimage from '../assets/greenimage.png';
 
 function MainView() {
   return (
-    <div className="bg-zinc-800 h-[700px] flex flex-col md:flex-row">
+    <div className="bg-zinc-800 h-[90vh] flex flex-col md:flex-row">
       <div className="size-full md:w-[50%] p-6 md:p-12 flex flex-col">
         <p className="text-2xl md:text-5xl  text-left">
           <span className="text-white">You need to level-up</span>

@@ -1,3 +1,4 @@
+import About from './components/About';
 import MainView from './components/MainView';
 import Navbar from './components/Navbar';
 
@@ -6,6 +7,7 @@ function App() {
     <div>
       <Navbar />
       <MainView />
+      <About/>
     </div>
   );
 }
