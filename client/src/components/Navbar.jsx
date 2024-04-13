@@ -19,6 +19,9 @@ function Navbar() {
           <a href="#Skills">Skills</a>
         </li>
         <li className="p-5 underline underline-offset-8 hover:text-emerald-400">
+          <a href="#Experience">Experience</a>
+        </li>
+        <li className="p-5 underline underline-offset-8 hover:text-emerald-400">
           <a href="#Projects">Projects</a>
         </li>
         <li className="p-5 underline underline-offset-8 hover:text-emerald-400">

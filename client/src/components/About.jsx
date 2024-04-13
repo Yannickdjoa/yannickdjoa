@@ -1,6 +1,5 @@
 import React from 'react';
 import yannickimage from '../assets/yannickimage.png';
-import greenimage from '../assets/greenimage.png';
 import { TypeAnimation } from 'react-type-animation';
 import { RiDownload2Fill } from 'react-icons/ri';
 import { IconContext } from 'react-icons';
@@ -73,7 +72,7 @@ function About() {
       </div>
 
       <div className="md:w-[50%] p-2 md:p-12 mt-2 md:mt-16">
-        <img src={yannickimage} className='object-fill'/>
+        <img src={yannickimage} className="object-fill" />
       </div>
     </div>
   );

@@ -21,14 +21,17 @@ function Skills() {
         <h1 className="text-emerald-400 text-center text-2xl md:text-4xl font-semibold  md:mt-3">
           _ My Skills
         </h1>
-        <p className="text-base text-neutral-400 md:text-lg text center md:max-w-[600px]">
+        <p className="text-lg md:text-lg text-neutral-400  text-center md:max-w-[600px] mx-2">
           Here are skills I have gain since the beginning of my journey as
           fullstack software developer.
         </p>
 
         <section className="w-full flex flex-wrap mt-8 gap-8 justify-center">
-          {skillsSet.map((skill) => (
-            <div className="w-full max-w-[330px] md:max-w-[500px] bg-zinc-800 shadow-lg shadow-neutral-400 rounded-2xl  p-2 md:p-4 ">
+          {skillsSet.map((skill, index) => (
+            <div
+              className="w-full max-w-[330px] md:max-w-[500px] bg-zinc-800 shadow-lg shadow-neutral-400 rounded-2xl  p-2 md:p-4 "
+              key={index}
+            >
               <h2 className="text-2xl font-bold text-white mb-5 text-center">
                 {skill.title}
               </h2>
