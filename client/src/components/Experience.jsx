@@ -8,13 +8,15 @@ function Experience() {
 
   return (
     <div className=" flex flex-col justify-center relative z-1 m-2 md:m-10">
-      <div className="relative flex flex-col justify-between items-center w-[100%] max-w-[1100px] gap-6 md:gap-12 my-6 md:my-12">
-        <h1 className="text-emerald-400 text-center text-xl md:text-4xl font-semibold  md:mt-3">
-          _ Experience
-        </h1>
-        <p className="text-sm md:text-lg text-neutral-400  text center md:max-w-[600px]">
-          Interested in my journey? please check below...
-        </p>
+      <div className="flex justify-center">
+        <div className="flex flex-col justify-between items-center w-[100%] max-w-[1100px] gap-6 md:gap-12 my-6 md:my-12">
+          <h1 className="text-emerald-400 text-center text-xl md:text-4xl font-semibold  md:mt-3">
+            _ Experience
+          </h1>
+          <p className="text-sm md:text-lg text-neutral-400  text center md:max-w-[600px]">
+            Interested in my journey? please check below...
+          </p>
+        </div>
       </div>
       <div className=" bg-zinc-800 shadow-lg shadow-neutral-400 flex flex-col md:flex-row py-2 md:py-10 rounded-2xl ">
         <div className="border-l-1 md:border-l-2 border-[#1a7f5a1e]  flex flex-row md:flex-col gap-1 md:gap-10 w-full md:w-80">
