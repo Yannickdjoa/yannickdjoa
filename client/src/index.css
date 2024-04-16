@@ -6,54 +6,6 @@ body {
   background-color: rgb(59, 59, 65);
 }
 
-.swiper {
-  width: 300px;
-  height: 300px;
-  padding: 80px;
-}
 
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px;
-  height: 300px;
-}
 
-.swiper-slide img {
-  display: block;
-  /* width: 100%; */
-}
-.swiper-button-next,
-.swiper-button-prev {
-  color: #facc15;
-}  
 
-/* .Swiper-wrapper {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: block;
-  text-align: left;
-} */
-/* .swiper-button-next {
-  margin-top: 0px;
-  position: absolute;
-  
-  top: 50%;
-   
- right: -40px;
- 
-  width: 45px;
-  height: 45px;
-  
-  transform: translateY(-50%);
-}
-.swiper-button-prev {
-  position: absolute;
-  top: 50%;
-  left: -25px;
-  width: 45px;
-  height: 45px;
-  transform: translateY(-10%);
-  margin-top: 0px;
-} */

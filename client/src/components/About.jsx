@@ -32,7 +32,7 @@ function About() {
             repeat={Infinity}
           />
         </p>
-        <p className="text-white text-sm md:text-xl mt-2 md:mt-6">
+        <p className="text-white text-sm md:text-xl mt-2 md:mt-6 text-justify">
           <span>
             I've been immersed in the world of software development since
             September 2022. My passion lies in developing full functional apps

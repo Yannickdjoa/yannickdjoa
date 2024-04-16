@@ -27,16 +27,19 @@ function Skills() {
         </p>
 
         <section className="w-full flex flex-wrap mt-8 gap-8 justify-center">
-          {skillsSet.map((skill, index) => (
+          {skillsSet.map((skillSet, index) => (
             <div
               className="w-full max-w-[330px] md:max-w-[500px] bg-zinc-800 shadow-lg shadow-neutral-400 rounded-2xl  p-2 md:p-4 "
               key={index}
             >
               <h2 className="text-2xl font-bold text-white mb-5 text-center">
-                {skill.title}
+                {skillSet.title}
               </h2>
 
-              <div className="flex flex-wrap justify-center gap-3 mb-4">
+              <div
+                key={index}
+                className="flex flex-wrap justify-center gap-3 mb-4"
+              >
                 <Swiper
                   spaceBetween={32}
                   slidesPerView={1}
@@ -47,9 +50,12 @@ function Skills() {
                   modules={[EffectFlip, Pagination, Navigation]}
                   className="mySwiper"
                 >
-                  {skill.skills.map((item) => (
+                  {skillsSet[index].skills.map((item, index) => (
                     <SwiperSlide>
-                      <div className="bg-zinc-800 border-solid border-2 border-neutral-400 rounded-lg text-xl text-neutral-400 md:text-2xl  p-2 md:p-8 flex flex-col items-center justify-center g-2">
+                      <div
+                        key={index}
+                        className="bg-zinc-800 border-solid border-2 border-neutral-400 rounded-lg text-xl text-neutral-400 md:text-2xl  p-2 md:p-8 flex flex-col items-center justify-center g-2"
+                      >
                         <img
                           src={item.image}
                           alt="skill logo"

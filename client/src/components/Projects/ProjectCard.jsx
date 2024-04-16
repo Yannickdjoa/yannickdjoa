@@ -32,7 +32,7 @@ function ProjectCard({ project }) {
           <p className="text-neutral-400 text-xs font-normal ml-0.5 ">
             {project.date}
           </p>
-          <p className="text-neutral-400 text-xs font-normal line-clamp-3">
+          <p className="text-neutral-400 text-xs font-normal text-justify line-clamp-5">
             {project.description}
           </p>
         </div>

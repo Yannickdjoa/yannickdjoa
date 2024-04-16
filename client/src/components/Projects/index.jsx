@@ -31,7 +31,7 @@ function Projects() {
           {toggle === 'all' ? (
             <div
               className="text-cnter p-1 px-1 md:px-4 border-r-2 border-r-neutral-400"
-              active
+              active="true"
               value="all"
               onClick={() => setToggle('all')}
             >
@@ -40,7 +40,7 @@ function Projects() {
           ) : (
             <div
               className=" text-cnter p-1 px-1 md:px-4 border-r-2 border-r-neutral-400"
-              active
+              active="true"
               value="all"
               onClick={() => setToggle('all')}
             >
@@ -50,7 +50,7 @@ function Projects() {
           {toggle === 'web design' ? (
             <div
               className="text-cnter p-1 border-r-2 border-r-neutral-400"
-              active
+              active="true"
               value="web design"
               onClick={() => setToggle('web design')}
             >
@@ -59,7 +59,7 @@ function Projects() {
           ) : (
             <div
               className="text-cnter p-1 border-r-2 border-r-neutral-400"
-              active
+              active="true"
               value="web design"
               onClick={() => setToggle('web design')}
             >
@@ -69,7 +69,7 @@ function Projects() {
           {toggle === 'web app' ? (
             <div
               className="text-cnter p-1 border-r-2 border-r-neutral-400"
-              active
+              active="true"
               value="web app"
               onClick={() => setToggle('web app')}
             >
@@ -78,7 +78,7 @@ function Projects() {
           ) : (
             <div
               className="text-cnter p-1 border-r-2 border-r-neutral-400"
-              active
+              active="true"
               value="web app"
               onClick={() => setToggle('web app')}
             >
@@ -88,7 +88,7 @@ function Projects() {
           {toggle === 'android app' ? (
             <div
               className="text-cnter p-1 border-r-2 border-r-neutral-400"
-              active
+              active="true"
               value="android app"
               onClick={() => setToggle('android app')}
             >
@@ -97,7 +97,7 @@ function Projects() {
           ) : (
             <div
               className="text-cnter p-1 border-r-2 border-r-neutral-400"
-              active
+              active="true"
               value="android app"
               onClick={() => setToggle('android app')}
             >
@@ -107,7 +107,7 @@ function Projects() {
           {toggle === 'other projects' ? (
             <div
               className="text-cnter p-1 border-r-2 border-r-neutral-400"
-              active
+              active="true"
               value="other projects"
               onClick={() => setToggle('other projects')}
             >
@@ -116,7 +116,7 @@ function Projects() {
           ) : (
             <div
               className="text-cnter p-1 border-r-2 border-r-neutral-400"
-              active
+              active="true"
               value="other projects"
               onClick={() => setToggle('other projects')}
             >
@@ -127,11 +127,13 @@ function Projects() {
       </div>
       <div className="flex flex-row flex-wrap justify-center p-10 items-center gap-6 m-4">
         {toggle === 'all' &&
-          projects.map((project) => <ProjectCard project={project} />)}
+          projects.map((project, id) => (
+            <ProjectCard key={id} project={project} />
+          ))}
         {toggle === toggle &&
           projects
             .filter((item) => item.category === toggle)
-            .map((project) => <ProjectCard project={project} />)}
+            .map((project) => <ProjectCard key={id} project={project} />)}
       </div>
     </div>
   );

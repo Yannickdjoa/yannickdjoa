@@ -20,7 +20,7 @@ function MainView() {
           <span className="text-white">and full-stack development skills?</span>
           <br />
         </p>
-        <p className="text-neutral-400 text-2xl">
+        <p className="text-neutral-400 text-2xl text-justify">
           Welcome to my dev. world where I give my all to satisfy any business
           needs that meets my skills
         </p>
