@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { experiences } from '../data/Database';
+import Navbar from './Navbar';
 
 function Experience() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
-  const [listOfSkills, setlistOfSkills] = useState();
-  const skillsList = experiences.map;
-
+const experienceRef= useRef(null)
   return (
-    <div className=" flex flex-col justify-center relative z-1 m-2 md:m-10">
+    <div
+      id='experience'
+      className=" flex flex-col justify-center relative z-1 m-2 md:m-10"
+    >
       <div className="flex justify-center">
         <div className="flex flex-col justify-between items-center w-[100%] max-w-[1100px] gap-6 md:gap-12 my-6 md:my-12">
           <h1 className="text-emerald-400 text-center text-xl md:text-4xl font-semibold  md:mt-3">

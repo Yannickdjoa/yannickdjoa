@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { skillsSet } from '../data/Database';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
@@ -16,7 +16,10 @@ import { EffectFlip, Pagination, Navigation } from 'swiper/modules';
 function Skills() {
   SwiperCore.use([Navigation, Pagination]);
   return (
-    <div className=" flex flex-col justify-center relative z-1 items-center">
+    <div
+      id="skills"
+      className=" flex flex-col justify-center relative z-1 items-center"
+    >
       <div className="relative flex flex-col justify-between items-center w-[100%] max-w-[1100px] gap-12 ">
         <h1 className="text-emerald-400 text-center text-2xl md:text-4xl font-semibold  md:mt-3">
           _ My Skills

@@ -1,10 +1,13 @@
-import React from 'react';
-
+import React, { useRef } from 'react';
 import greenimage from '../assets/greenimage.png';
 
 function MainView() {
+  const mainViewRef = useRef(null);
   return (
-    <div className="bg-zinc-800 h-[120vh]  mx-auto flex flex-col md:flex-row">
+    <div
+      ref={mainViewRef}
+      className="bg-zinc-800 h-[120vh]  mx-auto flex flex-col md:flex-row"
+    >
       <div className="size-full md:w-[50%] p-6 md:p-12 flex flex-col">
         <p className="text-2xl md:text-5xl  text-left">
           <span className="text-white">You need to level-up</span>

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import MessageForm from './MessageForm';
 import { MdEmail, MdOutlinePhonePaused } from 'react-icons/md';
 
 function Contact() {
+  const contactRef = useRef(null);
   return (
-    <div className="flex flex-col ">
+    <div id="contacts" className="flex flex-col ">
       <div className="flex justify-center">
         <div className="flex flex-col justify-center max-w-[1100px] gap-6 md:gap-12 my-6 md:my-12">
           <h1 className="text-emerald-400 text-center text-xl md:text-4xl font-semibold  md:mt-3">

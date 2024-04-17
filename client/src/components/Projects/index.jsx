@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import { projects } from '../../data/Database';
 
 function Projects() {
   const [toggle, setToggle] = useState('all');
+  const projectsRef = useRef(null);
 
-  const handleClick = (e) => {
-    if (e.target.id === 'all') {
-      setToggle('all');
-    }
-    if (e.target.id === 'web design') {
-      setToggle('web design');
-    }
-  };
   return (
-    <div className=" flex flex-col justify-center relative z-1 m-2 md:m-10">
+    <div
+      id="projects"
+      className=" flex flex-col justify-center relative z-1 m-2 md:m-10"
+    >
       <div className="flex justify-center">
         <div className="flex flex-col justify-center max-w-[1100px] gap-6 md:gap-12 my-6 md:my-12">
           <h1 className="text-emerald-400 text-center text-xl md:text-4xl font-semibold  md:mt-3">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import yannickimage from '../assets/yannickimage.png';
 import { TypeAnimation } from 'react-type-animation';
 import { RiDownload2Fill } from 'react-icons/ri';
@@ -6,7 +6,7 @@ import { IconContext } from 'react-icons';
 
 function About() {
   return (
-    <div className="h-[120vh] mx-auto md:flex md:mt-4">
+    <div id="about" className="h-[120vh] mx-auto md:flex md:mt-4">
       <div className=" md:w-[50%] p-6 md:p-12  ">
         <h2 className="text-emerald-400 text-xl md:text-2xl text-left font-bold my-2 md:my-6">
           _ About me

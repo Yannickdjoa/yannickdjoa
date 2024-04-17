@@ -1,3 +1,4 @@
+import { BrowserRouter as Router } from 'react-router-dom';
 import About from './components/About';
 import Experience from './components/Experience';
 import Footer from './components/Footer';
@@ -10,17 +11,17 @@ import Contact from './components/contact';
 
 function App() {
   return (
-    <div>
+    <Router>
       <Navbar />
       <MainView />
       <About />
       <Skills />
-      <Experience />
+      <Experience/>
       <Projects />
       <Contact />
       <Footer />
-      <ScrollToTop/>
-    </div>
+      <ScrollToTop />
+    </Router>
   );
 }
 
