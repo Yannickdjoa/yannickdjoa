@@ -17,7 +17,7 @@ function Navbar() {
   };
 
   return (
-    <div className="bg-zinc-800 h-[100px] text-white flex mx-auto items-center justify-between sticky top-0">
+    <div className="bg-zinc-800 h-[100px] text-white flex mx-auto items-center justify-between sticky top-0 z-20">
       <h1
         onClick={scrollToSection}
         className="uppercase font-bold text-3xl ml-4 mr-32 cursor-pointer"

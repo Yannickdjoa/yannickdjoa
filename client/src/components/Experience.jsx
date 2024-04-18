@@ -6,7 +6,7 @@ function Experience() {
   return (
     <div
       id="experience"
-      className=" flex flex-col justify-center relative z-1 m-2 md:m-10"
+      className=" flex flex-col justify-center relative m-2 md:m-10"
     >
       <div className="flex justify-center">
         <div className="flex flex-col justify-between items-center w-[100%] max-w-[1100px] gap-6 md:gap-12 my-6 md:my-12">

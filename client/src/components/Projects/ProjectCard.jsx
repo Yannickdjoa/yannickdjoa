@@ -7,7 +7,7 @@ function ProjectCard({ project }) {
       <div className="flex rounded-lg">
         <img
           src={project.image}
-          alt="project image not available"
+          alt="image not available"
           className="object-cover h-24 w-80 "
         />
       </div>
