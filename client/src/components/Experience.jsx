@@ -1,13 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { experiences } from '../data/Database';
-import Navbar from './Navbar';
 
 function Experience() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
-const experienceRef= useRef(null)
   return (
     <div
-      id='experience'
+      id="experience"
       className=" flex flex-col justify-center relative z-1 m-2 md:m-10"
     >
       <div className="flex justify-center">

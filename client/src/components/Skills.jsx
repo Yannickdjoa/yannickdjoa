@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
-import { skillsSet } from '../data/Database';
+import { skills } from '../data/Database';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
-// import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import 'swiper/css/bundle';
 // Import Swiper styles
 import 'swiper/css';
@@ -12,6 +11,7 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { EffectFlip, Pagination, Navigation } from 'swiper/modules';
+import SkillCard from './cards/SkillCard';
 
 function Skills() {
   SwiperCore.use([Navigation, Pagination]);
@@ -30,45 +30,34 @@ function Skills() {
         </p>
 
         <section className="w-full flex flex-wrap mt-8 gap-8 justify-center">
-          {skillsSet.map((skillSet, index) => (
+          {skills.map((skill, index) => (
             <div
               className="w-full max-w-[330px] md:max-w-[500px] bg-zinc-800 shadow-lg shadow-neutral-400 rounded-2xl  p-2 md:p-4 "
               key={index}
             >
               <h2 className="text-2xl font-bold text-white mb-5 text-center">
-                {skillSet.title}
+                {skill.title}
               </h2>
 
-              <div
-                key={index}
-                className="flex flex-wrap justify-center gap-3 mb-4"
-              >
-                <Swiper
-                  spaceBetween={32}
-                  slidesPerView={1}
-                  effect={'flip'}
-                  grabCursor={true}
-                  pagination={true}
-                  navigation={true}
-                  modules={[EffectFlip, Pagination, Navigation]}
-                  className="mySwiper"
-                >
-                  {skillsSet[index].skills.map((item, index) => (
-                    <SwiperSlide>
-                      <div
-                        key={index}
-                        className="bg-zinc-800 border-solid border-2 border-neutral-400 rounded-lg text-xl text-neutral-400 md:text-2xl  p-2 md:p-8 flex flex-col items-center justify-center g-2"
-                      >
-                        <img
-                          src={item.image}
-                          alt="skill logo"
-                          className="w-6 h-6"
-                        />
-                        <h3>{item.name}</h3>
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+              <div className="flex flex-wrap justify-center gap-3 mb-4">
+                {skills.length > 0 ? (
+                  <Swiper
+                    spaceBetween={32}
+                    effect={'flip'}
+                    grabCursor={true}
+                    pagination={{ clickable: true }}
+                    navigation={true}
+                    modules={[ Pagination, Navigation]}
+                  >
+                    {skills[index].stacks.map((stack, stack_id) => (
+                      <SwiperSlide key={stack_id}>
+                        <SkillCard stack={stack} />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                ) : (
+                  <p>No stacks for this project</p>
+                )}
               </div>
             </div>
           ))}

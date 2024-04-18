@@ -2,10 +2,9 @@ import React, { useRef } from 'react';
 import greenimage from '../assets/greenimage.png';
 
 function MainView() {
-  const mainViewRef = useRef(null);
   return (
     <div
-      ref={mainViewRef}
+      id="mainview"
       className="bg-zinc-800 h-[120vh]  mx-auto flex flex-col md:flex-row"
     >
       <div className="size-full md:w-[50%] p-6 md:p-12 flex flex-col">

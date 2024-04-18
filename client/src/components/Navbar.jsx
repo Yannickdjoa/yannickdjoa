@@ -20,46 +20,40 @@ function Navbar() {
     <div className="bg-zinc-800 h-[100px] text-white flex mx-auto items-center justify-between sticky top-0">
       <h1
         onClick={scrollToSection}
-        className="uppercase font-bold text-3xl ml-4 mr-32"
+        className="uppercase font-bold text-3xl ml-4 mr-32 cursor-pointer"
       >
-        <a href="/">
+        <a href="#mainview">
           <span className="text-emerald-400">Y</span> DJOA
         </a>
       </h1>
       <ul className="hidden md:flex ">
         <li
           onClick={scrollToSection}
-          className="p-5 underline underline-offset-8 hover:text-emerald-400"
+          className=" p-5 underline underline-offset-8 hover:text-emerald-400 cursor-pointer"
         >
-          <a href="#about" >
-            About
-          </a>
+          <a href="#about">About</a>
         </li>
         <li
           onClick={scrollToSection}
-          className="p-5 underline underline-offset-8 hover:text-emerald-400"
+          className="p-5 underline underline-offset-8 hover:text-emerald-400 cursor-pointer"
         >
-          <a href="#skills" >
-            Skills
-          </a>
+          <a href="#skills">Skills</a>
         </li>
         <li
           onClick={scrollToSection}
-          className="p-5 underline underline-offset-8 hover:text-emerald-400"
+          className="p-5 underline underline-offset-8 hover:text-emerald-400 cursor-pointer"
         >
-          <a href="#experience" >
-            Experience
-          </a>
+          <a href="#experience">Experience</a>
         </li>
         <li
           onClick={scrollToSection}
-          className="p-5 underline underline-offset-8 hover:text-emerald-400"
+          className="p-5 underline underline-offset-8 hover:text-emerald-400 cursor-pointer"
         >
           <a href="#projects">Projects</a>
         </li>
         <li
           onClick={scrollToSection}
-          className="p-5 underline underline-offset-8 hover:text-emerald-400"
+          className="p-5 underline underline-offset-8 hover:text-emerald-400 cursor-pointer"
         >
           <a href="#contacts">Contacts</a>
         </li>

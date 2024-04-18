@@ -129,7 +129,7 @@ function Projects() {
         {toggle === toggle &&
           projects
             .filter((item) => item.category === toggle)
-            .map((project) => <ProjectCard key={id} project={project} />)}
+            .map((project, id) => <ProjectCard key={id} project={project} />)}
       </div>
     </div>
   );
