@@ -1,13 +1,13 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-import About from './components/About';
-import Experience from './components/Experience';
-import Footer from './components/Footer';
-import MainView from './components/MainView';
-import Navbar from './components/Navbar';
-import Projects from './components/Projects';
+import About from './sections/About';
+import Experience from './sections/Experience';
+import Footer from './sections/Footer';
+import MainView from './sections/MainView';
+import Navbar from './sections/Navbar';
+import Projects from './sections/Projects';
 import ScrollToTop from './components/ScrollToTop';
-import Skills from './components/Skills';
-import Contact from './components/contact';
+import Skills from './sections/Skills';
+import Contact from './sections/Contact';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <MainView />
       <About />
       <Skills />
-      <Experience/>
+      <Experience />
       <Projects />
       <Contact />
       <Footer />

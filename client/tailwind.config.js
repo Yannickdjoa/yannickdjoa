@@ -2,7 +2,39 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    container: {
+      padding: {
+        DEFAULT: '15px',
+      },
+    },
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '960px',
+      xl: '1200px',
+    },
+    extend: {
+      colors: {
+        primary: '#131424',
+        secondary: '#393A47',
+        accent: '#F13024',
+      },
+      backgroundImage: {
+        explosion: 'url("/bg-explosion.png")',
+        circles: 'url("/bg-circles.png")',
+        circleStar: 'url("/circle-star.svg")',
+        montagne: 'url("/montagne.jpg")',
+        world: 'url("/world.png")',
+        tech: 'url("/tech2.png")',
+      },
+      animation: {
+        'spin-slow': 'spin 6s linear infinite',
+      },
+      fontFamily: {
+        poppins: [`var(--font-poppins)`, 'sans-serif'],
+        sora: [`var(--font-sora)`, 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };
