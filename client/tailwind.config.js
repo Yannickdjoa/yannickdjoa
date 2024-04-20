@@ -20,9 +20,9 @@ export default {
         accent: '#F13024',
       },
       backgroundImage: {
-        explosion: 'url("/bg-explosion.png")',
+        explosion: 'url("/explosion.png")',
         circles: 'url("/bg-circles.png")',
-        circleStar: 'url("/circle-star.svg")',
+        circleStar: 'url("/circleimage.svg")',
         montagne: 'url("/montagne.jpg")',
         world: 'url("/world.png")',
         tech: 'url("/tech2.png")',
@@ -36,5 +36,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@xpd/tailwind-3dtransforms')],
 };
