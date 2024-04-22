@@ -1,41 +1,30 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { navigationData } from '../data/Database';
 
 function Navbar() {
   const [nav, setNav] = useState(false);
-  const [isActive, setIsActive] = useState(false);
 
   const handleNav = () => setNav(!nav);
-  const scrollToSection = (e) => {
-    e.preventDefault();
-    const target = e.target.getAttribute('href');
-    const location = document.querySelector(target).offsetTop;
+  // const scrollToSection = (e) => {
+  //   e.preventDefault();
+  //   const target = e.target.getAttribute('href');
+  //   const location = document.querySelector(target).offsetTop;
 
-    window.scrollTo({
-      left: 0,
-      top: location - 64,
-    });
-  };
+  //   window.scrollTo({
+  //     left: 0,
+  //     top: location - 64,
+  //   });
+  // };
 
   return (
-    <div className="bg-zinc-800 h-[100px] text-white flex mx-auto items-center justify-between sticky top-0 z-20">
-      <h1
-        onClick={scrollToSection}
-        className="uppercase font-bold text-3xl ml-4 mr-32 cursor-pointer"
-      >
-        <a href="#mainview">
-          <span className="text-emerald-700">Y</span> DJOA
-        </a>
-      </h1>
+    <div>
       <ul className="hidden md:flex ">
-        <li onClick={scrollToSection} className="p-5">
+        <li  className="p-5">
           {navigationData.map((item, index) => (
             <a
               key={index}
               href={item.href}
-              onClick={(e) => setIsActive(true)}
               className="p-3 text-lg  hover:text-emerald-700 cursor-pointer hover:underline hover:underline-offset-8"
             >
               {item.name}
@@ -43,10 +32,6 @@ function Navbar() {
           ))}
         </li>
       </ul>
-
-      <div className="bg-yellow-400 opacity-90 text-neutral-500 font-bold rounded-2xl p-2 mr-4 hover:bg-emerald-400">
-        <button>Hire me</button>
-      </div>
       <div onClick={handleNav} className="block md:hidden">
         {nav ? <AiOutlineClose size={30} /> : <AiOutlineMenu size={30} />}
       </div>

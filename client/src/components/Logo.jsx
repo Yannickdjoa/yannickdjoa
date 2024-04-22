@@ -3,7 +3,7 @@ import React from 'react';
 function Logo() {
   return (
     <h1
-      onClick={scrollToSection}
+    
       className="uppercase font-bold text-3xl ml-4 mr-32 cursor-pointer"
     >
       <a href="#mainview">

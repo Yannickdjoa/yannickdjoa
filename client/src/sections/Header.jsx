@@ -5,7 +5,7 @@ import Logo from "../components/Logo";
 
 function Header() {
   return (
-    <div>
+    <div className="bg-zinc-800 h-[100px] text-white flex mx-auto items-center justify-between sticky top-0 z-20 border-b-2">
       <Logo />
       <Navbar />
       <ButtonGeneral />
