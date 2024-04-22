@@ -1,18 +1,20 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from './sections/About';
 import Experience from './sections/Experience';
 import Footer from './sections/Footer';
 import MainView from './sections/MainView';
-import Navbar from './sections/Navbar';
+import Navbar from './components/Navbar';
 import Projects from './sections/Projects';
 import ScrollToTop from './components/ScrollToTop';
 import Skills from './sections/Skills';
 import Contact from './sections/Contact';
+import Header from './sections/Header';
 
 function App() {
   return (
     <Router>
       <Navbar />
+      <Header />
       <MainView />
       <About />
       <Skills />

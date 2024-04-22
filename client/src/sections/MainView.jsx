@@ -17,10 +17,10 @@ function MainView() {
             exit="hidden"
             className="h1 text-white z-10"
           >
-            Welcome to my
+            Make anything possible
             <br />
-            apps{''}
-            <span className="text-emerald-700"> developer's world</span>
+            with{''}
+            <span className="text-emerald-700"> web development</span>
           </motion.h1>
           {/* subtitle */}
           <motion.p
@@ -32,8 +32,8 @@ function MainView() {
           >
             You need to level-up your Tech Team with a different profile that
             have business operations experience and full-stack development
-            skills? I'm here for you. click below link to check my previous
-            works.
+            skills? Welcome to my software development's world. click below link
+            to check my previous works.
           </motion.p>
           {/* button on small screens */}
           <div className="flex justify-center xl:hidden relative ">

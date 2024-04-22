@@ -1,3 +1,31 @@
+export const navigationData = [
+  {
+    name: 'About',
+    href: '#about',
+    icon: '',
+  },
+  {
+    name: 'Skills',
+    href: '#skills',
+    icon: '',
+  },
+  {
+    name: 'Experience',
+    href: '#experience',
+    icon: '',
+  },
+  {
+    name: 'Projects',
+    href: '#projects',
+    icon: '',
+  },
+  {
+    name: 'Contacts',
+    href: '#contacts',
+    icon: '',
+  },
+];
+
 export const Bio = {
   name: 'Yannick Djoa',
   roles: [
@@ -11,7 +39,7 @@ export const Bio = {
     'I have been immersed in the world of software development since September 2022. My passion lies in developing full functional apps front-end and back-end.I am in a mission to support my clients/employer to create fully functional applications, visually stunning and high functionning websites. combining my skills in front-end development with solid backend understanding, I strive for nothing short of digital excellence. Curious about my work ? Take a peak at my portfolio and skills. I am proud to showcase what I have created. And hey, if you have any question or just want to chat, feel free to reach out. I am all yours.',
   github: 'https://github.com/Yannickdjoa',
   resume:
-    'https://drive.google.com/file/d/1ffZrcMcn8UatXGIaautbbqpV7ADNaETA/view?usp=sharing',
+    'https://drive.google.com/open?id=1fdKqovq2RE9p8tWDPTGEJPBBBuguP8tk&usp=drive_fs',
   linkedin: 'https://www.linkedin.com/in/yannick-djoa-4319a317',
   twitter: 'https://x.com/DjoaYannick',
   facebook: '',

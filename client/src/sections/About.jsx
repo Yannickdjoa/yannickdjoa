@@ -3,6 +3,7 @@ import yannickimage from '../assets/yannickimage.png';
 import { TypeAnimation } from 'react-type-animation';
 import { RiDownload2Fill } from 'react-icons/ri';
 import { IconContext } from 'react-icons';
+import ButtonCv from '../components/ButtonCv';
 
 function About() {
   return (
@@ -54,21 +55,7 @@ function About() {
             yours.
           </span>
         </p>
-        <div className="mx-16 md:mx-36 my-6">
-          <a
-            href="/"
-            className="flex gap-2 items-center bg-yellow-400 text-neutral-500 p-4 text-center font-bold rounded-2xl  hover:bg-emerald-400 justify-center"
-          >
-            <IconContext.Provider
-              value={{ color: 'neutral', className: 'global-class-name' }}
-            >
-              <div>
-                <RiDownload2Fill />
-              </div>
-            </IconContext.Provider>
-            MY CV
-          </a>
-        </div>
+        <ButtonCv/>
       </div>
 
       <div className="md:w-[50%] p-2 md:p-12 mt-2 md:mt-16">

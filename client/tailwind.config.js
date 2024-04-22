@@ -20,12 +20,8 @@ export default {
         accent: '#F13024',
       },
       backgroundImage: {
-        explosion: 'url("/explosion.png")',
-        circles: 'url("/bg-circles.png")',
         circleStar: 'url("/circleimage.svg")',
-        montagne: 'url("/montagne.jpg")',
         world: 'url("/world.png")',
-        tech: 'url("/tech2.png")',
       },
       animation: {
         'spin-slow': 'spin 6s linear infinite',
