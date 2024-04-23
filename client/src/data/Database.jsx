@@ -1,27 +1,23 @@
 export const navigationData = [
   {
+    name: 'Home',
+    href: '/',
+    icon: '',
+  },
+  {
     name: 'About',
-    href: '#about',
+    href: '/about',
+    icon: '',
+  },
+
+  {
+    name: 'Portfolio',
+    href: '/portfolio',
     icon: '',
   },
   {
-    name: 'Skills',
-    href: '#skills',
-    icon: '',
-  },
-  {
-    name: 'Experience',
-    href: '#experience',
-    icon: '',
-  },
-  {
-    name: 'Projects',
-    href: '#projects',
-    icon: '',
-  },
-  {
-    name: 'Contacts',
-    href: '#contacts',
+    name: 'Contact',
+    href: '/contact',
     icon: '',
   },
 ];
