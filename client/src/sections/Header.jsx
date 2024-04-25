@@ -15,13 +15,13 @@ function Header() {
       <Logo />
       <Navbar />
       <ButtonGeneral />
-      <div onClick={handleNav} className="block md:hidden">
+      <div onClick={handleNav} className="block md:hidden z-20">
         {nav ? <AiOutlineClose size={30} /> : <AiOutlineMenu size={30} />}
       </div>
       <div
         className={
           nav
-            ? 'fixed h-full left-o top-0 w-[50%] bg-zinc-600 ease-in-out duration-500'
+            ? 'fixed h-full left-o top-0 w-[50%] bg-zinc-600 ease-in-out duration-500 z-20'
             : 'fixed left-[-100%]'
         }
       >

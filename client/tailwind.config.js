@@ -20,7 +20,6 @@ export default {
         accent: '#F13024',
       },
       backgroundImage: {
-        circleStar: 'url("/circleimage.svg")',
         world: 'url("/world.png")',
       },
       animation: {

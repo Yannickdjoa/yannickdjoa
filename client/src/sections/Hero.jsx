@@ -1,24 +1,20 @@
-import React, { useRef } from 'react';
-import yannickimage from '../assets/yannickimage.png';
+import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
-import { RiDownload2Fill } from 'react-icons/ri';
-import { IconContext } from 'react-icons';
 import ButtonCv from '../components/ButtonCv';
+import ProfileImage from '../components/ProfileImage';
+import { motion } from 'framer-motion';
+import { fadeIn } from '../utils/variants';
 
 function Hero() {
   return (
-    <div id="hero" className="h-[120vh] mx-auto md:mt-4">
+    <div id="hero" className="h-[120vh] md:h-[100vh] mx-auto md:mt-2">
       <div>
-        <h2 className="text-emerald-600 text-xl md:text-2xl text-center font-bold my-2 md:my-6">
-          _ About me
-        </h2>
+        <h2 className="title  text-emerald-700  my-2 md:my-4">_ About me</h2>
       </div>
-      <div className="flex md:flex-row">
-        <div className=" md:w-[50%] p-6 md:p-12  ">
-          <h1 className="text-white text-2xl md:text-5xl font-semibold">
-            Hey there, I'm Yannick
-          </h1>
-          <p className="text-xl md:text-3xl text-yellow-400 my-2 md:my-6">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-12 md:gap-16 md:h-full py-4">
+        <div className=" p-6 md:p-12 w-full md:w-[60%] ">
+          <h1 className="h1 text-white">Hey there, I'm Yannick</h1>
+          <p className="p text-xl md:text-3xl font-semibold text-emerald-700 my-2 md:my-6">
             <span className="text"></span>
             <TypeAnimation
               sequence={[
@@ -36,7 +32,7 @@ function Hero() {
               repeat={Infinity}
             />
           </p>
-          <p className="text-white text-sm md:text-xl mt-2 md:mt-6 text-justify">
+          <p className="p text-sm md:text-xl mt-2 md:mt-6 text-justify">
             <span>
               I've been immersed in the world of software development since
               September 2022. My passion lies in developing full functional apps
@@ -60,10 +56,16 @@ function Hero() {
           </p>
           <ButtonCv />
         </div>
-
-        <div className="md:w-[50%] p-2 md:p-12 mt-2 md:mt-16">
-          <img src={yannickimage} className="object-fill" />
-        </div>
+        {/* <div className=" h-full absolute  bottom-0 right-0 w-full md:w-[50%]"> */}
+        <motion.div
+          variants={fadeIn('left', 0.5)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          className="basis-2/4 z-10  flex justify-center md:order-2"
+        >
+          <ProfileImage />
+        </motion.div>
       </div>
     </div>
   );

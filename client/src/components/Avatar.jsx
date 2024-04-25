@@ -9,7 +9,7 @@ function Avatar() {
         width={737}
         height={678}
         alt="avatar"
-        className="translate-z-0 w-full h-full rounded-full "
+        className="translate-z-0 w-full h-full  rounded-b-full "
       />
     </div>
   );

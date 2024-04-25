@@ -61,7 +61,7 @@ function MainView() {
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="w-full h-full max-w-[637px] max-h-[578px] absolute -bottom-40  lg:right-[2%] translate-z-0"
+          className="w-full h-full max-w-[537px] max-h-[478px] absolute -bottom-40  lg:right-[2%] translate-z-0"
         >
           <Avatar />
         </motion.div>
