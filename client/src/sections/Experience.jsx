@@ -10,9 +10,7 @@ function Experience() {
     >
       <div className="flex justify-center">
         <div className="flex flex-col justify-between items-center w-[100%] max-w-[1100px] gap-6 md:gap-12 my-6 md:my-12">
-          <h1 className="text-emerald-400 text-center text-xl md:text-4xl font-semibold  md:mt-3">
-            _ Experience
-          </h1>
+          <h1 className=" title text-emerald-700  md:mt-3">_ Experience</h1>
           <p className="text-sm md:text-lg text-neutral-400  text center md:max-w-[600px]">
             Interested in my journey? please check below...
           </p>
