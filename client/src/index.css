@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.translate-z-0 {
-  transform: translateZ(0px);
-}
+
 .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
 .swiper-pagination-horizontal.swiper-pagination-bullets
   .swiper-pagination-bullet {
@@ -34,6 +32,9 @@
   p {
     @apply leading-[1.8] text-white/70 font-light;
   }
+  .btnFooter{
+   @apply bg-neutral-700 rounded-xl h-8 md:h-10 w-8 md:w-10 p-1 md:p-2 cursor-pointer hover:bg-yellow-600;}
+   .footerIcon {@apply text-yellow-600 group-hover:text-neutral-600 h-6 md:h-6 w-6 md:w-6;}
   .btn,
   .input {
     @apply h-[52px];

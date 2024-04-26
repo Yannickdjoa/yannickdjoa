@@ -38,7 +38,9 @@ export const Bio = {
     'https://drive.google.com/open?id=1fdKqovq2RE9p8tWDPTGEJPBBBuguP8tk&usp=drive_fs',
   linkedin: 'https://www.linkedin.com/in/yannick-djoa-4319a317',
   twitter: 'https://x.com/DjoaYannick',
-  facebook: '',
+  telegram: 'http://t.me/Yannw83',
+  youtube: 'https://www.youtube.com/channel/UCWrJ4Ws_dsgMK8nPmyy7NYg',
+  tikTok: 'http://tiktok.com/@mapannkomo',
 };
 
 export const skills = [

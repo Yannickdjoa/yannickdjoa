@@ -1,67 +1,93 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Bio } from '../data/Database';
 import {
   FaLinkedinIn,
   FaGithub,
   FaTwitter,
   FaYoutube,
   FaTiktok,
-  FaFacebookF,
+  FaTelegramPlane,
 } from 'react-icons/fa';
 
 function Footer() {
   return (
     <div className="flex flex-col md:flex-row bg-zinc-800 mt-24 h-28 md:h-36 gap-4 md:gap-8">
-      <div className="flex flex-row justify-center gap-12 items-center">
-        <div className="flex  ">
+      <div className="flex flex-row justify-center gap-8 md:gap-12 items-center">
+        <div className="flex">
           <h1 className=" uppercase font-bold text-lg m:text-3xl text-white ml-1 md:ml-4 mr-4 md:mr-32 ">
-            <a href="/">
-              <span className="text-emerald-400">Y</span> DJOA
-            </a>
+            <NavLink to="/">
+              <span className="text-emerald-700">Y</span> DJOA
+            </NavLink>
           </h1>
         </div>
 
-        <div className="flex flex-col justify-center gap-2 md:gap-2 my-1 md:my-10">
-          <div>
-            <h1 className="text-emerald-400 text-center text-sm md:text-xl font-semibold md:mt-2">
+        <div className="flex flex-col justify-center  my-1 md:my-10">
+          <div className="flex mt-2 md:mt-8  justify-center">
+            <h1 className="text-emerald-700 text-center text-sm md:text-xl font-bold ">
               _ Follow Me
             </h1>
           </div>
 
-          <div className="flex flex-row gap-1 md:gap-4 mx-4 md:mx-24 mt-2 md:mt-6">
-            <div className="bg-neutral-700 rounded-xl h-8 md:h-12 w-8 md:w-12 p-1 md:p-2 cursor-pointer hover:bg-yellow-400">
-              <a>
-                <FaLinkedinIn className="text-yellow-400 hover:text-neutral-600 h-6 md:h-8 w-6 md:w-8" />
-              </a>
+          <div className="flex flex-row gap-1 md:gap-4 mx-4 md:mx-24 my-2 md:my-6">
+            <div className="btnFooter group">
+              <NavLink
+                to={Bio.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedinIn className="footerIcon" />
+              </NavLink>
             </div>
-            <div className="bg-neutral-700 rounded-xl h-8 md:h-12 w-8 md:w-12 p-1 md:p-2 cursor-pointer hover:bg-yellow-400">
-              <a>
-                <FaGithub className="text-yellow-400 hover:text-neutral-600 h-6 md:h-8 w-6 md:w-8" />
-              </a>
+            <div className="btnFooter group">
+              <NavLink
+                to={Bio.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub className="footerIcon" />
+              </NavLink>
             </div>
-            <div className="bg-neutral-700 rounded-xl h-8 md:h-12 w-8 md:w-12 p-1 md:p-2 cursor-pointer hover:bg-yellow-400">
-              <a>
-                <FaTwitter className="text-yellow-400 hover:text-neutral-600 h-6 md:h-8 w-6 md:w-8" />
-              </a>
+            <div className="btnFooter group">
+              <NavLink
+                to={Bio.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTwitter className="footerIcon" />
+              </NavLink>
             </div>
-            <div className="bg-neutral-700 rounded-xl h-8 md:h-12 w-8 md:w-12 p-1 md:p-2 cursor-pointer hover:bg-yellow-400">
-              <a>
-                <FaYoutube className="text-yellow-400 hover:text-neutral-600 h-6 md:h-8 w-6 md:w-8" />
-              </a>
+            <div className="btnFooter group">
+              <NavLink
+                to={Bio.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaYoutube className="footerIcon" />
+              </NavLink>
             </div>
-            <div className="bg-neutral-700 rounded-xl h-8 md:h-12 w-8 md:w-12 p-1 md:p-2 cursor-pointer hover:bg-yellow-400">
-              <a>
-                <FaFacebookF className="text-yellow-400 hover:text-neutral-600 h-6 md:h-8 w-6 md:w-8" />
-              </a>
+            <div className="btnFooter group">
+              <NavLink
+                to={Bio.telegram}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTelegramPlane className="footerIcon" />
+              </NavLink>
             </div>
-            <div className="bg-neutral-700 rounded-xl h-8 md:h-12 w-8 md:w-12 p-1 md:p-2 cursor-pointer hover:bg-yellow-400">
-              <a>
-                <FaTiktok className="text-yellow-400 hover:text-neutral-600 h-6 md:h-8 w-6 md:w-8" />
-              </a>
+            <div className="btnFooter group">
+              <NavLink
+                to={Bio.tikTok}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTiktok className="footerIcon" />
+              </NavLink>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex justify-center md:items-end mb-2 md:mb-4">
+      <div className="flex justify-end mr-2 md:items-end mb-2 md:mb-4">
         <p className="text-white text-xs md:text-xl">
           Copyright © 2024 Yannick Djoa. All rights reserved.
         </p>
