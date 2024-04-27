@@ -1,27 +1,13 @@
 import React, { useRef, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import { projects } from '../data/Database';
+import { motion } from 'framer-motion';
 
 function Projects() {
   const [toggle, setToggle] = useState('all');
-  const projectsRef = useRef(null);
 
   return (
-    <div
-      id="projects"
-      className=" flex flex-col justify-center relative z-1 m-2 md:m-10"
-    >
-      <div className="flex justify-center">
-        <div className="flex flex-col justify-center max-w-[1100px] gap-6 md:gap-12 my-6 md:my-12">
-          <h1 className="text-emerald-400 text-center text-xl md:text-4xl font-semibold  md:mt-3">
-            _ Projects
-          </h1>
-          <p className="text-sm md:text-lg text-neutral-400  text-center md:max-w-[600px]">
-            I have worked on a wide range of projects. From web apps to android
-            apps. Here are some of my projects.
-          </p>
-        </div>
-      </div>
+    <div id="projects">
       <div className="flex justify-center">
         <div className=" cursor-pointer  flex border-2 border-neutral-400  rounded-lg text-base md:text-xl font-semibold m-2 md:m-4  text-neutral-400 text-center bg-zinc-800 shadow-lg shadow-neutral-400">
           {toggle === 'all' ? (
@@ -121,18 +107,43 @@ function Projects() {
           )}
         </div>
       </div>
-      <div className="flex flex-row flex-wrap justify-center p-10 items-center gap-6 m-4">
-        {toggle === 'all' &&
-          projects.map((project, id) => (
-            <ProjectCard key={id} project={project} />
-          ))}
-        {toggle === toggle &&
-          projects
-            .filter((item) => item.category === toggle)
-            .map((project, id) => <ProjectCard key={id} project={project} />)}
+      <div className="sticky top-0 flex h-screen gap-4 items-center overflow-hidden  ">
+        <motion.div className="flex">
+          <div className="h screen w-screen flex items-center justify-center">
+            {toggle === 'all' &&
+              projects.map((project, id) => (
+                <div key={id} className="flex items-center justify-center">
+                  <ProjectCard project={project} />
+                </div>
+              ))}
+            {toggle === toggle &&
+              projects
+                .filter((item) => item.category === toggle)
+                .map((project, id) => (
+                  <ProjectCard key={id} project={project} />
+                ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
 }
 
 export default Projects;
+
+{
+  /* <div className="flex flex-row flex-wrap justify-center p-10 items-center gap-6 m-4">
+  <motion.div>
+    <div>
+      {toggle === 'all' &&
+        projects.map((project, id) => (
+          <ProjectCard key={id} project={project} />
+        ))}
+      {toggle === toggle &&
+        projects
+          .filter((item) => item.category === toggle)
+          .map((project, id) => <ProjectCard key={id} project={project} />)}
+    </div>
+  </motion.div>
+</div>; */
+}

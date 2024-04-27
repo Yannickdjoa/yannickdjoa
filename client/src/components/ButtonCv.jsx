@@ -2,6 +2,7 @@ import React from 'react';
 import { RiDownload2Fill } from 'react-icons/ri';
 import { IconContext } from 'react-icons';
 import { Bio } from '../data/Database';
+import { Link } from 'react-router-dom';
 
 const resume = Bio.resume;
 function ButtonCv() {
@@ -16,8 +17,9 @@ function ButtonCv() {
   };
   return (
     <div className="mx-16 md:mx-36 my-6">
-      <button
+      <Link
         onClick={() => downloadFileAtURL(resume)}
+        
         className="flex gap-4 items-center bg-yellow-600 text-neutral-700 p-4 text-center font-bold rounded-2xl  hover:bg-yellow-600/80 justify-center"
       >
         <IconContext.Provider
@@ -28,7 +30,7 @@ function ButtonCv() {
           </div>
         </IconContext.Provider>
         MY CV
-      </button>
+      </Link>
     </div>
   );
 }
