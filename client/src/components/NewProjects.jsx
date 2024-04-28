@@ -6,8 +6,8 @@ import { FaArrowRight } from 'react-icons/fa';
 function NewProjects() {
   return (
     <div>
-      <div className="w-screen h-screen flex flex-col gap-16 items-center justify-center text-center">
-        <h1 className="text-6xl text-emerald-700 font-bold">
+      <div className="w-screen h-[50vh] md:h-screen flex flex-col gap-8 md:gap-16 items-center justify-center text-center">
+        <h1 className="text-3xl md:text-6xl text-emerald-700 font-bold">
           Do you have a project?
         </h1>
         <div className="relative">

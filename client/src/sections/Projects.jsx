@@ -8,7 +8,7 @@ function Projects() {
 
   return (
     <div id="projects">
-      <div className="flex justify-center">
+      <div className="md:hidden flex justify-center">
         <div className=" cursor-pointer  flex border-2 border-neutral-400  rounded-lg text-base md:text-xl font-semibold m-2 md:m-4  text-neutral-400 text-center bg-zinc-800 shadow-lg shadow-neutral-400">
           {toggle === 'all' ? (
             <div
