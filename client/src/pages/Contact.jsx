@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import MessageForm from '../MessageForm';
+import MessageForm from '../components/MessageForm';
 import { MdEmail, MdOutlinePhonePaused } from 'react-icons/md';
 
 function Contact() {
@@ -7,8 +7,8 @@ function Contact() {
   return (
     <div id="contacts" className="flex flex-col ">
       <div className="flex justify-center">
-        <div className="flex flex-col justify-center max-w-[1100px] gap-6 md:gap-12 my-6 md:my-12">
-          <h1 className="text-emerald-400 text-center text-xl md:text-4xl font-semibold  md:mt-3">
+        <div className="flex flex-col justify-center max-w-[1100px] gap-4 md:gap-8 my-2 md:my-8">
+          <h1 className="text-emerald-700 title">
             _ Let's Connect
           </h1>
           <p className="text-sm md:text-lg text-neutral-400  text-center md:max-w-[600px]">

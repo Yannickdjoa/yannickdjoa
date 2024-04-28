@@ -40,37 +40,40 @@ function MessageForm() {
         type="text"
         name="user_name"
         placeholder="full name or company"
-        className="focus:text-neutral-400 flex-1 bg-transparent border-2 border-neutral-400 text-lg rounded-2xl p-1 outline-none"
+        className="input"
       />
       <input
         type="email"
         name="user_email"
         placeholder="Your email "
-        className="focus:text-neutral-400 flex-1 bg-transparent border-2 border-neutral-400 text-lg rounded-2xl p-1 outline-none"
+        className="input"
       />
       <input
         type="number"
         name="user_phone"
         placeholder="Your Mobile"
-        className="focus:text-neutral-400 flex-1 bg-transparent border-2 border-neutral-400 text-lg rounded-2xl p-1 outline-none"
+        className="input"
       />
       <input
         type="text"
         name="subject"
         placeholder="Subject"
-        className="focus:text-neutral-400 flex-1 bg-transparent border-2 border-neutral-400 text-lg rounded-2xl p-1 outline-none"
+        className="input"
       />
       <textarea
         type="text"
         name="message"
         placeholder="Write your message here"
-        className="focus:text-neutral-400 flex-1 bg-transparent border-2 border-neutral-400 text-lg rounded-2xl p-1 outline-none "
+        className="textarea"
       />
-      <input
+      <button
         type="submit"
         value="Send"
-        className="cursor-pointer active w-full text-center bg-yellow-400 mt-1 p-3 rounded-xl text-xl font-semibold text-neutral-400"
-      />
+        className="cursor-pointer active w-full text-center bg-yellow-600 mt-1 p-3 rounded-xl text-xl font-semibold text-neutral-700"
+      >
+        Send
+      </button>
+
       <Snackbar
         open={open}
         autoHideDuration={6000}
