@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { navigationData } from '../data/Database';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import ButtonGeneral from '../components/ButtonGeneral';
 import Logo from '../components/Logo';
@@ -26,9 +26,9 @@ function Header() {
         }
       >
         <h1 className="uppercase font-bold text-1xl ml-4 mt-4">
-          <a href="/">
-            <span className="text-emerald-400">Y</span> DJOA
-          </a>
+          <Link to="/">
+            <span className="text-emerald-700">Y</span> DJOA
+          </Link>
         </h1>
 
         <ul className=" ml-4 mt-4">
