@@ -4,7 +4,7 @@ import MainView from '../sections/MainView';
 
 function Home() {
   return (
-    <div>
+    <div className='h-screen '>
       <MainView />
       {/* <Offers /> */}
     </div>

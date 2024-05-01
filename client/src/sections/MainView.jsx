@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { fadeIn } from '../utils/variants';
 function MainView() {
   return (
-    <div id="mainview" className="bg-primary/60 h-full ">
+    <div id="mainview" className="bg-primary/60 h-screen ">
       {/* text area div */}
       <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
         <div className="text-center flex flex-col justify-center xl:text-left xl:pt-40 h-full container mx-auto">

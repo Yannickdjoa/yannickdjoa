@@ -21,7 +21,7 @@ function Header() {
       <div
         className={
           nav
-            ? 'fixed h-full left-o top-0 w-[50%] bg-zinc-600 ease-in-out duration-500 z-20'
+            ? 'fixed h-full left-o top-0 w-[60%] bg-zinc-600 ease-in-out duration-500 z-20'
             : 'fixed left-[-100%]'
         }
       >
@@ -37,7 +37,8 @@ function Header() {
               <NavLink
                 key={index}
                 to={item.href}
-                className="flex flex-col p-2 text-lg  hover:text-emerald-700 hover:underline hover:underline-offset-8"
+                onClick={(e) => handleNav()}
+                className="flex flex-col p-2 text-lg gap-4"
               >
                 {item.name}
               </NavLink>
