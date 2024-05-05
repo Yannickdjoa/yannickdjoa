@@ -1,1 +1,6 @@
 node_modules
+<<<<<<< Updated upstream
+=======
+serviceAccountKey.json
+.env
+>>>>>>> Stashed changes
