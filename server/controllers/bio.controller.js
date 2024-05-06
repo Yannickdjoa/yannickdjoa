@@ -97,16 +97,7 @@ const deleteBioField = async (req, res, next) => {
 
     // fund a way ro delete only items in req.body
     await bioId.update({
-      author: FieldValue.delete(),
-      description: FieldValue.delete(),
-      address: FieldValue.delete(),
-      domain: FieldValue.delete(),
-      github: FieldValue.delete(),
-      linkedin: FieldValue.delete(),
-      twitter: FieldValue.delete(),
-      telegram: FieldValue.delete(),
-      tikTok: FieldValue.delete(),
-      youtube: FieldValue.delete(),
+      [req.params.field]: FieldValue.delete(),
     });
     return res
       .status(200)
