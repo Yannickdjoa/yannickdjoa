@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bioRouter = require('./routes/bio.route.js');
 const projectsRouter = require('./routes/projects.route.js');
+const stacksRouter = require('./routes/stacks.route.js');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 //individual routes
 app.use('/bio', bioRouter);
 app.use('/projects', projectsRouter);
+app.use('/stacks', stacksRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

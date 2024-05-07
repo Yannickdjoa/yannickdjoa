@@ -1,5 +1,5 @@
 const { db } = require('../../firebaseConfig.js');
-const { erroHandler, errorHandler } = require('../utils/error.js');
+const { errorHandler } = require('../utils/error.js');
 
 const { FieldValue } = require('firebase-admin/firestore');
 
@@ -31,12 +31,11 @@ const createProject = async (req, res, next) => {
 const updateProject = async (req, res, next) => {
   const projectId = db.collection('projects').doc(req.params.id);
   const projectDoc = await projectId.get();
-  console.log(projectDoc.data);
   if (!projectDoc.exists) {
     return next(errorHandler(401, 'Project not found'));
   } else {
     try {
-      const updatedProject = await projectId.update({
+      await projectId.update({
         title: req.body.title,
         period: req.body.period,
         description: req.body.description,
@@ -76,6 +75,7 @@ const deleteProjectField = async (req, res, next) => {
   if (!projectDoc.exists) {
     return next(errorHandler(401, 'project not found'));
   }
+  console.log(req.params)
   try {
     await projectId.update({
       [req.params.field]: FieldValue.delete(),
