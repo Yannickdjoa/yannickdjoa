@@ -11,9 +11,10 @@ const {
 const experiencesRouter = express.Router();
 
 experiencesRouter.post('/create', createExperience);
-experiencesRouter.put('/update', updateExperience);
-experiencesRouter.delete('/delete', deleteExperience);
-experiencesRouter.delete('/deleteExperienceField', deleteExperienceField);
-experiencesRouter.get('/getSingleExperience', getSingleExperience);
-experiencesRouter.get('/getAllExperience', getAllExperience);
+experiencesRouter.put('/update/:id', updateExperience);
+experiencesRouter.delete('/delete/:id', deleteExperience);
+experiencesRouter.delete('/deleteExperienceField/:id', deleteExperienceField);
+experiencesRouter.get('/getSingleExperience/:id', getSingleExperience);
+experiencesRouter.get('/get', getAllExperience);
+
 module.exports = experiencesRouter;

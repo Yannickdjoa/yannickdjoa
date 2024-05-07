@@ -104,7 +104,9 @@ const getSingleProject = async (req, res, next) => {
 const getAllProjects = async (req, res) => {
   const projects = db.collection('projects');
   const projectsList = await projects.get();
+  console.log(projects.doc);
   projectsList.forEach((project) => {
+    console.log(project.data());
     return project.data();
   });
 };
