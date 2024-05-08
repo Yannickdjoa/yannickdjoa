@@ -20,6 +20,7 @@ const createBio = async (req, res, next) => {
     const newBio = db.collection('Bio').doc(`/${Date.now()}/`);
     await newBio.set({
       author: req.body.author,
+      profilePhoto: req.body.profilePhoto,
       description: req.body.description,
       address: req.body.address,
       domain: req.body.domain,
@@ -30,6 +31,9 @@ const createBio = async (req, res, next) => {
       telegram: req.body.telegram,
       tikTok: req.body.tikTok,
       youtube: req.body.youtube,
+      email: req.body.email,
+      telephone: req.body.telephone,
+      logo: req.body.logo,
     });
 
     return res.status(200).send({
@@ -47,6 +51,7 @@ const updateBio = async (req, res, next) => {
     const bioId = db.collection('Bio').doc(req.params.id);
     await bioId.update({
       author: req.body.author,
+      profilePhoto: req.body.profilePhoto,
       description: req.body.description,
       address: req.body.address,
       domain: FieldValue.arrayUnion(...req.body.domain),
@@ -57,6 +62,9 @@ const updateBio = async (req, res, next) => {
       telegram: req.body.telegram,
       tikTok: req.body.tikTok,
       youtube: req.body.youtube,
+      email: req.body.email,
+      telephone: req.body.telephone,
+      logo: req.body.logo,
     });
     return res
       .status(200)
