@@ -5,6 +5,7 @@ const projectsRouter = require('./routes/projects.route.js');
 const stacksRouter = require('./routes/stacks.route.js');
 const dotenv = require('dotenv');
 const experiencesRouter = require('./routes/experiences.route.js');
+const navigationRouter = require('./routes/navigation.route.js');
 dotenv.config();
 
 //Global variables
@@ -20,7 +21,8 @@ app.use(express.json());
 app.use('/bio', bioRouter);
 app.use('/projects', projectsRouter);
 app.use('/stacks', stacksRouter);
-app.use("/experiences", experiencesRouter);
+app.use('/experiences', experiencesRouter);
+app.use('/navigation', navigationRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
