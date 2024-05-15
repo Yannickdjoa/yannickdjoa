@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 
 //individual routes
-app.use('/bio', bioRouter);
+app.use('/api/bio', bioRouter);
 app.use('/projects', projectsRouter);
 app.use('/stacks', stacksRouter);
 app.use('/experiences', experiencesRouter);

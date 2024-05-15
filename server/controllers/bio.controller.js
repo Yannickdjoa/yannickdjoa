@@ -15,15 +15,11 @@ const {
 
 const createBio = async (req, res, next) => {
   try {
-    // `/${Date.now()}/`;
-    // id: Date.now(),
     const newBio = db.collection('Bio').doc(`/${Date.now()}/`);
     await newBio.set({
       author: req.body.author,
-      profilePhoto: req.body.profilePhoto,
-      description: req.body.description,
       address: req.body.address,
-      domain: req.body.domain,
+      telephone: req.body.telephone,
       resume: req.body.resume,
       github: req.body.github,
       linkedin: req.body.linkedin,
@@ -32,7 +28,6 @@ const createBio = async (req, res, next) => {
       tikTok: req.body.tikTok,
       youtube: req.body.youtube,
       email: req.body.email,
-      telephone: req.body.telephone,
       logo: req.body.logo,
     });
 
@@ -51,10 +46,8 @@ const updateBio = async (req, res, next) => {
     const bioId = db.collection('Bio').doc(req.params.id);
     await bioId.update({
       author: req.body.author,
-      profilePhoto: req.body.profilePhoto,
-      description: req.body.description,
       address: req.body.address,
-      domain: FieldValue.arrayUnion(...req.body.domain),
+      telephone: req.body.telephone,
       github: req.body.github,
       resume: req.body.resume,
       linkedin: req.body.linkedin,
@@ -63,7 +56,6 @@ const updateBio = async (req, res, next) => {
       tikTok: req.body.tikTok,
       youtube: req.body.youtube,
       email: req.body.email,
-      telephone: req.body.telephone,
       logo: req.body.logo,
     });
     return res
@@ -103,7 +95,7 @@ const deleteBioField = async (req, res, next) => {
     //   youtube,
     // } = req.body;
 
-    // fund a way ro delete only items in req.body
+    // fund a way to delete only items in req.body
     await bioId.update({
       [req.params.field]: FieldValue.delete(),
     });
