@@ -17,10 +17,7 @@ textCollectionRouter.delete(
   '/deleteTextCollectionField/:id',
   deleteTextCollectionField
 );
-textCollectionRouter.get(
-  '/getSingleTextCollection/:id',
-  getSingleTextCollection
-);
+textCollectionRouter.get('/get/:id', getSingleTextCollection);
 textCollectionRouter.get('/get', getAllTextCollection);
 
 module.exports = textCollectionRouter;

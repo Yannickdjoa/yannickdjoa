@@ -26,7 +26,7 @@ app.use('/projects', projectsRouter);
 app.use('/stacks', stacksRouter);
 app.use('/experiences', experiencesRouter);
 app.use('/navigation', navigationRouter);
-app.use('/textCollection', textCollectionRouter);
+app.use('/api/textCollection', textCollectionRouter);
 app.use('/api/webIntro', webIntroRouter);
 app.use('/api/aboutMe', aboutMeRouter);
 

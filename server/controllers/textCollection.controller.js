@@ -7,15 +7,12 @@ const createTextCollection = async (req, res) => {
   try {
     const textId = db.collection('textCollection').doc(`${Date.now()}`);
     await textId.create({
-      mainPageTitle1: req.body.mainPageTitle1,
-      mainPageTitle2: req.body.mainPageTitle2,
-      mainPageTitle3: req.body.mainPageTitle3,
-      mainPageText: req.body.mainPageText,
       copyright: req.body.copyright,
       footerSocialTitle: req.body.footerSocialTitle,
-      
       skillsTitle: req.body.skillsTitle,
       skillsSubtitle: req.body.skillsSubtitle,
+      aboutTitle: req.body.aboutTitle,
+      aboutSubtitle: req.body.aboutSubtitle,
       experienceTitle: req.body.experienceTitle,
       experienceSubtitle: req.body.experienceSubtitle,
       portfolioTitle: req.body.portfolioTitle,
@@ -43,18 +40,12 @@ const updateTextCollection = async (req, res, next) => {
   } else {
     try {
       await textId.update({
-        mainPageTitle1: req.body.mainPageTitle1,
-        mainPageTitle2: req.body.mainPageTitle2,
-        mainPageTitle3: req.body.mainPageTitle3,
-        mainPageText: req.body.mainPageText,
         copyright: req.body.copyright,
         footerSocialTitle: req.body.footerSocialTitle,
-        aboutTitle: req.body.aboutTitle,
-        aboutsubtitle1: req.body.aboutsubtitle1,
-        aboutsubtitle2: req.body.aboutsubtitle2,
-        aboutText: req.body.aboutText,
         skillsTitle: req.body.skillsTitle,
         skillsSubtitle: req.body.skillsSubtitle,
+        aboutTitle: req.body.aboutTitle,
+        aboutSubtitle: req.body.aboutSubtitle,
         experienceTitle: req.body.experienceTitle,
         experienceSubtitle: req.body.experienceSubtitle,
         portfolioTitle: req.body.portfolioTitle,
