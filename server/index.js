@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const experiencesRouter = require('./routes/experiences.route.js');
 const navigationRouter = require('./routes/navigation.route.js');
 const textCollectionRouter = require('./routes/textCollection.route.js');
+const webIntroRouter = require('./routes/webIntro.route.js');
 dotenv.config();
 
 //Global variables
@@ -25,6 +26,7 @@ app.use('/stacks', stacksRouter);
 app.use('/experiences', experiencesRouter);
 app.use('/navigation', navigationRouter);
 app.use('/textCollection', textCollectionRouter);
+app.use('/api/webIntro', webIntroRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

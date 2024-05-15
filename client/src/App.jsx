@@ -7,6 +7,7 @@ import About from './pages/About';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import AdminPanel from './pages/AdminPanel';
+import AdminIntro from './pages/AdminPanel/AdminIntro';
 
 function App() {
   return (

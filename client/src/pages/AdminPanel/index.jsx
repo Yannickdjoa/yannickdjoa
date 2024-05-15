@@ -13,6 +13,12 @@ import AdminTextCollection from './AdminTextCollection';
 import AdminPersonalData from './AdminPersonalData';
 
 function AdminPanel() {
+  const [value, setValue] = React.useState('one');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <Tabs forceRenderTabPanel defaultIndex={1}>
       <TabList>

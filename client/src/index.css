@@ -15,6 +15,65 @@
   color: #ca8a04;
 }
 
+.MuiTabs-indicator{
+color: #047857}
+
+.react-tabs {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.react-tabs__tab-list {
+  border-bottom: 2px solid #aaa;
+  margin: 10px 10px 10px;
+  padding: 0;
+}
+
+.react-tabs__tab {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: white
+}
+
+.react-tabs__tab--selected {
+  background: transparent;
+  border-color: #aaa;
+  color: #047857;
+  border-radius: 5px 5px 0 0;
+}
+
+.react-tabs__tab--disabled {
+  color: Gray;
+  cursor: default;
+}
+
+.react-tabs__tab:focus {
+  outline: none;
+}
+
+.react-tabs__tab:focus:after {
+  content: '';
+  position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: #fff;
+}
+
+.react-tabs__tab-panel {
+  display: none;
+}
+
+.react-tabs__tab-panel--selected {
+  display: block;
+  margin: 10px
+}
 
 @layer base {
   body {
@@ -52,4 +111,6 @@
   .textarea {
     @apply w-full h-[180px] p-6 capitalize rounded-2xl resize-none;
   }
+  .tabPanel{
+   @apply w-full h-full text-white;}
 }
