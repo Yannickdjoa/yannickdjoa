@@ -10,7 +10,7 @@ const createWebIntro = async (req, res, next) => {
       mainCaption: req.body.mainCaption,
       secondaryCaption: req.body.secondaryCaption,
       captionImg: req.body.captionImg,
-      coleredCaption: req.body.coleredCaption,
+      coloredCaption: req.body.coloredCaption,
       introText: req.body.introText,
       buttonImg: req.body.buttonImg,
     });
@@ -37,7 +37,7 @@ const updateWebIntro = async (req, res, next) => {
         MainCaption: req.body.mainCaption,
         secondaryCaption: req.body.secondaryCaption,
         captionImg: req.body.captionImg,
-        coleredCaption: req.body.coleredCaption,
+        coloredCaption: req.body.coloredCaption,
         introText: req.body.introText,
         buttonImg: req.body.buttonImg,
       });

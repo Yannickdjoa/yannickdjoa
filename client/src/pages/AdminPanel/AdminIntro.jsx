@@ -23,6 +23,20 @@ function AdminIntro() {
   const [fileUploadError, setFileUploadError] = useState(false);
 
   useEffect(() => {
+    const currentData = async () => {
+      const response = await fetch('/api/webIntro/get/1715785222489');
+      const data = await response.json();
+      console.log(data.data);
+      if (data.status == 'success') {
+        setFormData({...data.data});
+        console.log(formData);
+      }
+      
+    };
+    currentData();
+  }, []);
+
+  useEffect(() => {
     if (file) {
       handleUploadImage(file);
     }
@@ -68,7 +82,7 @@ function AdminIntro() {
     e.preventDefault;
     try {
       setLoading(true);
-      const response = await fetch('/api/webIntro/update/1715773544658', {
+      const response = await fetch('/api/webIntro/update/1715785222489', {
         method: 'PUT',
         headers: {
           'content-Type': 'application/json',
