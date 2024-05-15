@@ -28,10 +28,9 @@ function AdminIntro() {
       const data = await response.json();
       console.log(data.data);
       if (data.status == 'success') {
-        setFormData({...data.data});
+        setFormData({ ...data.data });
         console.log(formData);
       }
-      
     };
     currentData();
   }, []);

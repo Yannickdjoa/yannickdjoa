@@ -13,10 +13,7 @@ const createTextCollection = async (req, res) => {
       mainPageText: req.body.mainPageText,
       copyright: req.body.copyright,
       footerSocialTitle: req.body.footerSocialTitle,
-      aboutTitle: req.body.aboutTitle,
-      aboutsubtitle1: req.body.aboutsubtitle1,
-      aboutsubtitle2: req.body.aboutsubtitle2,
-      aboutText: req.body.aboutText,
+      
       skillsTitle: req.body.skillsTitle,
       skillsSubtitle: req.body.skillsSubtitle,
       experienceTitle: req.body.experienceTitle,
