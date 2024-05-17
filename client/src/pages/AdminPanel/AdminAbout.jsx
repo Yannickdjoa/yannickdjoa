@@ -25,10 +25,9 @@ function AdminAboutMe() {
     const currentData = async () => {
       const response = await fetch('/api/aboutMe/get/1715796950404');
       const data = await response.json();
-      console.log(data.data);
+
       if (data.status == 'success') {
         setFormData({ ...data.data });
-        console.log(formData);
       }
     };
     currentData();
@@ -87,7 +86,7 @@ function AdminAboutMe() {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log(data);
+
       setLoading(false);
       if (data.status === 'success') {
         navigate('/admin');

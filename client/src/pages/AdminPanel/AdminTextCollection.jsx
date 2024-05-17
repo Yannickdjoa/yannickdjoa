@@ -28,14 +28,11 @@ function AdminTextCollection() {
   const [error, setError] = useState(false);
   useEffect(() => {
     const currentData = async () => {
-      const response = await fetch(
-        '/api/textCollection/get/1715156244365'
-      );
+      const response = await fetch('/api/textCollection/get/1715156244365');
       const data = await response.json();
-      console.log(data.data);
+
       if (data.status == 'success') {
         setFormData({ ...data.data });
-        console.log(formData);
       }
     };
     currentData();
@@ -60,7 +57,7 @@ function AdminTextCollection() {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log(data);
+
       setLoading(false);
       if (data.status === 'success') {
         navigate('/admin');
@@ -68,7 +65,6 @@ function AdminTextCollection() {
         return setError(data.message);
       }
     } catch (error) {
-      console.log(error);
       setError(error.message);
       setLoading(false);
     }

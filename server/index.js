@@ -23,7 +23,7 @@ app.use(express.json());
 //individual routes
 app.use('/api/bio', bioRouter);
 app.use('/projects', projectsRouter);
-app.use('/stacks', stacksRouter);
+app.use('/api/stacks', stacksRouter);
 app.use('/experiences', experiencesRouter);
 app.use('/navigation', navigationRouter);
 app.use('/api/textCollection', textCollectionRouter);

@@ -5,7 +5,7 @@ import 'react-tabs/style/react-tabs.css';
 import React from 'react';
 import AdminIntro from './AdminIntro';
 import AdminAbout from './AdminAbout';
-import AdminSkills from './AdminSkills';
+import AdminStacks from './AdminStacks';
 import AdminExperiences from './AdminExperiences';
 import AdminProjects from './AdminProjects';
 import AdminNewProjects from './AdminNewProjects';
@@ -45,14 +45,14 @@ function AdminPanel() {
         <Tabs forceRenderTabPanel>
           <TabList>
             <Tab>Personal info</Tab>
-            <Tab>Skills</Tab>
+            <Tab>Stacks</Tab>
             <Tab>Experience</Tab>
           </TabList>
           <TabPanel>
             <AdminAbout />
           </TabPanel>
           <TabPanel>
-            <AdminSkills />
+            <AdminStacks />
           </TabPanel>
           <TabPanel>
             <AdminExperiences />

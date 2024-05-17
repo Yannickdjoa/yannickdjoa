@@ -26,10 +26,8 @@ function AdminIntro() {
     const currentData = async () => {
       const response = await fetch('/api/webIntro/get/1715785222489');
       const data = await response.json();
-      console.log(data.data);
       if (data.status == 'success') {
         setFormData({ ...data.data });
-        console.log(formData);
       }
     };
     currentData();
@@ -89,7 +87,6 @@ function AdminIntro() {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log(data);
       setLoading(false);
       if (data.status === 'success') {
         navigate('/admin');

@@ -30,10 +30,9 @@ function AdminPersonalData() {
     const currentData = async () => {
       const response = await fetch('/api/bio/get/1715803389046');
       const data = await response.json();
-      console.log(data.data);
+
       if (data.status == 'success') {
         setFormData({ ...data.data });
-        console.log(formData);
       }
     };
     currentData();
@@ -93,7 +92,6 @@ function AdminPersonalData() {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log(data);
       setLoading(false);
       if (data.status === 'success') {
         navigate('/admin');
@@ -101,14 +99,11 @@ function AdminPersonalData() {
         return setError(data.message);
       }
     } catch (error) {
-      console.log(error);
       setError(error.message);
       setLoading(false);
     }
   };
 
-  //   logo: '',
-  //   resume: '',
   return (
     <div>
       <form onSubmit={handleSubmit}>

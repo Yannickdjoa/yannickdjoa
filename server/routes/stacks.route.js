@@ -15,6 +15,6 @@ stacksRouter.put('/update/:id', updateStack);
 stacksRouter.delete('/delete/:id', deleteStack);
 stacksRouter.delete('/deleteStackField/:id', deleteStackField);
 stacksRouter.get('/getSingleStack/:id', getSingleStack);
-stacksRouter.get('/getAllStacks', getAllStacks);
+stacksRouter.get('/get', getAllStacks);
 
 module.exports = stacksRouter;

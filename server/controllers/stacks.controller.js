@@ -99,7 +99,6 @@ const getAllStacks = async (req, res, next) => {
     const stacksId = db.collection('stacks');
     const stacklist = await stacksId.get();
     stacklist.forEach((stack) => {
-      console.log(stack.data());
       return stack.data();
     });
   } catch (error) {
