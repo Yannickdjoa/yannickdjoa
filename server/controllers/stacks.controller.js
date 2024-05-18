@@ -6,9 +6,11 @@ const createStack = async (req, res) => {
   try {
     const stackId = db.collection('stacks').doc(`${Date.now()}`);
     await stackId.create({
+      id: Date.now(),
       category: req.body.category,
       stackName: req.body.stackName,
       stackImage: req.body.stackImage,
+      stackPercentage: req.body.stackPercentage,
     });
     return res
       .status(200)
@@ -18,7 +20,7 @@ const createStack = async (req, res) => {
   }
 };
 const updateStack = async (req, res, next) => {
-  const stackId = db.collection('stacks').doc(req.params.id);
+  const stackId = db.collection('stacks').doc({ id: req.params.id });
   const stackDetails = await stackId.get();
   if (!stackDetails.exists) {
     return next(errorHandler(404, 'stack not found'));
@@ -28,6 +30,7 @@ const updateStack = async (req, res, next) => {
         category: req.body.category,
         stackName: req.body.stackName,
         stackImage: req.body.stackImage,
+        stackPercentage: req.body.stackPercentage,
       });
       return res
         .status(200)
@@ -97,11 +100,15 @@ const getSingleStack = async (req, res, next) => {
 const getAllStacks = async (req, res, next) => {
   try {
     const stacksId = db.collection('stacks');
-    const stacklist = await stacksId.get();
-    stacklist.forEach((stack) => {
-      return stack.data();
+    const stackDetails = await stacksId.get();
+    const stacksList = [];
+    stackDetails.forEach((stack) => {
+      stacksList.push(stack.data());
+      console.log(stacksList);
     });
+    return res.status(200).send({ status: 'success', data: stacksList });
   } catch (error) {
+    console.log(error);
     return res.status(500).send({ status: 'failed', message: error });
   }
 };

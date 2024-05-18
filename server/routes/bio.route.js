@@ -14,6 +14,6 @@ bioRouter.post('/create', createBio);
 bioRouter.delete('/delete/:id', deleteBio);
 bioRouter.delete('/deleteField/:id', deleteBioField);
 bioRouter.get('/get/:id', getBio);
-// bioRouter.get('/get', getBio);
+// bioRouter.get('/getAll', getBio);
 
 module.exports = bioRouter;
