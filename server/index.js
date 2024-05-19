@@ -22,10 +22,10 @@ app.use(express.json());
 
 //individual routes
 app.use('/api/bio', bioRouter);
-app.use('/projects', projectsRouter);
+app.use('/api/projects', projectsRouter);
 app.use('/api/stacks', stacksRouter);
-app.use('/experiences', experiencesRouter);
-app.use('/navigation', navigationRouter);
+app.use('/api/experiences', experiencesRouter);
+app.use('/api/navigation', navigationRouter);
 app.use('/api/textCollection', textCollectionRouter);
 app.use('/api/webIntro', webIntroRouter);
 app.use('/api/aboutMe', aboutMeRouter);

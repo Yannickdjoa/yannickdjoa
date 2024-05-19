@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { app, storage } from '../../../firebase';
+import { app, storage } from '../../../../firebase';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
 
-function AdminAboutMe() {
+function AdminAbout() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     aboutCaption: '',
@@ -216,4 +216,4 @@ function AdminAboutMe() {
   );
 }
 
-export default AdminAboutMe;
+export default AdminAbout;

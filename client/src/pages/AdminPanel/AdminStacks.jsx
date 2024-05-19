@@ -8,9 +8,8 @@ import {
   selectAllStacks,
 } from '../../redux/stacks/stackSlice.js';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -25,6 +24,7 @@ const style = {
 };
 function AdminStacks() {
   const params = useParams();
+
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
   const [filePerc, setFilePerc] = useState(0);
@@ -64,13 +64,16 @@ function AdminStacks() {
   //populate initial data
 
   const currentStackData = async () => {
-    const response = await fetch('/api/stacks/getSingleStack/params.id');
+    const response = await fetch(`/api/stacks/getSingleStack/${params.itemId}`);
     const data = await response.json();
 
     if (data.status == 'success') {
       setFormData({ ...data.data });
     }
   };
+  // useEffect(() => {
+  //   currentStackData();
+  // }, [params]);
 
   //function & useEffect to handle the file upload
 
@@ -143,15 +146,18 @@ function AdminStacks() {
                 <button className="btn bg-red-700 text-white font-normal">
                   Delete
                 </button>
-                <button
-                  className="btn px-4 "
-                  onClick={() => {
-                    setSelectedItemForEdit(true);
-                    setAddEditModal(true);
-                  }}
-                >
-                  Edit
-                </button>
+                <Link to={`/admindashboard/${stack.id}`}>
+                  <button
+                    className="btn px-4 "
+                    onClick={() => {
+                      setSelectedItemForEdit(true);
+                      setAddEditModal(true);
+                      // currentStackData();
+                    }}
+                  >
+                    Edit
+                  </button>
+                </Link>
               </div>
             </div>
           ))}

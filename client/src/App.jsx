@@ -1,24 +1,33 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ScrollToTop from './components/ScrollToTop';
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  Navigate,
+} from 'react-router-dom';
 import Header from './sections/Header';
 import Footer from './sections/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
-import AdminPanel from './pages/AdminPanel';
-import AdminIntro from './pages/AdminPanel/AdminIntro';
+import AdminDashboard from './pages/AdminPanel/adminDashElements/AdminDashboard';
+import StacksBox from './pages/AdminPanel/adminComponents/StacksBox';
 
-function App() {
+function App(criteria) {
   return (
     <Router>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="about" element={<About />} />
+        <Route path="portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/admin" element={<AdminPanel />} />
+
+        {/* admin routes */}
+        <Route path="admindashboard" element={<AdminDashboard />}>
+          <Route path="admindashboard/:itemId" element={<StacksBox />} />
+        </Route>
       </Routes>
       <Footer />
       <ScrollToTop />

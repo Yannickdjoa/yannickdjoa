@@ -21,6 +21,29 @@ export const navigationData = [
     icon: '',
   },
 ];
+export const dashboardNavigation = [
+  {
+    name: 'Admin Dashboard',
+    link: '/admin/admindashboard',
+    icon: '',
+  },
+  {
+    name: 'Admin About',
+    link: '/admin/adminabout',
+    icon: '',
+  },
+
+  {
+    name: 'Admin Portfolio',
+    link: '/admin/adminportfolio',
+    icon: '',
+  },
+  {
+    name: 'Admin others',
+    link: '/admin/adminothers',
+    icon: '',
+  },
+];
 
 export const Bio = {
   name: 'Yannick Djoa',
