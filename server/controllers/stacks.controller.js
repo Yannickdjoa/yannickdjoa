@@ -6,7 +6,7 @@ const createStack = async (req, res) => {
   try {
     const stackId = db.collection('stacks').doc(`${Date.now()}`);
     await stackId.create({
-      id: Date.now(),
+      stackId: Date.now(),
       category: req.body.category,
       stackName: req.body.stackName,
       stackImage: req.body.stackImage,
@@ -20,7 +20,7 @@ const createStack = async (req, res) => {
   }
 };
 const updateStack = async (req, res, next) => {
-  const stackId = db.collection('stacks').doc({ id: req.params.id });
+  const stackId = db.collection('stacks').doc(req.params.id);
   const stackDetails = await stackId.get();
   if (!stackDetails.exists) {
     return next(errorHandler(404, 'stack not found'));

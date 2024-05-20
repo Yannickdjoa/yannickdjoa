@@ -24,7 +24,6 @@ const style = {
 };
 function AdminStacks() {
   const params = useParams();
-
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
   const [filePerc, setFilePerc] = useState(0);
@@ -54,26 +53,12 @@ function AdminStacks() {
   useEffect(() => {
     stacksData();
   }, []);
-  const handleChange = () => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
   };
-
-  //populate initial data
-
-  const currentStackData = async () => {
-    const response = await fetch(`/api/stacks/getSingleStack/${params.itemId}`);
-    const data = await response.json();
-
-    if (data.status == 'success') {
-      setFormData({ ...data.data });
-    }
-  };
-  // useEffect(() => {
-  //   currentStackData();
-  // }, [params]);
 
   //function & useEffect to handle the file upload
 
@@ -107,21 +92,24 @@ function AdminStacks() {
     );
   };
   const handleSubmit = async () => {
-    if (selectedItemForEdit) {
-      const response = await fetch('/api/stacks/update/id');
-    } else {
-      const response = await fetch('/api/stacks/create');
-    }
+    const response = await fetch('/api/stacks/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...formData,
+      }),
+    });
   };
+
   return (
     <div>
       <div>
         <button
           type="buttton"
           onClick={() => {
-            setSelectedItemForEdit(false);
             setAddEditModal(true);
-            currentStackData();
           }}
           className="flex justify-start btn mt-8"
         >
@@ -132,7 +120,7 @@ function AdminStacks() {
         {stacksList &&
           stacksList.map((stack) => (
             <div
-              key={stack.id}
+              key={stack.stackId}
               className="flex flex-col justify-center items-center border-2 border-neutral-400 mt-8 p-8  "
             >
               <h1 className="text-white font-bold">{stack.stackName}</h1>
@@ -143,20 +131,17 @@ function AdminStacks() {
               />
               <p>{stack.stackPercentage}</p>
               <div className="flex flex-row gap-4 justify-end mt-8">
-                <button className="btn bg-red-700 text-white font-normal">
+                <Link
+                  to={`/admindashboard/adminstacks/confirmdelation/${stack.stackId}`}
+                  className="btn bg-red-700 text-white font-normal"
+                >
                   Delete
-                </button>
-                <Link to={`/admindashboard/${stack.id}`}>
-                  <button
-                    className="btn px-4 "
-                    onClick={() => {
-                      setSelectedItemForEdit(true);
-                      setAddEditModal(true);
-                      // currentStackData();
-                    }}
-                  >
-                    Edit
-                  </button>
+                </Link>
+                <Link
+                  to={`/admindashboard/adminstacks/${stack.stackId}`}
+                  className="btn px-4 "
+                >
+                  Edit
                 </Link>
               </div>
             </div>
@@ -168,10 +153,8 @@ function AdminStacks() {
         aria-labelledby="modal-title"
       >
         <Box sx={style}>
-          <form>
-            <h1 id="modal-title">
-              {selectedItemForEdit ? 'Edit stack' : 'add a new stack'}
-            </h1>
+          <form onSubmit={handleSubmit}>
+            <h1 id="modal-title">Add a new stack</h1>
             <div className="flex flex-col py-4">
               <label htmlFor="name" className="flex justify-start text-white">
                 category
@@ -181,7 +164,7 @@ function AdminStacks() {
                 type="text"
                 className="input"
                 onChange={handleChange}
-                defaultValue={formData.category}
+                value={formData.category}
               />
             </div>
             <div className="flex flex-col py-4">
@@ -193,7 +176,7 @@ function AdminStacks() {
                 type="text"
                 className="input"
                 onChange={handleChange}
-                defaultValue={formData.stackName}
+                value={formData.stackName}
               />
             </div>
             <div className="flex flex-col py-4">
@@ -205,7 +188,7 @@ function AdminStacks() {
                 type="number"
                 className="input"
                 onChange={handleChange}
-                defaultValue={formData.stackPercentage}
+                value={formData.stackPercentage}
               />
             </div>
 
@@ -240,8 +223,8 @@ function AdminStacks() {
               <button className="btn bg-red-700 text-white font-normal">
                 Cancel
               </button>
-              <button className="btn px-4 ">
-                {selectedItemForEdit ? 'Update' : 'Add Stack'}
+              <button type="submit" className="btn px-4 ">
+                Add Stack
               </button>
             </div>
           </form>

@@ -12,7 +12,9 @@ import About from './pages/About';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import AdminDashboard from './pages/AdminPanel/adminDashElements/AdminDashboard';
-import StacksBox from './pages/AdminPanel/adminComponents/StacksBox';
+import StackBox from './pages/AdminPanel/adminComponents/StackBox';
+import AdminStacks from './pages/AdminPanel/AdminStacks';
+import StackToDelete from './pages/AdminPanel/adminComponents/StackToDelete';
 
 function App(criteria) {
   return (
@@ -20,14 +22,21 @@ function App(criteria) {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
 
         {/* admin routes */}
-        <Route path="admindashboard" element={<AdminDashboard />}>
-          <Route path="admindashboard/:itemId" element={<StacksBox />} />
-        </Route>
+        <Route path="/admindashboard" element={<AdminDashboard />} />
+        <Route path="/admindashboard/adminstacks" element={<AdminStacks />} />
+        <Route
+          path="/admindashboard/adminstacks/:itemId"
+          element={<StackBox />}
+        />
+        <Route
+          path="/admindashboard/adminstacks/confirmdelation/:itemId"
+          element={<StackToDelete />}
+        />
       </Routes>
       <Footer />
       <ScrollToTop />
