@@ -7,7 +7,8 @@ const createExperience = async (req, res) => {
   try {
     const experienceId = db.collection('experiences').doc(`${Date.now()}`);
     await experienceId.create({
-      image: req.body.image,
+      experienceId: Date.now(),
+      companyImage: req.body.image,
       role: req.body.role,
       company: req.body.company,
       date: req.body.date,
@@ -30,7 +31,7 @@ const updateExperience = async (req, res, next) => {
   } else {
     try {
       await experienceId.update({
-        image: req.body.image,
+        companyImage: req.body.companyImage,
         role: req.body.role,
         company: req.body.company,
         date: req.body.date,
@@ -100,12 +101,17 @@ const getSingleExperience = async (req, res, next) => {
 };
 
 const getAllExperience = async (req, res) => {
-  const experienceId = db.collection('experiences');
-  const experienceList = await experienceId.get();
-  experienceList.forEach((experience) => {
-    console.log(experience.data());
-    return experience.data();
-  });
+  try {
+    const experienceId = db.collection('experiences');
+    const experienceList = [];
+    const experienceDetails = await experienceId.get();
+    experienceDetails.forEach((experience) => {
+      experienceList.push(experience.data());
+    });
+    return res.status(200).send({ status: 'success', data: experienceList });
+  } catch (error) {
+    return res.status(500).send({ status: 'error', message: error });
+  }
 };
 
 module.exports = {

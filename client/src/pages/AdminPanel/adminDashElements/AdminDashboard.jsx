@@ -6,6 +6,7 @@ import AdminAbout from './AdminAbout';
 import AdminStacks from '../AdminStacks';
 import AdminIntro from '../AdminIntro';
 import DashboardText from '../adminComponents/DashboardText';
+import AdminExperiences from '../AdminExperiences';
 
 function a11yProps(index) {
   return {
@@ -117,23 +118,24 @@ function AdminDashboard() {
             color: 'white',
           }}
         />
-        <LinkTab
+        <Tab
           label="Admin About Me"
-          href="/admindashboard/adminstacks"
           {...a11yProps(3)}
           sx={{
             color: 'white',
           }}
         />
-        <Tab
+        <LinkTab
           label="Admin Stacks"
+          href="/admindashboard/adminstacks"
           {...a11yProps(4)}
           sx={{
             color: 'white',
           }}
         />
-        <Tab
+        <LinkTab
           label="Admin Experience"
+          href="/admindashboard/experiences"
           {...a11yProps(5)}
           sx={{
             color: 'white',
@@ -184,7 +186,7 @@ function AdminDashboard() {
         <AdminStacks />
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+        <AdminExperiences />
       </TabPanel>
       <TabPanel value={value} index={6}>
         Item Seven

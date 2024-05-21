@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
-import stackSlice from '../../redux/stacks/stackSlice.js';
+import experiencesSlice from '../../redux/stacks/experienceSlice.js';
 import React, { useEffect, useState } from 'react';
 import { storage } from '../../../firebase';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import {
-  setStacksList,
-  selectAllStacks,
-} from '../../redux/stacks/stackSlice.js';
+  setExperiencesList,
+  startSettingExperiencesList,
+  failedToSetExperiencesList,
+} from '../../redux/stacks/experienceSlice.js';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Link, useParams } from 'react-router-dom';
@@ -29,29 +30,38 @@ function AdminExperiences() {
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const [selectedItemForEdit, setSelectedItemForEdit] = useState(null);
-  const [showAddEditModal, setAddEditModal] = useState(false);
+  const [showAddModal, setAddModal] = useState(false);
   const [formData, setFormData] = useState({
-    category: '',
-    stackName: '',
-    stackPercentage: '',
-    stackImage: '',
+    companyImage: '',
+    role: '',
+    company: '',
+    date: '',
+    description: '',
+    skills: [],
   });
   const dispatch = useDispatch();
-  const { stacksList, loading, error } = useSelector(selectAllStacks);
-  const stacksData = async () => {
+  const { experiencesList, loading, error } = useSelector(
+    (state) => state.experiences
+  );
+  const experienceData = async () => {
+    dispatch(startSettingExperiencesList(true));
     try {
-      const response = await fetch('/api/stacks/getAll');
+      const response = await fetch('/api/experiences/get');
       const data = await response.json();
 
       if (data.status === 'success') {
-        dispatch(setStacksList(data.data));
+        dispatch(setExperiencesList(data.data));
+        dispatch(failedToSetExperiencesList(null));
+        dispatch(startSettingExperiencesList(false));
       }
     } catch (error) {
+      dispatch(failedToSetExperiencesList(null));
+      dispatch(startSettingExperiencesList(true));
       console.log(error);
     }
   };
   useEffect(() => {
-    stacksData();
+    experienceData();
   }, []);
   const handleChange = (e) => {
     setFormData({
@@ -85,14 +95,14 @@ function AdminExperiences() {
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURLL) => {
-          setFormData({ ...formData, stackImage: downloadURLL });
+          setFormData({ ...formData, companyImage: downloadURLL });
         });
         setUploading(false);
       }
     );
   };
   const handleSubmit = async () => {
-    const response = await fetch('/api/stacks/create', {
+    const response = await fetch('/api/experiences/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -109,36 +119,43 @@ function AdminExperiences() {
         <button
           type="buttton"
           onClick={() => {
-            setAddEditModal(true);
+            setAddModal(true);
           }}
           className="flex justify-start btn mt-8"
         >
           Add New Stack
         </button>
       </div>
-      <div className="grid grid-cols-6 gap-5">
-        {stacksList &&
-          stacksList.map((stack) => (
+      <div className="grid grid-cols-4 gap-5">
+        {experiencesList &&
+          experiencesList.map((experience) => (
             <div
-              key={stack.stackId}
+              key={experience.experienceId}
               className="flex flex-col justify-center items-center border-2 border-neutral-400 mt-8 p-8  "
             >
-              <h1 className="text-white font-bold">{stack.stackName}</h1>
-              <img
-                src={stack.stackImage}
-                alt="stack image"
-                className="w-8 md:w-12 h-8 md:h-12 my-4"
-              />
-              <p>{stack.stackPercentage}</p>
+              <h1 className="text-white font-bold">{experience.role}</h1>
+              <div className="flex flex-row">
+                <p className="text-neutral-400 text-xl">{experience.company}</p>
+                <img
+                  src={experience.companyImage}
+                  alt="experience image"
+                  className="w-8 md:w-12 h-8 md:h-12 my-4"
+                />
+              </div>
+              <p className="text-neutral-400 text-xl">{experience.date}</p>
+              <p className="text-neutral-400 text-lg">
+                {experience.description}
+              </p>
+              <p className="text-neutral-400 text-sm">{experience.skills}</p>
               <div className="flex flex-row gap-4 justify-end mt-8">
                 <Link
-                  to={`/admindashboard/adminstacks/confirmdelation/${stack.stackId}`}
+                  to={`/admindashboard/experiences/confirmdelation/${experience.experienceId}`}
                   className="btn bg-red-700 text-white font-normal"
                 >
                   Delete
                 </Link>
                 <Link
-                  to={`/admindashboard/adminstacks/${stack.stackId}`}
+                  to={`/admindashboard/experiences/${experience.experienceId}`}
                   className="btn px-4 "
                 >
                   Edit
@@ -148,56 +165,79 @@ function AdminExperiences() {
           ))}
       </div>
       <Modal
-        open={showAddEditModal}
-        onClose={() => setAddEditModal(false)}
-        aria-labelledby="modal-title"
+        open={showAddModal}
+        onClose={() => setAddModal(false)}
+        aria-labelledby="add-experience"
       >
         <Box sx={style}>
           <form onSubmit={handleSubmit}>
-            <h1 id="modal-title">Add a new stack</h1>
+            <h1 id="add-experience">Add New Experience</h1>
             <div className="flex flex-col py-4">
               <label htmlFor="name" className="flex justify-start text-white">
-                category
+                Role
               </label>
               <input
-                id="category"
+                id="role"
                 type="text"
                 className="input"
                 onChange={handleChange}
-                value={formData.category}
+                value={formData.role}
               />
             </div>
             <div className="flex flex-col py-4">
               <label htmlFor="name" className="flex justify-start text-white">
-                Stack Name
+                Company
               </label>
               <input
-                id="stackName"
+                id="company"
                 type="text"
                 className="input"
                 onChange={handleChange}
-                value={formData.stackName}
+                value={formData.company}
               />
             </div>
             <div className="flex flex-col py-4">
               <label htmlFor="name" className="flex justify-start text-white">
-                Stack Knowledge Percentage
+                Date
               </label>
               <input
-                id="stackPercentage"
-                type="number"
+                id="date"
+                type="text"
                 className="input"
                 onChange={handleChange}
-                value={formData.stackPercentage}
+                value={formData.date}
               />
             </div>
-
             <div className="flex flex-col py-4">
               <label htmlFor="name" className="flex justify-start text-white">
-                Stack Image
+                Description
               </label>
               <input
-                id="stackImage"
+                id="description"
+                type="text"
+                className="input"
+                onChange={handleChange}
+                value={formData.description}
+              />
+            </div>
+            <div className="flex flex-col py-4">
+              <label htmlFor="name" className="flex justify-start text-white">
+                Skills
+              </label>
+              <input
+                id="skills"
+                type="text"
+                className="input"
+                onChange={handleChange}
+                value={formData.skills}
+              />
+            </div>
+            <div className="flex flex-col py-4">
+              <label htmlFor="name" className="flex justify-start text-white">
+                Company Image
+              </label>
+              <input
+                id="companyImage"
                 type="file"
                 className="p-3 border border-gray-300 rounded w-full"
                 accept="image/*"
@@ -206,13 +246,13 @@ function AdminExperiences() {
               <p className="self-center">
                 {fileUploadError ? (
                   <span className="text-red-700 ">
-                    File not upload (File must be less than 2mb)
+                    Image not upload (File must be less than 2mb)
                   </span>
                 ) : filePerc > 0 && filePerc < 100 ? (
                   <span className="text-yellow-500 ">{`Uploading ${filePerc}`}</span>
                 ) : filePerc === 100 ? (
                   <span className="text-green-700 ">
-                    File successfuly uploaded
+                    Image successfuly uploaded
                   </span>
                 ) : (
                   ''
@@ -220,11 +260,15 @@ function AdminExperiences() {
               </p>
             </div>
             <div className="flex flex-row gap-4 justify-end mt-8">
-              <button className="btn bg-red-700 text-white font-normal">
+              <button
+                onClick={(e) => setAddModal(false)}
+                className="btn bg-red-700 text-white font-normal"
+                type="button"
+              >
                 Cancel
               </button>
               <button type="submit" className="btn px-4 ">
-                Add Stack
+                Add Experience
               </button>
             </div>
           </form>

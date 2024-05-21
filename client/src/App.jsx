@@ -15,6 +15,9 @@ import AdminDashboard from './pages/AdminPanel/adminDashElements/AdminDashboard'
 import StackBox from './pages/AdminPanel/adminComponents/StackBox';
 import AdminStacks from './pages/AdminPanel/AdminStacks';
 import StackToDelete from './pages/AdminPanel/adminComponents/StackToDelete';
+import AdminExperiences from './pages/AdminPanel/AdminExperiences';
+import ExperienceToDelete from './pages/AdminPanel/adminComponents/ExperienceToDelete';
+import ExperienceBox from './pages/AdminPanel/adminComponents/ExperienceBox';
 
 function App(criteria) {
   return (
@@ -36,6 +39,18 @@ function App(criteria) {
         <Route
           path="/admindashboard/adminstacks/confirmdelation/:itemId"
           element={<StackToDelete />}
+        />
+        <Route
+          path="/admindashboard/experiences"
+          element={<AdminExperiences />}
+        />
+        <Route
+          path="/admindashboard/experiences/:experId"
+          element={<ExperienceBox />}
+        />
+        <Route
+          path="/admindashboard/experiences/confirmdelation/:experId"
+          element={<ExperienceToDelete />}
         />
       </Routes>
       <Footer />

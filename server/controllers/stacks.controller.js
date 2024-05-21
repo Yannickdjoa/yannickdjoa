@@ -104,7 +104,6 @@ const getAllStacks = async (req, res, next) => {
     const stacksList = [];
     stackDetails.forEach((stack) => {
       stacksList.push(stack.data());
-      console.log(stacksList);
     });
     return res.status(200).send({ status: 'success', data: stacksList });
   } catch (error) {
