@@ -7,10 +7,11 @@ const createProject = async (req, res, next) => {
   try {
     const projectId = db.collection('projects').doc(`${Date.now()}`);
     await projectId.create({
+      projectId: Date.now(),
       title: req.body.title,
       period: req.body.period,
       description: req.body.description,
-      image: req.body.image,
+      projectImg: req.body.projectImg,
       tags: req.body.tags,
       category: req.body.category,
       github: req.body.github,
@@ -39,7 +40,7 @@ const updateProject = async (req, res, next) => {
         title: req.body.title,
         period: req.body.period,
         description: req.body.description,
-        image: req.body.image,
+        projectImg: req.body.projectImg,
         tags: FieldValue.arrayUnion(...req.body.tags),
         category: req.body.category,
         github: req.body.github,
@@ -75,7 +76,7 @@ const deleteProjectField = async (req, res, next) => {
   if (!projectDoc.exists) {
     return next(errorHandler(401, 'project not found'));
   }
-  console.log(req.params)
+  console.log(req.params);
   try {
     await projectId.update({
       [req.params.field]: FieldValue.delete(),

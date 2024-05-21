@@ -14,6 +14,6 @@ projectsRouter.put('/update/:id', updateProject);
 projectsRouter.delete('/delete/:id', deleteProject);
 projectsRouter.delete('/deleteProjectField/:id', deleteProjectField);
 projectsRouter.get('/get/:id', getSingleProject);
-projectsRouter.get('/get', getAllProjects);
+projectsRouter.get('/getAll', getAllProjects);
 
 module.exports = projectsRouter;

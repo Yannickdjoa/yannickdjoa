@@ -7,6 +7,7 @@ import AdminStacks from '../AdminStacks';
 import AdminIntro from '../AdminIntro';
 import DashboardText from '../adminComponents/DashboardText';
 import AdminExperiences from '../AdminExperiences';
+import AdminProjects from '../AdminProjects';
 
 function a11yProps(index) {
   return {
@@ -189,7 +190,7 @@ function AdminDashboard() {
         <AdminExperiences />
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Item Seven
+        <AdminProjects />
       </TabPanel>
       <TabPanel value={value} index={7}>
         Item Seven
