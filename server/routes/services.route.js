@@ -6,7 +6,7 @@ const {
   deleteNavigationField,
   getSingleNavigation,
   getAllNavigation,
-} = require('../controllers/navigation.controller.js');
+} = require('../controllers/workOffer.controller.js');
 
 const navigationRouter = express.Router();
 

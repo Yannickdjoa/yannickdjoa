@@ -8,6 +8,8 @@ import AdminIntro from '../AdminIntro';
 import DashboardText from '../adminComponents/DashboardText';
 import AdminExperiences from '../AdminExperiences';
 import AdminProjects from '../AdminProjects';
+import AdminTextCollection from '../AdminTextCollection';
+import AdminPersonalData from '../AdminPersonalData';
 
 function a11yProps(index) {
   return {
@@ -197,10 +199,10 @@ function AdminDashboard() {
         Item Seven
       </TabPanel>
       <TabPanel value={value} index={8}>
-        Item Seven
+        <AdminTextCollection />
       </TabPanel>
       <TabPanel value={value} index={9}>
-        Item Seven
+        <AdminPersonalData />
       </TabPanel>
     </Box>
   );

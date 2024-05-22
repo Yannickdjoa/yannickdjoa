@@ -84,7 +84,7 @@ function AdminPersonalData() {
     e.preventDefault;
     try {
       setLoading(true);
-      const response = await fetch('/api/aboutMe/update/1715803389046', {
+      const response = await fetch('/api/bio/update/1715803389046', {
         method: 'PUT',
         headers: {
           'content-Type': 'application/json',

@@ -81,19 +81,7 @@ const deleteBio = async (req, res, next) => {
 const deleteBioField = async (req, res, next) => {
   try {
     const bioId = db.collection('Bio').doc(req.params.id);
-    // const {
-    //   author,
-    //   description,
-    //   address,
-    //   resume,
-    //   domain,
-    //   github,
-    //   linkedin,
-    //   twitter,
-    //   telegram,
-    //   tikTok,
-    //   youtube,
-    // } = req.body;
+   
 
     // fund a way to delete only items in req.body
     await bioId.update({
