@@ -10,6 +10,7 @@ import AdminExperiences from '../AdminExperiences';
 import AdminProjects from '../AdminProjects';
 import AdminTextCollection from '../AdminTextCollection';
 import AdminPersonalData from '../AdminPersonalData';
+import AdminServices from '../AdminServices';
 
 function a11yProps(index) {
   return {
@@ -153,22 +154,15 @@ function AdminDashboard() {
           }}
         />
         <Tab
-          label="Admin New Projects "
+          label="Admin Text Collection"
           {...a11yProps(7)}
           sx={{
             color: 'white',
           }}
         />
         <Tab
-          label="Admin Text Collection"
-          {...a11yProps(8)}
-          sx={{
-            color: 'white',
-          }}
-        />
-        <Tab
           label="Admin Personal Data"
-          {...a11yProps(9)}
+          {...a11yProps(8)}
           sx={{
             color: 'white',
           }}
@@ -181,7 +175,7 @@ function AdminDashboard() {
         <AdminIntro />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        services
+        <AdminServices />
       </TabPanel>
       <TabPanel value={value} index={3}>
         <AdminAbout />
@@ -196,12 +190,9 @@ function AdminDashboard() {
         <AdminProjects />
       </TabPanel>
       <TabPanel value={value} index={7}>
-        Item Seven
-      </TabPanel>
-      <TabPanel value={value} index={8}>
         <AdminTextCollection />
       </TabPanel>
-      <TabPanel value={value} index={9}>
+      <TabPanel value={value} index={8}>
         <AdminPersonalData />
       </TabPanel>
     </Box>

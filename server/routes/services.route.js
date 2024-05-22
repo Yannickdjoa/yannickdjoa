@@ -1,20 +1,20 @@
 const express = require('express');
 const {
-  createNavigation,
-  updateNavigation,
-  deleteNavigation,
-  deleteNavigationField,
-  getSingleNavigation,
-  getAllNavigation,
-} = require('../controllers/workOffer.controller.js');
+  createServices,
+  updateServices,
+  deleteServices,
+  deleteServicesField,
+  getSingleServices,
+  getAllServices,
+} = require('../controllers/services.controller.js');
 
-const navigationRouter = express.Router();
+const servicesRouter = express.Router();
 
-navigationRouter.post('/create', createNavigation);
-navigationRouter.put('/update/:id', updateNavigation);
-navigationRouter.delete('/delete/:id', deleteNavigation);
-navigationRouter.delete('/deleteNavigationField/:id', deleteNavigationField);
-navigationRouter.get('/getSingleNavigation/:id', getSingleNavigation);
-navigationRouter.get('/get', getAllNavigation);
+servicesRouter.post('/create', createServices);
+servicesRouter.put('/update/:id', updateServices);
+servicesRouter.delete('/delete/:id', deleteServices);
+servicesRouter.delete('/deleteservicesField/:id', deleteServicesField);
+servicesRouter.get('/getSingleservices/:id', getSingleServices);
+servicesRouter.get('/get', getAllServices);
 
-module.exports = navigationRouter;
+module.exports = servicesRouter;
