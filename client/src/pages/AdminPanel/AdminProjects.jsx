@@ -141,13 +141,13 @@ function AdminProjects() {
               <p className="text-neutral-400 text-sm">{project.tags}</p>
               <div className="flex flex-row gap-4 justify-end mt-8">
                 <Link
-                  to={`/admindashboard/adminProjects/confirmdelation/${project.proId}`}
+                  to={`/admindashboard/adminProjects/confirmdelation/${project.projectId}`}
                   className="btn bg-red-700 text-white font-normal"
                 >
                   Delete
                 </Link>
                 <Link
-                  to={`/admindashboard/adminProjects/${project.proId}`}
+                  to={`/admindashboard/adminProjects/${project.projectId}`}
                   className="btn px-4 "
                 >
                   Edit
@@ -161,8 +161,6 @@ function AdminProjects() {
         onClose={() => setAddEditModal(false)}
         aria-labelledby="modal-title"
       >
-        {/* : '', : '', : '', : '', : [],
-        : '', github: '', : '', */}
         <Box sx={style}>
           <form onSubmit={handleSubmit}>
             <h1 id="add-experience">Add New Project</h1>
@@ -255,11 +253,11 @@ function AdminProjects() {
                 App Link
               </label>
               <input
-                id="tags"
+                id="appLink"
                 type="text"
                 className="input"
                 onChange={handleChange}
-                value={formData.tags}
+                value={formData.appLink}
               />
             </div>
             <div className="flex flex-col py-4">

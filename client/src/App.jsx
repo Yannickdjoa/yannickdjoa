@@ -18,6 +18,9 @@ import StackToDelete from './pages/AdminPanel/adminComponents/StackToDelete';
 import AdminExperiences from './pages/AdminPanel/AdminExperiences';
 import ExperienceToDelete from './pages/AdminPanel/adminComponents/ExperienceToDelete';
 import ExperienceBox from './pages/AdminPanel/adminComponents/ExperienceBox';
+import AdminProjects from './pages/AdminPanel/AdminProjects';
+import ProjectBox from './pages/AdminPanel/adminComponents/ProjectBox';
+import ProjectToDelete from './pages/AdminPanel/adminComponents/ProjectToDelete';
 
 function App(criteria) {
   return (
@@ -51,6 +54,15 @@ function App(criteria) {
         <Route
           path="/admindashboard/experiences/confirmdelation/:experId"
           element={<ExperienceToDelete />}
+        />
+        <Route path="/admindashboard/projects" element={<AdminProjects />} />
+        <Route
+          path="/admindashboard/projects/:projId"
+          element={<ProjectBox />}
+        />
+        <Route
+          path="/admindashboard/projects/confirmdelation/:projId"
+          element={<ProjectToDelete />}
         />
       </Routes>
       <Footer />

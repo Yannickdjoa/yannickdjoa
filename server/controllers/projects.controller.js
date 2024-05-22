@@ -103,13 +103,18 @@ const getSingleProject = async (req, res, next) => {
 };
 
 const getAllProjects = async (req, res) => {
-  const projects = db.collection('projects');
-  const projectsList = await projects.get();
-  console.log(projects.doc);
-  projectsList.forEach((project) => {
-    console.log(project.data());
-    return project.data();
-  });
+  try {
+    const projects = db.collection('projects');
+    const projectsList = [];
+    const projectsDetails = await projects.get();
+    projectsDetails.forEach((project) => {
+      console.log(project.data());
+      projectsList.push(project.data());
+    });
+    return res.status(200).send({ status: 'success', data: projectsList });
+  } catch (error) {
+    return res.status(500).send({ status: 'error', message: error });
+  }
 };
 
 module.exports = {

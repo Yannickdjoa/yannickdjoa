@@ -142,8 +142,9 @@ function AdminDashboard() {
             color: 'white',
           }}
         />
-        <Tab
+        <LinkTab
           label="Admin Projects"
+          href="/admindashboard/projects"
           {...a11yProps(6)}
           sx={{
             color: 'white',
