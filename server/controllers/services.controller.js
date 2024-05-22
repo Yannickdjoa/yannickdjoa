@@ -9,7 +9,7 @@ const createServices = async (req, res) => {
     await serviceId.create({
       serviceId: Date.now(),
       category: req.body.category,
-      serviceName: req.body.name,
+      serviceName: req.body.serviceName,
       description: req.body.description,
       price: req.body.price,
       timeFrame: req.body.timeFrame,
@@ -33,7 +33,7 @@ const updateServices = async (req, res, next) => {
     try {
       await serviceId.update({
         category: req.body.category,
-        serviceName: req.body.name,
+        serviceName: req.body.serviceName,
         description: req.body.description,
         price: req.body.price,
         timeFrame: req.body.timeFrame,

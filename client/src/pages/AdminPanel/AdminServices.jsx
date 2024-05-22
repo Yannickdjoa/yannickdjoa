@@ -48,7 +48,7 @@ function AdminServices() {
   const serviceData = async () => {
     dispatch(startSettingServicesList(true));
     try {
-      const response = await fetch('/api/services/get');
+      const response = await fetch('/api/services/getAll');
       const data = await response.json();
 
       if (data.status === 'success') {

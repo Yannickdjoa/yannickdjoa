@@ -14,7 +14,7 @@ servicesRouter.post('/create', createServices);
 servicesRouter.put('/update/:id', updateServices);
 servicesRouter.delete('/delete/:id', deleteServices);
 servicesRouter.delete('/deleteservicesField/:id', deleteServicesField);
-servicesRouter.get('/getSingleservices/:id', getSingleServices);
-servicesRouter.get('/get', getAllServices);
+servicesRouter.get('/get/:id', getSingleServices);
+servicesRouter.get('/getAll', getAllServices);
 
 module.exports = servicesRouter;

@@ -21,6 +21,9 @@ import ExperienceBox from './pages/AdminPanel/adminComponents/ExperienceBox';
 import AdminProjects from './pages/AdminPanel/AdminProjects';
 import ProjectBox from './pages/AdminPanel/adminComponents/ProjectBox';
 import ProjectToDelete from './pages/AdminPanel/adminComponents/ProjectToDelete';
+import AdminServices from './pages/AdminPanel/AdminServices';
+import ServiceBox from './pages/AdminPanel/adminComponents/ServiceBox';
+import ServiceToDelete from './pages/AdminPanel/adminComponents/ServiceToDelete';
 
 function App(criteria) {
   return (
@@ -63,6 +66,15 @@ function App(criteria) {
         <Route
           path="/admindashboard/projects/confirmdelation/:projId"
           element={<ProjectToDelete />}
+        />
+        <Route path="/admindashboard/services" element={<AdminServices />} />
+        <Route
+          path="/admindashboard/services/:servId"
+          element={<ServiceBox />}
+        />
+        <Route
+          path="/admindashboard/services/confirmdelation/:servId"
+          element={<ServiceToDelete />}
         />
       </Routes>
       <Footer />
