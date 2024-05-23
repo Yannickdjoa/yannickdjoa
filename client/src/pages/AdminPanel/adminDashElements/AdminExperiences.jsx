@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
-import serviceSlice from '../../redux/stacks/serviceSlice.js';
+import experiencesSlice from '../../../redux/stacks/experienceSlice.js';
 import React, { useEffect, useState } from 'react';
-import { storage } from '../../../firebase';
+import { storage } from '../../../../firebase.js';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import {
-  setServicesList,
-  startSettingServicesList,
-  failedToSetServicesList,
-} from '../../redux/stacks/serviceSlice.js';
+  setExperiencesList,
+  startSettingExperiencesList,
+  failedToSetExperiencesList,
+} from '../../../redux/stacks/experienceSlice.js';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Link, useParams } from 'react-router-dom';
@@ -22,9 +22,8 @@ const style = {
   border: '2px solid #a3a3a3',
   boxShadow: 4,
   p: 4,
-  gap: 1,
 };
-function AdminServices() {
+function AdminExperiences() {
   const params = useParams();
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
@@ -33,37 +32,36 @@ function AdminServices() {
   const [selectedItemForEdit, setSelectedItemForEdit] = useState(null);
   const [showAddModal, setAddModal] = useState(false);
   const [formData, setFormData] = useState({
-    category: '',
-    serviceName: '',
+    companyImage: '',
+    role: '',
+    company: '',
+    date: '',
     description: '',
-    price: '',
-    timeFrame: '',
-    serviceImage: '',
-    stacksUsed: '',
+    skills: [],
   });
   const dispatch = useDispatch();
-  const { servicesList, loading, error } = useSelector(
-    (state) => state.services
+  const { experiencesList, loading, error } = useSelector(
+    (state) => state.experiences
   );
-  const serviceData = async () => {
-    dispatch(startSettingServicesList(true));
+  const experienceData = async () => {
+    dispatch(startSettingExperiencesList(true));
     try {
-      const response = await fetch('/api/services/getAll');
+      const response = await fetch('/api/experiences/get');
       const data = await response.json();
 
       if (data.status === 'success') {
-        dispatch(setServicesList(data.data));
-        dispatch(failedToSetServicesList(null));
-        dispatch(startSettingServicesList(false));
+        dispatch(setExperiencesList(data.data));
+        dispatch(failedToSetExperiencesList(null));
+        dispatch(startSettingExperiencesList(false));
       }
     } catch (error) {
-      dispatch(failedToSetServicesList(null));
-      dispatch(startSettingServicesList(true));
+      dispatch(failedToSetExperiencesList(null));
+      dispatch(startSettingExperiencesList(true));
       console.log(error);
     }
   };
   useEffect(() => {
-    serviceData();
+    experienceData();
   }, []);
   const handleChange = (e) => {
     setFormData({
@@ -97,14 +95,14 @@ function AdminServices() {
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURLL) => {
-          setFormData({ ...formData, serviceImage: downloadURLL });
+          setFormData({ ...formData, companyImage: downloadURLL });
         });
         setUploading(false);
       }
     );
   };
   const handleSubmit = async () => {
-    const response = await fetch('/api/services/create', {
+    const response = await fetch('/api/experiences/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -125,38 +123,39 @@ function AdminServices() {
           }}
           className="flex justify-start btn mt-8"
         >
-          Add New Service
+          Add New Stack
         </button>
       </div>
       <div className="grid grid-cols-4 gap-5">
-        {servicesList &&
-          servicesList.map((service) => (
+        {experiencesList &&
+          experiencesList.map((experience) => (
             <div
-              key={service.serviceId}
+              key={experience.experienceId}
               className="flex flex-col justify-center items-center border-2 border-neutral-400 mt-8 p-8  "
             >
+              <h1 className="text-white font-bold">{experience.role}</h1>
               <div className="flex flex-row">
-                <h1 className="text-white font-bold">{service.serviceName}</h1>
+                <p className="text-neutral-400 text-xl">{experience.company}</p>
                 <img
-                  src={service.serviceImage}
-                  alt="service image"
+                  src={experience.companyImage}
+                  alt="experience image"
                   className="w-8 md:w-12 h-8 md:h-12 my-4"
                 />
               </div>
-              <p className="text-neutral-400 text-xl">{service.category}</p>
-              <p className="text-neutral-400 text-xl">{service.timeFrame}</p>
-              <p className="text-neutral-400 text-xl">{service.price}</p>
-              <p className="text-neutral-400 text-lg">{service.description}</p>
-              <p className="text-neutral-400 text-sm">{service.stacksUsed}</p>
+              <p className="text-neutral-400 text-xl">{experience.date}</p>
+              <p className="text-neutral-400 text-lg">
+                {experience.description}
+              </p>
+              <p className="text-neutral-400 text-sm">{experience.skills}</p>
               <div className="flex flex-row gap-4 justify-end mt-8">
                 <Link
-                  to={`/admindashboard/services/confirmdelation/${service.serviceId}`}
+                  to={`/admindashboard/experiences/confirmdelation/${experience.experienceId}`}
                   className="btn bg-red-700 text-white font-normal"
                 >
                   Delete
                 </Link>
                 <Link
-                  to={`/admindashboard/services/${service.serviceId}`}
+                  to={`/admindashboard/experiences/${experience.experienceId}`}
                   className="btn px-4 "
                 >
                   Edit
@@ -168,57 +167,45 @@ function AdminServices() {
       <Modal
         open={showAddModal}
         onClose={() => setAddModal(false)}
-        aria-labelledby="add-service"
+        aria-labelledby="add-experience"
       >
         <Box sx={style}>
           <form onSubmit={handleSubmit}>
-            <h1 id="add-service">Add New service</h1>
+            <h1 id="add-experience">Add New Experience</h1>
             <div className="flex flex-col py-4">
               <label htmlFor="name" className="flex justify-start text-white">
-                Service Name
+                Role
               </label>
               <input
-                id="serviceName"
+                id="role"
                 type="text"
-                className="input h-6"
+                className="input"
                 onChange={handleChange}
-                value={formData.serviceName}
+                value={formData.role}
               />
             </div>
             <div className="flex flex-col py-4">
               <label htmlFor="name" className="flex justify-start text-white">
-                Category
+                Company
               </label>
               <input
-                id="category"
+                id="company"
                 type="text"
-                className="input h-6"
+                className="input"
                 onChange={handleChange}
-                value={formData.category}
+                value={formData.company}
               />
             </div>
             <div className="flex flex-col py-4">
               <label htmlFor="name" className="flex justify-start text-white">
-                Time Frame
+                Date
               </label>
               <input
-                id="timeFrame"
+                id="date"
                 type="text"
-                className="input h-6"
+                className="input"
                 onChange={handleChange}
-                value={formData.timeFrame}
-              />
-            </div>
-            <div className="flex flex-col py-4">
-              <label htmlFor="name" className="flex justify-start text-white">
-                Price
-              </label>
-              <input
-                id="price"
-                type="number"
-                className="input h-6"
-                onChange={handleChange}
-                value={formData.price}
+                value={formData.date}
               />
             </div>
             <div className="flex flex-col py-4">
@@ -235,24 +222,24 @@ function AdminServices() {
             </div>
             <div className="flex flex-col py-4">
               <label htmlFor="name" className="flex justify-start text-white">
-                stacksUsed
+                Skills
               </label>
               <input
-                id="stacksUsed"
+                id="skills"
                 type="text"
-                className="input h-6"
+                className="input"
                 onChange={handleChange}
-                value={formData.stacksUsed}
+                value={formData.skills}
               />
             </div>
             <div className="flex flex-col py-4">
               <label htmlFor="name" className="flex justify-start text-white">
-                Service Image
+                Company Image
               </label>
               <input
-                id="serviceImage"
+                id="companyImage"
                 type="file"
-                className="p-3 border border-gray-300 rounded w-full h-10"
+                className="p-3 border border-gray-300 rounded w-full"
                 accept="image/*"
                 onChange={(e) => setFile(e.target.files[0])}
               />
@@ -281,7 +268,7 @@ function AdminServices() {
                 Cancel
               </button>
               <button type="submit" className="btn px-4 ">
-                Add service
+                Add Experience
               </button>
             </div>
           </form>
@@ -291,4 +278,4 @@ function AdminServices() {
   );
 }
 
-export default AdminServices;
+export default AdminExperiences;

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { storage } from '../../../firebase';
+import { storage } from '../../../../firebase.js';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import {
   setProjectsList,
   startSettingProjectsList,
   failedToSetProjectsList,
-} from '../../redux/stacks/projectSlice.js';
-import projectSlice from '../../redux/stacks/projectSlice.js';
+} from '../../../redux/stacks/projectSlice.js';
+import projectSlice from '../../../redux/stacks/projectSlice.js';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Link, useParams } from 'react-router-dom';

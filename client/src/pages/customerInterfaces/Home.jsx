@@ -1,5 +1,5 @@
 import React from 'react';
-import MainView from '../sections/MainView';
+import MainView from '../../sections/MainView';
 // import Offers from '../sections/Offers';
 
 function Home() {

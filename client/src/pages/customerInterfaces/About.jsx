@@ -1,7 +1,7 @@
 import React from 'react';
-import Hero from '../sections/Hero';
-import Skills from '../sections/Skills';
-import Experience from '../sections/Experience';
+import Hero from '../../sections/Hero';
+import Skills from '../../sections/Skills';
+import Experience from '../../sections/Experience';
 
 function About() {
   return (

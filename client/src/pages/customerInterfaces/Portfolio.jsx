@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
-import Projects from '../sections/Projects';
+import Projects from '../../sections/Projects';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { fadeIn } from '../utils/variants';
-import ProjectCard from '../components/ProjectCard';
-import { projects } from '../data/Database';
-import NewProjects from '../components/NewProjects';
+import { fadeIn } from '../../utils/variants';
+import ProjectCard from '../../components/ProjectCard';
+import { projects } from '../../data/Database';
+import NewProjects from '../../components/NewProjects';
 
 function Portfolio() {
   const [toggle, setToggle] = useState('all');

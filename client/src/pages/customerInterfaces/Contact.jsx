@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import MessageForm from '../components/MessageForm';
+import MessageForm from '../../components/MessageForm';
 import { MdEmail, MdOutlinePhonePaused } from 'react-icons/md';
 
 function Contact() {
