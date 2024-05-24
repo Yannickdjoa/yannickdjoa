@@ -73,6 +73,14 @@ function ServiceBox() {
       [e.target.id]: e.target.value,
     });
   };
+  const handleArrayChange = async () => {
+    const inputArray = await document.getElementById('skills').value.split(',');
+    console.log(inputArray);
+    setFormData({
+      ...formData,
+      skills: inputArray,
+    });
+  };
 
   const handleUpdate = async (e) => {
     e.preventDefault;
@@ -160,7 +168,7 @@ function ServiceBox() {
             id="stacksUsed"
             type="text"
             className="input"
-            onChange={handleChange}
+            onChange={handleArrayChange}
             defaultValue={formData.stacksUsed}
           />
         </div>
