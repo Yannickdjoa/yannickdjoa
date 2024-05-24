@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
-import stackSlice from '../../../redux/stacks/stackSlice.js';
+import stackSlice from '../../../redux/slices/stackSlice.js';
 import React, { useEffect, useState } from 'react';
 import { storage } from '../../../../firebase.js';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import {
   setStacksList,
   selectAllStacks,
-} from '../../../redux/stacks/stackSlice.js';
+} from '../../../redux/slices/stackSlice.js';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Link, useParams } from 'react-router-dom';
@@ -220,7 +220,11 @@ function AdminStacks() {
               </p>
             </div>
             <div className="flex flex-row gap-4 justify-end mt-8">
-              <button className="btn bg-red-700 text-white font-normal">
+              <button
+                onClick={(e) => setAddEditModal(false)}
+                className="btn bg-red-700 text-white font-normal"
+                type="button"
+              >
                 Cancel
               </button>
               <button type="submit" className="btn px-4 ">

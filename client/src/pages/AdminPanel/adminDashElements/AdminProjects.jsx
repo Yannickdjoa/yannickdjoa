@@ -6,8 +6,8 @@ import {
   setProjectsList,
   startSettingProjectsList,
   failedToSetProjectsList,
-} from '../../../redux/stacks/projectSlice.js';
-import projectSlice from '../../../redux/stacks/projectSlice.js';
+} from '../../../redux/slices/projectSlice.js';
+import projectSlice from '../../../redux/slices/projectSlice.js';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Link, useParams } from 'react-router-dom';
@@ -17,7 +17,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 1000,
+  width: 1200,
   bgcolor: '#404040',
   border: '2px solid #a3a3a3',
   boxShadow: 4,
@@ -49,7 +49,6 @@ function AdminProjects() {
     try {
       const response = await fetch('/api/projects/getAll');
       const data = await response.json();
-
       if (data.status === 'success') {
         dispatch(setProjectsList(data.data));
       }
@@ -122,12 +121,12 @@ function AdminProjects() {
           Add New Project
         </button>
       </div>
-      <div className="grid grid-cols-6 gap-5">
+      <div className="grid grid-cols-3 gap-5">
         {projectsList &&
           projectsList.map((project) => (
             <div
               key={project.projectId}
-              className="flex flex-col justify-center items-center border-2 border-neutral-400 mt-8 p-8  "
+              className="flex flex-col justify-center items-center border-2 border-neutral-400 mt-8 p-4 gap-4 "
             >
               <img
                 src={project.projectImg}
@@ -137,17 +136,21 @@ function AdminProjects() {
               <h1 className="text-white font-bold">{project.title}</h1>
               <p className="text-neutral-400 text-xl">{project.category}</p>
               <p className="text-neutral-400 text-xl">{project.period}</p>
-              <p className="text-neutral-400 text-lg">{project.description}</p>
-              <p className="text-neutral-400 text-sm">{project.tags}</p>
+              <p className="text-neutral-400 text-lg line-clamp-5 overflow-hidden text-justify">
+                {project.description}
+              </p>
+              <p className="flex flex-wrap text-neutral-400 text-sm gap-2">
+                {project.tags}
+              </p>
               <div className="flex flex-row gap-4 justify-end mt-8">
                 <Link
-                  to={`/admindashboard/adminProjects/confirmdelation/${project.projectId}`}
+                  to={`/admindashboard/projects/confirmdelation/${project.projectId}`}
                   className="btn bg-red-700 text-white font-normal"
                 >
                   Delete
                 </Link>
                 <Link
-                  to={`/admindashboard/adminProjects/${project.projectId}`}
+                  to={`/admindashboard/projects/${project.projectId}`}
                   className="btn px-4 "
                 >
                   Edit
@@ -163,8 +166,13 @@ function AdminProjects() {
       >
         <Box sx={style}>
           <form onSubmit={handleSubmit}>
-            <h1 id="add-experience">Add New Project</h1>
-            <div className="flex flex-col py-4">
+            <h1
+              id="add-experience"
+              className="text-white text-xl font-bold text-center mb-2"
+            >
+              Add New Project
+            </h1>
+            <div className="flex flex-col">
               <label htmlFor="name" className="flex justify-start text-white">
                 Title
               </label>
@@ -176,7 +184,7 @@ function AdminProjects() {
                 value={formData.title}
               />
             </div>
-            <div className="flex flex-col py-4">
+            <div className="flex flex-col">
               <label htmlFor="name" className="flex justify-start text-white">
                 Category
               </label>
@@ -188,7 +196,7 @@ function AdminProjects() {
                 value={formData.category}
               />
             </div>
-            <div className="flex flex-col py-4">
+            <div className="flex flex-col">
               <label htmlFor="name" className="flex justify-start text-white">
                 Period
               </label>
@@ -200,19 +208,19 @@ function AdminProjects() {
                 value={formData.period}
               />
             </div>
-            <div className="flex flex-col py-4">
+            <div className="flex flex-col">
               <label htmlFor="name" className="flex justify-start text-white">
                 Description
               </label>
               <input
                 id="description"
                 type="text"
-                className="input"
+                className="textarea h-24"
                 onChange={handleChange}
                 value={formData.description}
               />
             </div>
-            <div className="flex flex-col py-4">
+            <div className="flex flex-col">
               <label htmlFor="name" className="flex justify-start text-white">
                 Tags
               </label>
@@ -224,7 +232,7 @@ function AdminProjects() {
                 value={formData.tags}
               />
             </div>
-            <div className="flex flex-col py-4">
+            <div className="flex flex-col">
               <label htmlFor="name" className="flex justify-start text-white">
                 Github
               </label>
@@ -236,19 +244,8 @@ function AdminProjects() {
                 value={formData.github}
               />
             </div>
-            <div className="flex flex-col py-4">
-              <label htmlFor="name" className="flex justify-start text-white">
-                Github
-              </label>
-              <input
-                id="github"
-                type="text"
-                className="input"
-                onChange={handleChange}
-                value={formData.github}
-              />
-            </div>
-            <div className="flex flex-col py-4">
+
+            <div className="flex flex-col">
               <label htmlFor="name" className="flex justify-start text-white">
                 App Link
               </label>
@@ -260,44 +257,46 @@ function AdminProjects() {
                 value={formData.appLink}
               />
             </div>
-            <div className="flex flex-col py-4">
-              <label htmlFor="name" className="flex justify-start text-white">
-                Project Image
-              </label>
-              <input
-                id="projectImg"
-                type="file"
-                className="p-3 border border-gray-300 rounded w-full"
-                accept="image/*"
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-              <p className="self-center">
-                {fileUploadError ? (
-                  <span className="text-red-700 ">
-                    Image not upload (File must be less than 2mb)
-                  </span>
-                ) : filePerc > 0 && filePerc < 100 ? (
-                  <span className="text-yellow-500 ">{`Uploading ${filePerc}`}</span>
-                ) : filePerc === 100 ? (
-                  <span className="text-green-700 ">
-                    Image successfuly uploaded
-                  </span>
-                ) : (
-                  ''
-                )}
-              </p>
-            </div>
-            <div className="flex flex-row gap-4 justify-end mt-8">
-              <button
-                onClick={(e) => setAddModal(false)}
-                className="btn bg-red-700 text-white font-normal"
-                type="button"
-              >
-                Cancel
-              </button>
-              <button type="submit" className="btn px-4 ">
-                Add Projects
-              </button>
+            <div className="flex flex-row items-center gap-32">
+              <div className="flex flex-col">
+                <label htmlFor="name" className="flex justify-start text-white">
+                  Project Image
+                </label>
+                <input
+                  id="projectImg"
+                  type="file"
+                  className="p-3 border border-gray-300 rounded w-full"
+                  accept="image/*"
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
+                <p className="self-center">
+                  {fileUploadError ? (
+                    <span className="text-red-700 ">
+                      Image not upload (File must be less than 2mb)
+                    </span>
+                  ) : filePerc > 0 && filePerc < 100 ? (
+                    <span className="text-yellow-500 ">{`Uploading ${filePerc}`}</span>
+                  ) : filePerc === 100 ? (
+                    <span className="text-green-700 ">
+                      Image successfuly uploaded
+                    </span>
+                  ) : (
+                    ''
+                  )}
+                </p>
+              </div>
+              <div className="flex flex-row gap-16 items-center ml-80">
+                <button
+                  onClick={(e) => setAddEditModal(false)}
+                  className="btn bg-red-700 text-white font-normal px-8"
+                  type="button"
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="btn px-8 ">
+                  Add Projects
+                </button>
+              </div>
             </div>
           </form>
         </Box>

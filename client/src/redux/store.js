@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import stacksReducer from './stacks/stackSlice';
-import experiencesReducer from './stacks/experienceSlice';
-import projectsReducer from './stacks/projectSlice';
-import servicesReducer from './stacks/serviceSlice';
+import stacksReducer from './slices/stackSlice';
+import experiencesReducer from './slices/experienceSlice';
+import projectsReducer from './slices/projectSlice';
+import servicesReducer from './slices/serviceSlice';
 
 export const store = configureStore({
   reducer: {

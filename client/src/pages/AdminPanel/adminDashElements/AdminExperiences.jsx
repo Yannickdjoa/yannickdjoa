@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import experiencesSlice from '../../../redux/stacks/experienceSlice.js';
+import experiencesSlice from '../../../redux/slices/experienceSlice.js';
 import React, { useEffect, useState } from 'react';
 import { storage } from '../../../../firebase.js';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
@@ -7,7 +7,7 @@ import {
   setExperiencesList,
   startSettingExperiencesList,
   failedToSetExperiencesList,
-} from '../../../redux/stacks/experienceSlice.js';
+} from '../../../redux/slices/experienceSlice.js';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Link, useParams } from 'react-router-dom';
@@ -171,8 +171,13 @@ function AdminExperiences() {
       >
         <Box sx={style}>
           <form onSubmit={handleSubmit}>
-            <h1 id="add-experience">Add New Experience</h1>
-            <div className="flex flex-col py-4">
+            <h1
+              id="add-experience"
+              className="text-white text-xl font-bold text-center mb-4"
+            >
+              Add New Experience
+            </h1>
+            <div className="flex flex-col py-1">
               <label htmlFor="name" className="flex justify-start text-white">
                 Role
               </label>
@@ -184,7 +189,7 @@ function AdminExperiences() {
                 value={formData.role}
               />
             </div>
-            <div className="flex flex-col py-4">
+            <div className="flex flex-col py-1">
               <label htmlFor="name" className="flex justify-start text-white">
                 Company
               </label>
@@ -196,7 +201,7 @@ function AdminExperiences() {
                 value={formData.company}
               />
             </div>
-            <div className="flex flex-col py-4">
+            <div className="flex flex-col py-1">
               <label htmlFor="name" className="flex justify-start text-white">
                 Date
               </label>
@@ -208,19 +213,19 @@ function AdminExperiences() {
                 value={formData.date}
               />
             </div>
-            <div className="flex flex-col py-4">
+            <div className="flex flex-col py-1">
               <label htmlFor="name" className="flex justify-start text-white">
                 Description
               </label>
               <input
                 id="description"
                 type="text"
-                className="input"
+                className="textarea h-24"
                 onChange={handleChange}
                 value={formData.description}
               />
             </div>
-            <div className="flex flex-col py-4">
+            <div className="flex flex-col py-1">
               <label htmlFor="name" className="flex justify-start text-white">
                 Skills
               </label>
@@ -232,7 +237,7 @@ function AdminExperiences() {
                 value={formData.skills}
               />
             </div>
-            <div className="flex flex-col py-4">
+            <div className="flex flex-col py-1">
               <label htmlFor="name" className="flex justify-start text-white">
                 Company Image
               </label>

@@ -7,23 +7,23 @@ import {
 import Header from './sections/Header';
 import Footer from './sections/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import Home from './pages/Home';
-import About from './pages/About';
-import Portfolio from './pages/Portfolio';
-import Contact from './pages/Contact';
-import AdminDashboard from './pages/AdminPanel/adminDashElements/AdminDashboard';
+import Home from './pages/customerInterfaces/Home';
+import About from './pages/customerInterfaces/About';
+import Portfolio from './pages/customerInterfaces/Portfolio';
+import Contact from './pages/customerInterfaces/Contact';
+import AdminDashboard from './pages/AdminPanel/AdminDashboard';
 import StackBox from './pages/AdminPanel/adminComponents/StackBox';
-import AdminStacks from './pages/AdminPanel/AdminStacks';
+import AdminStacks from './pages/AdminPanel/adminDashElements/AdminStacks';
 import StackToDelete from './pages/AdminPanel/adminComponents/StackToDelete';
-import AdminExperiences from './pages/AdminPanel/AdminExperiences';
+import AdminExperiences from './pages/AdminPanel/adminDashElements/AdminExperiences';
 import ExperienceToDelete from './pages/AdminPanel/adminComponents/ExperienceToDelete';
 import ExperienceBox from './pages/AdminPanel/adminComponents/ExperienceBox';
-import AdminProjects from './pages/AdminPanel/AdminProjects';
+import AdminProjects from './pages/AdminPanel/adminDashElements/AdminProjects';
 import ProjectBox from './pages/AdminPanel/adminComponents/ProjectBox';
-import ProjectToDelete from './pages/AdminPanel/adminComponents/ProjectToDelete';
-import AdminServices from './pages/AdminPanel/AdminServices';
+import AdminServices from './pages/AdminPanel/adminDashElements/AdminServices';
 import ServiceBox from './pages/AdminPanel/adminComponents/ServiceBox';
 import ServiceToDelete from './pages/AdminPanel/adminComponents/ServiceToDelete';
+import ProjectToDelete from './pages/AdminPanel/adminComponents/ProjectToDelete';
 
 function App(criteria) {
   return (
@@ -34,7 +34,6 @@ function App(criteria) {
         <Route path="/about" element={<About />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
-
         {/* admin routes */}
         <Route path="/admindashboard" element={<AdminDashboard />} />
         <Route path="/admindashboard/adminstacks" element={<AdminStacks />} />

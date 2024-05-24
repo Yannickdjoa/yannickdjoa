@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import AdminIntro from './adminDashElements/AdminIntro';
+import AdminServices from './adminDashElements/AdminServices';
 import AdminAbout from './adminDashElements/AdminAbout';
-import AdminStacks from '../AdminStacks';
-import AdminIntro from '../AdminIntro';
+import AdminStacks from './adminDashElements/AdminStacks';
+import AdminProjects from './adminDashElements/AdminProjects';
+import AdminTextCollection from './adminDashElements/AdminTextCollection';
+import AdminPersonalData from './adminDashElements/AdminPersonalData';
 import DashboardText from './adminComponents/DashboardText';
-import AdminExperiences from '../AdminExperiences';
-import AdminProjects from '../AdminProjects';
-import AdminTextCollection from '../AdminTextCollection';
-import AdminPersonalData from '../AdminPersonalData';
-import AdminServices from '../AdminServices';
+import AdminExperiences from './adminDashElements/AdminExperiences';
 
 function a11yProps(index) {
   return {

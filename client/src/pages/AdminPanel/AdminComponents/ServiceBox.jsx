@@ -101,7 +101,7 @@ function ServiceBox() {
   return (
     <div>
       <form onSubmit={handleUpdate}>
-        <h1 className="text-xl text-emerald-700 font-semibold">
+        <h1 className="text-xl text-emerald-700 font-semibold text-center">
           Update The Service
         </h1>
         <div className="flex flex-col py-4">

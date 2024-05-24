@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { TiArrowBackOutline } from 'react-icons/ti';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function ExperienceToDelete() {
@@ -70,7 +71,7 @@ function ExperienceToDelete() {
         </div>
       )}
 
-      <div className="flex flex-row justify-center gap-16 ">
+      <div className="flex flex-row justify-center items-center gap-8 ">
         <button
           className="btn bg-red-700 text-white font-normal"
           onClick={handleDelete}
@@ -78,15 +79,15 @@ function ExperienceToDelete() {
           Confirm Deletion
         </button>
 
-        {/* <button
-            disabled={loading || uploading}
-            type="button"
-            className="flex  cursor-pointer active items-center gap-2 text-center bg-neutral-600 mt-1 p-3 rounded-xl text-xl font-semibold text-yellow-600 disabled:opacity-70 disabled:bg-yellow-600/50 disabled:cursor-wait"
-            onClick={() => navigate('/admindashboard')}
-          >
-            <TiArrowBackOutline className=" md:h-8 md:w-8" />
-            Back
-          </button> */}
+        <button
+          disabled={loading}
+          type="button"
+          className="flex  cursor-pointer active items-center gap-2 text-center bg-neutral-600 p-2 rounded-xl text-xl font-semibold text-yellow-600 disabled:opacity-70 disabled:bg-yellow-600/50 disabled:cursor-wait"
+          onClick={() => navigate('/admindashboard')}
+        >
+          <TiArrowBackOutline className=" md:h-6 md:w-6" />
+          Cancel
+        </button>
       </div>
       {error && <p className="text-red-700 text-sm">{error}</p>}
     </div>

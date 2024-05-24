@@ -7,7 +7,7 @@ const createProject = async (req, res, next) => {
   try {
     const projectId = db.collection('projects').doc(`${Date.now()}`);
     await projectId.create({
-      projectId: Date.now(),
+      projectId: projectId.id,
       title: req.body.title,
       period: req.body.period,
       description: req.body.description,
