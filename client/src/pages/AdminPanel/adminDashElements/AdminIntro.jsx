@@ -16,6 +16,7 @@ function AdminIntro() {
     buttonLink: '',
   });
   const [file, setFile] = useState(undefined);
+  const [fileCap, setFileCap] = useState(undefined);
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -24,7 +25,7 @@ function AdminIntro() {
 
   useEffect(() => {
     const currentData = async () => {
-      const response = await fetch('/api/webIntro/get/1715785222489');
+      const response = await fetch('/api/webIntro/get/1716567889750');
       const data = await response.json();
       if (data.status == 'success') {
         setFormData({ ...data.data });
@@ -33,13 +34,20 @@ function AdminIntro() {
     currentData();
   }, []);
 
+  // useEffect(() => {
+  //   if (file) {
+  //     handleUploadButtonImage(file);
+  //   }
+  // }, [file]);
   useEffect(() => {
-    if (file) {
-      handleUploadImage(file);
+    if (fileCap) {
+      handleUploadCaptionImage(fileCap);
+    } else if (file) {
+      handleUploadButtonImage(file);
     }
-  }, [file]);
+  }, [fileCap, file]);
 
-  const handleUploadImage = async (file) => {
+  const handleUploadButtonImage = async (file) => {
     setUploading(true);
     const fileName = new Date().getTime() + file.name;
     const storageRef = ref(storage, fileName);
@@ -59,8 +67,34 @@ function AdminIntro() {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setFormData({
             ...formData,
-            captionImg: downloadURL,
             buttonImg: downloadURL,
+          });
+        });
+        setUploading(false);
+      }
+    );
+  };
+  const handleUploadCaptionImage = async (fileCap) => {
+    setUploading(true);
+    const fileName = new Date().getTime() + fileCap.name;
+    const storageRef = ref(storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, fileCap);
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setFilePerc(Math.round(progress));
+        console.log('Upload is ' + progress + '% done');
+      },
+      (error) => {
+        setFileUploadError(true);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setFormData({
+            ...formData,
+            captionImg: downloadURL,
           });
         });
         setUploading(false);
@@ -79,7 +113,7 @@ function AdminIntro() {
     e.preventDefault;
     try {
       setLoading(true);
-      const response = await fetch('/api/webIntro/update/1715785222489', {
+      const response = await fetch('/api/webIntro/update/1716567889750', {
         method: 'PUT',
         headers: {
           'content-Type': 'application/json',
@@ -164,7 +198,8 @@ function AdminIntro() {
             type="file"
             className="p-3 border border-gray-300 rounded w-full"
             accept="image/*"
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={(e) => setFileCap(e.target.files[0])}
+            defaultValue={formData.captionImg}
           />
         </div>
         <div className="flex flex-col py-4">
@@ -177,6 +212,7 @@ function AdminIntro() {
             className="p-3 border border-gray-300 rounded w-full"
             accept="image/*"
             onChange={(e) => setFile(e.target.files[0])}
+            defaultValue={formData.buttonImg}
           />
           <p className="self-center">
             {fileUploadError ? (

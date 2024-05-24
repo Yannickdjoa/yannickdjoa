@@ -1,11 +1,12 @@
 import React from 'react';
-import technobg from '../assets/technobg.png';
-
+import { useSelector } from 'react-redux';
+import { selectAllWebIntro } from '../redux/slices/webIntroSlice';
 function Avatar() {
+  const { webIntroData } = useSelector(selectAllWebIntro);
   return (
     <div className="hidden xl:flex xl:max-w-none">
       <img
-        src={technobg}
+        src={webIntroData.captionImg}
         width={737}
         height={678}
         alt="avatar"
