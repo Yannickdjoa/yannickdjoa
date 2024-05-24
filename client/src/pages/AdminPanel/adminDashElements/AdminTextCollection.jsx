@@ -71,8 +71,13 @@ function AdminTextCollection() {
   };
   return (
     <div>
+      <div>
+        <h1 className="text-center text-emerald-700 text-2xl font-bold">
+          Update Any Text Collection's Element here
+        </h1>
+      </div>
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Copyright
           </label>
@@ -84,7 +89,7 @@ function AdminTextCollection() {
             defaultValue={formData.copyright}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Footer Social Title
           </label>
@@ -97,7 +102,7 @@ function AdminTextCollection() {
           />
         </div>
 
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Skills Title
           </label>
@@ -109,7 +114,7 @@ function AdminTextCollection() {
             defaultValue={formData.skillsTitle}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Skills Subtitle
           </label>
@@ -121,7 +126,7 @@ function AdminTextCollection() {
             defaultValue={formData.skillsSubtitle}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             About Title
           </label>
@@ -133,7 +138,7 @@ function AdminTextCollection() {
             defaultValue={formData.aboutTitle}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             About Subtitle
           </label>
@@ -145,7 +150,7 @@ function AdminTextCollection() {
             defaultValue={formData.aboutSubtitle}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Experience Title
           </label>
@@ -157,7 +162,7 @@ function AdminTextCollection() {
             defaultValue={formData.experienceTitle}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Experience Subtitle
           </label>
@@ -169,7 +174,7 @@ function AdminTextCollection() {
             defaultValue={formData.experienceSubtitle}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Portfolio Title
           </label>
@@ -181,7 +186,7 @@ function AdminTextCollection() {
             defaultValue={formData.portfolioTitle}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Portfolio Subtitle
           </label>
@@ -193,7 +198,7 @@ function AdminTextCollection() {
             defaultValue={formData.portfolioSubtitle}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             New Project Title
           </label>
@@ -205,7 +210,7 @@ function AdminTextCollection() {
             defaultValue={formData.newprojectTitle}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             New Project Button
           </label>
@@ -217,7 +222,7 @@ function AdminTextCollection() {
             defaultValue={formData.newprojectButton}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Call To Action Text
           </label>
@@ -229,7 +234,7 @@ function AdminTextCollection() {
             defaultValue={formData.callToActionText}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Contact Title
           </label>
@@ -241,7 +246,7 @@ function AdminTextCollection() {
             defaultValue={formData.contactTitle}
           />
         </div>
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Contact Subtitle
           </label>

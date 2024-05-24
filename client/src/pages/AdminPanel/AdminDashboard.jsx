@@ -59,7 +59,15 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3, width: 1100, margin: 10 }}>
+        <Box
+          sx={{
+            p: 3,
+            width: 1100,
+            marginTop: 1,
+            marginLeft: 10,
+            marginBottom: 5,
+          }}
+        >
           <div>{children}</div>
         </Box>
       )}
@@ -85,7 +93,7 @@ function AdminDashboard() {
         flexGrow: 1,
         bgcolor: '#393A47',
         display: 'flex',
-        height: 1000,
+        height: 1500,
       }}
     >
       <Tabs

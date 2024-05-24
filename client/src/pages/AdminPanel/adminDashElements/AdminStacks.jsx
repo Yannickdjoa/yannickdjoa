@@ -116,7 +116,7 @@ function AdminStacks() {
           Add New Stack
         </button>
       </div>
-      <div className="grid grid-cols-6 gap-5">
+      <div className="grid grid-cols-5 gap-5">
         {stacksList &&
           stacksList.map((stack) => (
             <div

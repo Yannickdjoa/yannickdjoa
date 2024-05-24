@@ -101,6 +101,11 @@ function AdminIntro() {
   };
   return (
     <div>
+      <div>
+        <h1 className="text-center text-emerald-700 text-2xl font-bold">
+          Update Any Web Intro's Element here
+        </h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col py-4">
           <label htmlFor="name" className="flex justify-start text-white">

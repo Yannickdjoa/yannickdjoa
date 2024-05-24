@@ -17,7 +17,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 1000,
+  width: 1200,
   bgcolor: '#404040',
   border: '2px solid #a3a3a3',
   boxShadow: 4,
@@ -126,7 +126,7 @@ function AdminExperiences() {
           Add New Stack
         </button>
       </div>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-3 gap-5">
         {experiencesList &&
           experiencesList.map((experience) => (
             <div
@@ -143,11 +143,11 @@ function AdminExperiences() {
                 />
               </div>
               <p className="text-neutral-400 text-xl">{experience.date}</p>
-              <p className="text-neutral-400 text-lg">
+              <p className="text-neutral-400 text-lg line-clamp-5 overflow-hidden text-justify">
                 {experience.description}
               </p>
               <p className="text-neutral-400 text-sm">{experience.skills}</p>
-              <div className="flex flex-row gap-4 justify-end mt-8">
+              <div className="flex flex-row gap-8 justify-end mt-8">
                 <Link
                   to={`/admindashboard/experiences/confirmdelation/${experience.experienceId}`}
                   className="btn bg-red-700 text-white font-normal"

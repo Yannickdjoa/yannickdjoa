@@ -106,6 +106,9 @@ function AdminPersonalData() {
 
   return (
     <div>
+      <div>
+        <h1 className='text-center text-emerald-700 text-2xl font-bold'>Update Personal Data Here</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col py-4">
           <label htmlFor="name" className="flex justify-start text-white">

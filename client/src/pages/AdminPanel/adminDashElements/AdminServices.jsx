@@ -16,7 +16,7 @@ const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
-  
+
   marginBottom: 5,
   transform: 'translate(-50%, -50%)',
   width: 1000,
@@ -132,19 +132,19 @@ function AdminServices() {
           Add New Service
         </button>
       </div>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-3 gap-5">
         {servicesList &&
           servicesList.map((service) => (
             <div
               key={service.serviceId}
               className="flex flex-col justify-center items-center border-2 border-neutral-400 mt-8 p-8  "
             >
-              <div className="flex flex-row">
+              <div className="flex flex-row justify-end items-center gap-4">
                 <h1 className="text-white font-bold">{service.serviceName}</h1>
                 <img
                   src={service.serviceImage}
                   alt="service image"
-                  className="w-8 md:w-12 h-8 md:h-12 my-4"
+                  className="w-6  h-6 my-4"
                 />
               </div>
               <p className="text-neutral-400 text-xl">{service.category}</p>
@@ -152,7 +152,7 @@ function AdminServices() {
               <p className="text-neutral-400 text-xl">{service.price}</p>
               <p className="text-neutral-400 text-lg">{service.description}</p>
               <p className="text-neutral-400 text-sm">{service.stacksUsed}</p>
-              <div className="flex flex-row gap-4 justify-end mt-8">
+              <div className="flex flex-row gap-8 justify-end mt-8">
                 <Link
                   to={`/admindashboard/services/confirmdelation/${service.serviceId}`}
                   className="btn bg-red-700 text-white font-normal"
@@ -174,11 +174,14 @@ function AdminServices() {
         onClose={() => setAddModal(false)}
         aria-labelledby="add-service"
       >
-        <Box
-          sx={style}
-        >
+        <Box sx={style}>
           <form onSubmit={handleSubmit}>
-            <h1 id="add-service" className='text-white text-xl font-bold text-center mb-4'>Add New service</h1>
+            <h1
+              id="add-service"
+              className="text-white text-xl font-bold text-center mb-4"
+            >
+              Add New service
+            </h1>
             <div className="flex flex-col">
               <label htmlFor="name" className="flex justify-start text-white">
                 Service Name
