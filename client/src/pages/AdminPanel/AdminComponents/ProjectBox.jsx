@@ -77,7 +77,6 @@ function ProjectBox() {
   //below func. get multiple elements from input and make an array of them split by coma
   const handleArrayChange = async () => {
     const inputArray = await document.getElementById('tags').value.split(',');
-    console.log(inputArray);
     setFormData({
       ...formData,
       tags: inputArray,

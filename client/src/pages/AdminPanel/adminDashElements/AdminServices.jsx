@@ -81,7 +81,6 @@ function AdminServices() {
     const inputArray = await document
       .getElementById('stacksUsed')
       .value.split(',');
-    console.log(inputArray);
     setFormData({
       ...formData,
       stacksUsed: inputArray,
