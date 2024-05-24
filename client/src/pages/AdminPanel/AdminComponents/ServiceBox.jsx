@@ -74,11 +74,13 @@ function ServiceBox() {
     });
   };
   const handleArrayChange = async () => {
-    const inputArray = await document.getElementById('skills').value.split(',');
+    const inputArray = await document
+      .getElementById('stacksUsed')
+      .value.split(',');
     console.log(inputArray);
     setFormData({
       ...formData,
-      skills: inputArray,
+      stacksUsed: inputArray,
     });
   };
 

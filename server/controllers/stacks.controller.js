@@ -6,7 +6,7 @@ const createStack = async (req, res) => {
   try {
     const stackId = db.collection('stacks').doc(`${Date.now()}`);
     await stackId.create({
-      stackId: Date.now(),
+      stackId: stackId.id,
       category: req.body.category,
       stackName: req.body.stackName,
       stackImage: req.body.stackImage,

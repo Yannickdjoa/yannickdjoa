@@ -7,7 +7,7 @@ const createServices = async (req, res) => {
   try {
     const serviceId = db.collection('services').doc(`${Date.now()}`);
     await serviceId.create({
-      serviceId: Date.now(),
+      serviceId: serviceId.id,
       category: req.body.category,
       serviceName: req.body.serviceName,
       description: req.body.description,

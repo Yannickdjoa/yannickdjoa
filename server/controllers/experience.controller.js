@@ -7,7 +7,7 @@ const createExperience = async (req, res) => {
   try {
     const experienceId = db.collection('experiences').doc(`${Date.now()}`);
     await experienceId.create({
-      experienceId: Date.now(),
+      experienceId: experienceId.id,
       companyImage: req.body.image,
       role: req.body.role,
       company: req.body.company,
