@@ -7,6 +7,7 @@ const createTextCollection = async (req, res) => {
   try {
     const textId = db.collection('textCollection').doc(`${Date.now()}`);
     await textId.create({
+      textId: textId.id,
       copyright: req.body.copyright,
       footerSocialTitle: req.body.footerSocialTitle,
       skillsTitle: req.body.skillsTitle,
@@ -82,26 +83,6 @@ const deleteTextCollection = async (req, res, next) => {
     return res.status(500).send({ status: 'failed', message: error.message });
   }
 };
-const deleteTextCollectionField = async (req, res, next) => {
-  const textId = db.collection('textCollection').doc(req.params.id);
-  const textDetails = await textId.get();
-  if (!textDetails.exists) {
-    return next(errorHandler(404, 'text not found'));
-  }
-  try {
-    await textId.update({
-      href: FieldValue.delete(),
-      name: FieldValue.delete(),
-      icon: FieldValue.delete(),
-    });
-    return res
-      .status(200)
-      .send({ status: 'success', message: `field successfully deleted` });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send({ status: 'Failed', msg: error });
-  }
-};
 
 const getSingleTextCollection = async (req, res, next) => {
   try {
@@ -133,7 +114,6 @@ module.exports = {
   createTextCollection,
   updateTextCollection,
   deleteTextCollection,
-  deleteTextCollectionField,
   getSingleTextCollection,
   getAllTextCollection,
 };

@@ -1,22 +1,12 @@
 const { db } = require('../../firebaseConfig.js');
 const firebase = require('firebase/app');
 const { firestore } = require('firebase/firestore');
-const {
-  initializeApp,
-  applicationDefault,
-  cert,
-} = require('firebase-admin/app');
-const {
-  getFirestore,
-  Timestamp,
-  FieldValue,
-  Filter,
-} = require('firebase-admin/firestore');
 
 const createBio = async (req, res, next) => {
   try {
     const newBio = db.collection('Bio').doc(`/${Date.now()}/`);
     await newBio.set({
+      newBioId: newBio.id,
       author: req.body.author,
       address: req.body.address,
       telephone: req.body.telephone,
@@ -78,23 +68,6 @@ const deleteBio = async (req, res, next) => {
     res.status(500).send({ status: 'Failed', msg: error });
   }
 };
-const deleteBioField = async (req, res, next) => {
-  try {
-    const bioId = db.collection('Bio').doc(req.params.id);
-   
-
-    // fund a way to delete only items in req.body
-    await bioId.update({
-      [req.params.field]: FieldValue.delete(),
-    });
-    return res
-      .status(200)
-      .send({ status: 'success', message: `item successfully deleted` });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({ status: 'Failed', msg: error });
-  }
-};
 const getBio = async (req, res, next) => {
   try {
     const bioId = db.collection('Bio').doc(req.params.id);
@@ -112,4 +85,4 @@ const getBio = async (req, res, next) => {
   }
 };
 
-module.exports = { createBio, updateBio, deleteBio, getBio, deleteBioField };
+module.exports = { createBio, updateBio, deleteBio, getBio };

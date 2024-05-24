@@ -60,28 +60,6 @@ const deleteStack = async (req, res, next) => {
     }
   }
 };
-const deleteStackField = async (req, res, next) => {
-  const stackId = db.collection('stacks').doc(req.params.id);
-  const stackDetails = await stackId.get();
-  if (!stackDetails.exists) {
-    return next(errorHandler(404, 'stack not found'));
-  }
-  try {
-    const { category, stackName, stackImage } = req.params;
-    await stackId.update({
-      category: FieldValue.delete(),
-      stackName: FieldValue.delete(),
-      stackImage: FieldValue.delete(),
-    });
-    return res
-      .status(200)
-      .send({ status: 'success', message: 'stack field deleted successfully' });
-  } catch (error) {
-    return res
-      .status(500)
-      .send({ status: 'error', message: 'error occurred while deleting' });
-  }
-};
 const getSingleStack = async (req, res, next) => {
   const stackId = db.collection('stacks').doc(req.params.id);
   const stackDetails = await stackId.get();
@@ -115,7 +93,6 @@ module.exports = {
   createStack,
   updateStack,
   deleteStack,
-  deleteStackField,
   getAllStacks,
   getSingleStack,
 };

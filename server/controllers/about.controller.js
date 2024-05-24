@@ -7,6 +7,7 @@ const createAboutMe = async (req, res, next) => {
   try {
     const aboutMeId = db.collection('aboutMe').doc(`${Date.now()}`);
     await aboutMeId.create({
+      aboutMeId: aboutMeId.id,
       aboutCaption: req.body.aboutCaption,
       aboutsubtitle1: req.body.aboutsubtitle1,
       aboutsubtitle2: req.body.aboutsubtitle2,
@@ -67,25 +68,6 @@ const deleteAboutMe = async (req, res, next) => {
     next(error);
   }
 };
-const deleteAboutMeField = async (req, res, next) => {
-  const aboutMeId = db.collection('aboutMe').doc(req.params.id);
-  const aboutMeDoc = await aboutMeId.get();
-  if (!aboutMeDoc.exists) {
-    return next(errorHandler(401, 'aboutMe not found'));
-  }
-  console.log(req.params);
-  try {
-    await aboutMeId.update({
-      [req.params.field]: FieldValue.delete(),
-    });
-    return res
-      .status(200)
-      .send({ status: 'success', message: `field successfully deleted` });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send({ status: 'Failed', msg: error });
-  }
-};
 const getAboutMe = async (req, res, next) => {
   const aboutMeId = db.collection('aboutMe').doc(req.params.id);
   const aboutMeDoc = await aboutMeId.get();
@@ -102,6 +84,6 @@ const getAboutMe = async (req, res, next) => {
 module.exports = {
   createAboutMe,
   updateAboutMe,
-  deleteAboutMeField,
+  deleteAboutMe,
   getAboutMe,
 };

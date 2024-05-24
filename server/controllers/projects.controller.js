@@ -70,25 +70,7 @@ const deleteProject = async (req, res, next) => {
     next(error);
   }
 };
-const deleteProjectField = async (req, res, next) => {
-  const projectId = db.collection('projects').doc(req.params.id);
-  const projectDoc = await projectId.get();
-  if (!projectDoc.exists) {
-    return next(errorHandler(401, 'project not found'));
-  }
-  console.log(req.params);
-  try {
-    await projectId.update({
-      [req.params.field]: FieldValue.delete(),
-    });
-    return res
-      .status(200)
-      .send({ status: 'success', message: `field successfully deleted` });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send({ status: 'Failed', msg: error });
-  }
-};
+
 const getSingleProject = async (req, res, next) => {
   const projectId = db.collection('projects').doc(req.params.id);
   const projectDoc = await projectId.get();
@@ -121,7 +103,6 @@ module.exports = {
   createProject,
   updateProject,
   deleteProject,
-  deleteProjectField,
   getSingleProject,
   getAllProjects,
 };

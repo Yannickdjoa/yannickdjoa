@@ -66,26 +66,6 @@ const deleteServices = async (req, res, next) => {
     return res.status(500).send({ status: 'failed', message: error.message });
   }
 };
-const deleteServicesField = async (req, res, next) => {
-  const serviceId = db.collection('services').doc(req.params.id);
-  const serviceDetails = await serviceId.get();
-  if (!serviceDetails.exists) {
-    return next(errorHandler(404, 'services not found'));
-  }
-  try {
-    await serviceId.update({
-      href: FieldValue.delete(),
-      name: FieldValue.delete(),
-      icon: FieldValue.delete(),
-    });
-    return res
-      .status(200)
-      .send({ status: 'success', message: `field successfully deleted` });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send({ status: 'Failed', msg: error });
-  }
-};
 
 const getSingleServices = async (req, res, next) => {
   try {
@@ -122,7 +102,6 @@ module.exports = {
   createServices,
   updateServices,
   deleteServices,
-  deleteServicesField,
   getSingleServices,
   getAllServices,
 };

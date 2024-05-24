@@ -64,24 +64,6 @@ const deleteExperience = async (req, res, next) => {
     return res.status(500).send({ status: 'failed', message: error.message });
   }
 };
-const deleteExperienceField = async (req, res, next) => {
-  const experienceId = db.collection('experiences').doc(req.params.id);
-  const experienceDetails = await experienceId.get();
-  if (!experienceDetails.exists) {
-    return next(errorHandler(404, 'experience not found'));
-  }
-  try {
-    await experienceId.update({
-      [req.params.field]: FieldValue.delete(),
-    });
-    return res
-      .status(200)
-      .send({ status: 'success', message: `field successfully deleted` });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send({ status: 'Failed', msg: error });
-  }
-};
 
 const getSingleExperience = async (req, res, next) => {
   try {
@@ -118,7 +100,6 @@ module.exports = {
   createExperience,
   updateExperience,
   deleteExperience,
-  deleteExperienceField,
   getSingleExperience,
   getAllExperience,
 };

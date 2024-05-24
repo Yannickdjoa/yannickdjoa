@@ -7,6 +7,7 @@ const createWebIntro = async (req, res, next) => {
   try {
     const webIntroId = db.collection('webIntro').doc(`${Date.now()}`);
     await webIntroId.create({
+      webIntroId: webIntroId.id,
       mainCaption: req.body.mainCaption,
       secondaryCaption: req.body.secondaryCaption,
       captionImg: req.body.captionImg,
@@ -65,25 +66,7 @@ const deleteWebIntro = async (req, res, next) => {
     next(error);
   }
 };
-const deleteWebIntroField = async (req, res, next) => {
-  const webIntroId = db.collection('webIntro').doc(req.params.id);
-  const webIntroDoc = await webIntroId.get();
-  if (!webIntroDoc.exists) {
-    return next(errorHandler(401, 'WebIntro not found'));
-  }
-  console.log(req.params);
-  try {
-    await webIntroId.update({
-      [req.params.field]: FieldValue.delete(),
-    });
-    return res
-      .status(200)
-      .send({ status: 'success', message: `field successfully deleted` });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send({ status: 'Failed', msg: error });
-  }
-};
+
 const getWebIntro = async (req, res, next) => {
   const webIntroId = db.collection('webIntro').doc(req.params.id);
   const webIntroDoc = await webIntroId.get();
@@ -100,6 +83,6 @@ const getWebIntro = async (req, res, next) => {
 module.exports = {
   createWebIntro,
   updateWebIntro,
-  deleteWebIntroField,
+  deleteWebIntro,
   getWebIntro,
 };

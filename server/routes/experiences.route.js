@@ -4,7 +4,6 @@ const {
   deleteExperience,
   getSingleExperience,
   getAllExperience,
-  deleteExperienceField,
   createExperience,
 } = require('../controllers/experience.controller');
 
