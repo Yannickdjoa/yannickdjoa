@@ -11,7 +11,9 @@ function AdminAbout() {
     aboutsubtitle2: '',
     aboutsubtitle3: '',
     aboutsubtitle4: '',
-    aboutText: '',
+    aboutTextParag1: '',
+    aboutTextParag2: '',
+    aboutTextParag3: '',
     profileImg: '',
   });
   const [file, setFile] = useState(undefined);
@@ -23,7 +25,7 @@ function AdminAbout() {
 
   useEffect(() => {
     const currentData = async () => {
-      const response = await fetch('/api/aboutMe/get/1715796950404');
+      const response = await fetch('/api/aboutMe/get/1716617407911');
       const data = await response.json();
 
       if (data.status == 'success') {
@@ -78,7 +80,7 @@ function AdminAbout() {
     e.preventDefault;
     try {
       setLoading(true);
-      const response = await fetch('/api/aboutMe/update/1715796950404', {
+      const response = await fetch('/api/aboutMe/update/1716617407911', {
         method: 'PUT',
         headers: {
           'content-Type': 'application/json',
@@ -131,7 +133,6 @@ function AdminAbout() {
             defaultValue={formData.aboutsubtitle1}
           />
         </div>
-
         <div className="flex flex-col py-4">
           <label htmlFor="name" className="flex justify-start text-white">
             About Subtitle 2
@@ -168,17 +169,41 @@ function AdminAbout() {
             defaultValue={formData.aboutsubtitle4}
           />
         </div>
-
+        aboutTextParag2: '', aboutTextParag3: '',
         <div className="flex flex-col py-4">
           <label htmlFor="name" className="flex justify-start text-white">
-            About Text
+            About Text First Parag
           </label>
           <textarea
-            id="aboutText"
+            id="aboutTextParag1"
             type="text"
-            className="textarea"
+            className="textarea h-24"
             onChange={handleChange}
-            defaultValue={formData.aboutText}
+            defaultValue={formData.aboutTextParag1}
+          />
+        </div>
+        <div className="flex flex-col py-4">
+          <label htmlFor="name" className="flex justify-start text-white">
+            About Text Second Parag
+          </label>
+          <textarea
+            id="aboutTextParag2"
+            type="text"
+            className="textarea h-24"
+            onChange={handleChange}
+            defaultValue={formData.aboutTextParag2}
+          />
+        </div>
+        <div className="flex flex-col py-4">
+          <label htmlFor="name" className="flex justify-start text-white">
+            About Text Third Parag
+          </label>
+          <textarea
+            id="aboutTextParag3"
+            type="text"
+            className="textarea h-24"
+            onChange={handleChange}
+            defaultValue={formData.aboutTextParag3}
           />
         </div>
         <div className="flex flex-col py-4">

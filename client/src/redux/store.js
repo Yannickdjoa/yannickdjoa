@@ -4,6 +4,7 @@ import experiencesReducer from './slices/experienceSlice';
 import projectsReducer from './slices/projectSlice';
 import servicesReducer from './slices/serviceSlice';
 import webintroReducer from './slices/webIntroSlice';
+import heroListReducer from './slices/heroSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     projects: projectsReducer,
     services: servicesReducer,
     webintro: webintroReducer,
+    hero: heroListReducer,
   },
 });

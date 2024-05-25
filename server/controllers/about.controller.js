@@ -13,7 +13,9 @@ const createAboutMe = async (req, res, next) => {
       aboutsubtitle2: req.body.aboutsubtitle2,
       aboutsubtitle3: req.body.aboutsubtitle3,
       aboutsubtitle4: req.body.aboutsubtitle4,
-      aboutText: req.body.aboutText,
+      aboutTextParag1: req.body.aboutTextParag1,
+      aboutTextParag2: req.body.aboutTextParag2,
+      aboutTextParag3: req.body.aboutTextParag3,
       profileImg: req.body.profileImg,
     });
     return res
@@ -41,7 +43,9 @@ const updateAboutMe = async (req, res, next) => {
         aboutsubtitle2: req.body.aboutsubtitle2,
         aboutsubtitle3: req.body.aboutsubtitle3,
         aboutsubtitle4: req.body.aboutsubtitle4,
-        aboutText: req.body.aboutText,
+        aboutTextParag1: req.body.aboutTextParag1,
+        aboutTextParag2: req.body.aboutTextParag2,
+        aboutTextParag3: req.body.aboutTextParag3,
         profileImg: req.body.profileImg,
       });
       return res.status(200).send({

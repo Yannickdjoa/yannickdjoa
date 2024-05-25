@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import roundedtext from '../assets/roundedtext.png';
 import { FaArrowRight } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { selectAllWebIntro } from '../redux/slices/webIntroSlice';
