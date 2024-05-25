@@ -109,9 +109,9 @@ function ProjectBox() {
   };
 
   return (
-    <div>
+    <div className="mx-8">
       <form onSubmit={handleUpdate}>
-        <h1 className="text-xl text-emerald-700 font-semibold">
+        <h1 className="text-xl text-emerald-700 font-semibold text-center">
           Upadte The Project
         </h1>
         <div className="flex flex-col py-4">
@@ -164,6 +164,30 @@ function ProjectBox() {
         </div>
         <div className="flex flex-col py-4">
           <label htmlFor="name" className="flex justify-start text-white">
+            Github
+          </label>
+          <input
+            id="github"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.github}
+          />
+        </div>
+        <div className="flex flex-col py-4">
+          <label htmlFor="name" className="flex justify-start text-white">
+            App Link
+          </label>
+          <input
+            id="appLink"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.appLink}
+          />
+        </div>
+        <div className="flex flex-col py-4">
+          <label htmlFor="name" className="flex justify-start text-white">
             Tags
           </label>
           <input
@@ -171,30 +195,6 @@ function ProjectBox() {
             type="text"
             className="input"
             onChange={handleArrayChange}
-            defaultValue={formData.tags}
-          />
-        </div>
-        <div className="flex flex-col py-4">
-          <label htmlFor="name" className="flex justify-start text-white">
-            Github
-          </label>
-          <input
-            id="tags"
-            type="text"
-            className="input"
-            onChange={handleChange}
-            defaultValue={formData.tags}
-          />
-        </div>
-        <div className="flex flex-col py-4">
-          <label htmlFor="name" className="flex justify-start text-white">
-            Tags
-          </label>
-          <input
-            id="tags"
-            type="text"
-            className="input"
-            onChange={handleChange}
             defaultValue={formData.tags}
           />
         </div>

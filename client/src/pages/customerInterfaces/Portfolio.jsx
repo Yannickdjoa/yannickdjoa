@@ -1,19 +1,47 @@
-import React, { useRef, useState } from 'react';
-import Projects from '../../sections/Projects';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { fadeIn } from '../../utils/variants';
 import ProjectCard from '../../components/ProjectCard';
-import { projects } from '../../data/Database';
+// import { projects } from '../../data/Database';
 import NewProjects from '../../components/NewProjects';
+import { selectAllProjects } from '../../redux/slices/projectSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  setProjectsList,
+  startSettingProjectsList,
+  failedToSetProjectsList,
+} from '../../redux/slices/projectSlice';
 
 function Portfolio() {
   const [toggle, setToggle] = useState('all');
   const ref = useRef();
+  const dispatch = useDispatch();
+  const { projectsList } = useSelector(selectAllProjects);
+  console.log(projectsList);
 
   const { scrollYProgress } = useScroll({
     target: ref,
   });
   const x = useTransform(scrollYProgress, [0, 1], ['17%', '-92%']);
+  const projectsData = async () => {
+    dispatch(startSettingProjectsList(true));
+    try {
+      const response = await fetch('/api/projects/getAll');
+      const data = await response.json();
+      if (data.status === 'success') {
+        dispatch(setProjectsList(data.data));
+        dispatch(failedToSetProjectsList(null));
+        dispatch(startSettingProjectsList(false));
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch(failedToSetProjectsList(true));
+      dispatch(startSettingProjectsList(false));
+    }
+  };
+  useEffect(() => {
+    projectsData();
+  }, []);
   return (
     <motion.div
       initial={{ y: '-200vh' }}
@@ -35,9 +63,9 @@ function Portfolio() {
         <div className="sticky top-0 flex lg:h-screen gap-8 items-center lg:overflow-hidden  ">
           <motion.div style={{ x }} className="hidden lg:flex">
             <div className="flex items-center justify-center ">
-              {projects.map((project, id) => (
+              {projectsList.map((project) => (
                 <div
-                  key={id}
+                  key={project.projectId}
                   className="h-screen w-screen flex items-center justify-center"
                 >
                   <ProjectCard project={project} />
@@ -47,9 +75,9 @@ function Portfolio() {
           </motion.div>
           <div className="flex flex-col lg:hidden">
             <div className="flex flex-col lg:flex-row items-center justify-center ">
-              {projects.map((project, id) => (
+              {projectsList.map((project) => (
                 <div
-                  key={id}
+                  key={project.projectId}
                   className=" w-screen py-8 px-2 flex items-center justify-center"
                 >
                   <ProjectCard project={project} />

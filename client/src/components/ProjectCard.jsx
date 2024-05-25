@@ -10,13 +10,13 @@ function ProjectCard({ project }) {
           {project.title}
         </h1>
         <p className="text-neutral-400 text-xs md:text-lg font-normal ml-0.5 ">
-          {project.date}
+          {project.period}
         </p>
       </div>
       <div className="flex flex-row justify-center items-start gap-2 md:gap-8">
         <div className="flex justify-center rounded-lg">
           <img
-            src={project.image}
+            src={project.projectImg}
             alt="image not available"
             className="object-cover h-40 md:h-52 w-36 md:w-[500px] rounded-lg "
           />
@@ -49,7 +49,7 @@ function ProjectCard({ project }) {
               Code
             </Link>
             <Link
-              to={project.webapp}
+              to={project.appLink}
               className="flex gap-1 md:gap-4 items-center bg-yellow-600 text-neutral-700 p-2 md:p-4 text-center font-bold rounded-2xl  hover:bg-yellow-600/80 justify-center"
             >
               Demo

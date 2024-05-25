@@ -15,7 +15,7 @@ const createProject = async (req, res, next) => {
       tags: req.body.tags,
       category: req.body.category,
       github: req.body.github,
-      appLink: req.body.webapp,
+      appLink: req.body.appLink,
     });
     return res
       .status(200)
@@ -41,10 +41,10 @@ const updateProject = async (req, res, next) => {
         period: req.body.period,
         description: req.body.description,
         projectImg: req.body.projectImg,
-        tags: FieldValue.arrayUnion(...req.body.tags),
+        tags: req.body.tags,
         category: req.body.category,
         github: req.body.github,
-        appLink: req.body.webapp,
+        appLink: req.body.appLink,
       });
       return res.status(200).send({
         status: 'success',

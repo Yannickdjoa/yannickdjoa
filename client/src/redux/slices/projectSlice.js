@@ -31,4 +31,5 @@ export const {
   startSettingProjectsList,
   failedToSetProjectsList,
 } = projectSlice.actions;
+export const selectAllProjects = (state) => state.projects;
 export default projectSlice.reducer;

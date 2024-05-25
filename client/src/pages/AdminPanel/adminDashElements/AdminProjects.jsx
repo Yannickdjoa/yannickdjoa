@@ -7,7 +7,6 @@ import {
   startSettingProjectsList,
   failedToSetProjectsList,
 } from '../../../redux/slices/projectSlice.js';
-import projectSlice from '../../../redux/slices/projectSlice.js';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Link, useParams } from 'react-router-dom';
