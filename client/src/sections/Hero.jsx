@@ -22,13 +22,13 @@ function Hero() {
             <span className="text"></span>
             <TypeAnimation
               sequence={[
-                'JavaScript fullstack developper',
+                heroList.aboutsubtitle1,
                 1000,
-                'Front-End developer with React full knowledge',
+                heroList.aboutsubtitle2,
                 1000,
-                'Back-End developer for SQL and NO-SQL databases',
+                heroList.aboutsubtitle3,
                 1000,
-                'WebDesigner using TailwindCss and basic CSS',
+                heroList.aboutsubtitle4,
                 1000,
               ]}
               wrapper="span"
@@ -43,11 +43,8 @@ function Hero() {
             <br />
             <span>{heroList.aboutTextParag3}</span>
           </p>
-
           <ButtonCv />
         </div>
-        {/* } */}
-        {/* <div className=" h-full absolute  bottom-0 right-0 w-full md:w-[50%]"> */}
         <motion.div
           variants={fadeIn('left', 0.5)}
           initial="hidden"

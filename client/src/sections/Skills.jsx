@@ -12,9 +12,12 @@ import 'swiper/css/navigation';
 // import required modules
 import { EffectFlip, Pagination, Navigation } from 'swiper/modules';
 import SkillCard from '../components/SkillCard';
+import { selectAllHeroList } from '../redux/slices/heroSlice';
+import { useSelector } from 'react-redux';
 
 function Skills() {
   SwiperCore.use([Navigation, Pagination]);
+  const { heroList } = useSelector(selectAllHeroList);
   return (
     <div
       id="skills"

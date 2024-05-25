@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { experiences } from '../data/Database';
+import { useSelector } from 'react-redux';
 
 function Experience() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
@@ -30,7 +31,7 @@ function Experience() {
                     ? 'bg-[#1a7f5a1e] text-[#008000b0] border-l-4 border-[#008000b0] font-semibold py-2 md:py-3 ml-1'
                     : 'text-white '
                 }`}
-                key={experiences.id}
+                key={experience.id}
               >
                 {experience.date}
               </h1>

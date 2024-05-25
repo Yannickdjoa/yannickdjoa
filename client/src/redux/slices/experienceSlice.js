@@ -31,4 +31,6 @@ export const {
   startSettingExperiencesList,
   failedToSetExperiencesList,
 } = experienceSlice.actions;
+
+export const selectAllExperiences = (state) => state.experiences;
 export default experienceSlice.reducer;
