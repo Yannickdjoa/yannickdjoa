@@ -2,9 +2,12 @@ import React, { useRef, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import { projects } from '../data/Database';
 import { motion } from 'framer-motion';
+import { selectAlltextsList } from '../redux/slices/textsSlice';
+import { useSelector } from 'react-redux';
 
 function Projects() {
   const [toggle, setToggle] = useState('all');
+  const { textsList } = useSelector(selectAlltextsList);
 
   return (
     <div id="projects">

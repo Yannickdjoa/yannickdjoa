@@ -2,13 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
+import { selectAlltextsList } from '../redux/slices/textsSlice';
+import { useSelector } from 'react-redux';
 
 function NewProjects() {
+  const { textsList } = useSelector(selectAlltextsList);
   return (
     <div>
       <div className="w-screen h-[50vh] md:h-screen flex flex-col gap-8 md:gap-16 items-center justify-center text-center">
         <h1 className="text-3xl md:text-6xl text-emerald-700 font-bold">
-          Do you have a project?
+          {textsList.newprojectTitle}
         </h1>
         <div className="relative">
           <motion.svg
@@ -28,8 +31,8 @@ function NewProjects() {
                 xlinkHref="#circlePath"
                 className="animate-spin-slow h-full w-full max-w-16 max-h-16"
               >
-                . Full-stack developer . Operations manager .{' '}
-                <tspan fill="#ca8a04">Hire Me</tspan>
+                {textsList.newprojectButton}{' '}
+                <tspan fill="#ca8a04">{textsList.callToActionText}</tspan>
               </textPath>
             </text>
           </motion.svg>

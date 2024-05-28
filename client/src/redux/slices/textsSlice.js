@@ -1,34 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  textcollectionList: [],
+  textsList: [],
   loading: false,
   error: null,
 };
 
-const textcollectionSlice = createSlice({
-  name: 'textcollection',
+const textsSlice = createSlice({
+  name: 'texts',
   initialState,
   reducers: {
-    startGettingTextCollectionList: (state) => {
+    startGettingTextsList: (state) => {
       state.loading = true;
     },
-    errorGettingTextCollectionList: (state) => {
+    errorGettingTextsList: (state) => {
       state.loading = false;
       state.error = true;
     },
-    setTextCollectionList: (state, action) => {
+    setTextsList: (state, action) => {
       state.loading = false;
       state.error = false;
-      state.textcollectionList = action.payload;
+      state.textsList = action.payload;
     },
   },
 });
 
-export const selectAllTextCollectionList = (state) => state.textcollection;
-export const {
-  startGettingTextCollectionList,
-  errorGettingTextCollectionList,
-  setTextCollectionList,
-} = textcollectionSlice.actions;
-export default textcollectionSlice.reducer;
+export const selectAlltextsList = (state) => state.texts;
+export const { startGettingTextsList, errorGettingTextsList, setTextsList } =
+  textsSlice.actions;
+export default textsSlice.reducer;

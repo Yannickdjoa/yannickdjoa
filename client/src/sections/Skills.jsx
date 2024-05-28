@@ -14,36 +14,33 @@ import { EffectFlip, Pagination, Navigation } from 'swiper/modules';
 import SkillCard from '../components/SkillCard';
 import { selectAllStacks } from '../redux/slices/stackSlice';
 import { useSelector } from 'react-redux';
+import { selectAlltextsList } from '../redux/slices/textsSlice';
 
 function Skills() {
   SwiperCore.use([Navigation, Pagination]);
   const { stacksList } = useSelector(selectAllStacks);
+  const { textsList } = useSelector(selectAlltextsList);
 
-  const groupedStacksList = ()=>{
-    const listOfStacks = []
-    const groupedItems= Map.groupBy(stacksList, (stackGroup) => {
-      stackGroup.category
-
-    
-  });
-  for (const [key, value] of groupedItems) {
-    const stackGroup = value;
-    listOfStacks.push(stackGroup);
-  }
-  return listOfStacks;
-}
-
-  console.log(groupedStacksList());
+  const groupedStacksList = () => {
+    const listOfStacks = [];
+    const groupedItems = Map.groupBy(stacksList, (stackGroup) => {
+      stackGroup.category;
+    });
+    for (const [key, value] of groupedItems) {
+      const stackGroup = value;
+      listOfStacks.push(stackGroup);
+    }
+    return listOfStacks;
+  };
   return (
     <div
       id="skills"
       className=" flex flex-col justify-center relative items-center"
     >
       <div className="relative flex flex-col justify-between items-center w-[100%] max-w-[1100px] gap-12 ">
-        <h1 className="title text-emerald-700  ">_ My Skills</h1>
+        <h1 className="title text-emerald-700  ">{textsList.skillsTitle}</h1>
         <p className="text-lg md:text-lg text-neutral-400  text-center md:max-w-[600px] mx-2">
-          Here are skills I have gain since the beginning of my journey as
-          fullstack software developer.
+          {textsList.skillsSubtitle}
         </p>
 
         <section className="w-full flex flex-wrap mt-4 gap-4 justify-center">

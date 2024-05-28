@@ -26,10 +26,10 @@ import ServiceToDelete from './pages/AdminPanel/adminComponents/ServiceToDelete'
 import ProjectToDelete from './pages/AdminPanel/adminComponents/ProjectToDelete';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  startGettingTextCollectionList,
-  errorGettingTextCollectionList,
-  setTextCollectionList,
-  selectAllTextCollectionList,
+  startGettingTextsList,
+  errorGettingTextsList,
+  setTextsList,
+  selectAlltextsList,
 } from './redux/slices/textsSlice';
 import {
   startGettingBioDataList,
@@ -41,28 +41,25 @@ import { useEffect } from 'react';
 
 function App(criteria) {
   const dispatch = useDispatch();
-  const { textCollectionList } = useSelector(selectAllTextCollectionList);
-  console.log(textCollectionList);
+  const { textsList } = useSelector(selectAlltextsList);
+  const { bioDataList } = useSelector(selectAllBioDataList);
+
   const getTextCollection = async () => {
-    dispatch(startGettingTextCollectionList(true));
+    dispatch(startGettingTextsList(true));
     try {
       const response = await fetch('/api/textCollection/get/1715156244365');
       const data = await response.json();
       if (data.status === 'success') {
-        dispatch(setTextCollectionList(data.data));
-        dispatch(errorGettingTextCollectionList(false));
-        dispatch(startGettingTextCollectionList(false));
+        dispatch(setTextsList(data.data));
+        dispatch(errorGettingTextsList(false));
+        dispatch(startGettingTextsList(false));
       }
     } catch (error) {
-      dispatch(errorGettingTextCollectionList(true));
-      dispatch(startGettingTextCollectionList(false));
+      dispatch(errorGettingTextsList(true));
+      dispatch(startGettingTextsList(false));
     }
   };
-  useEffect(() => {
-    getTextCollection();
-    console.log(textCollectionList);
-  }, []);
-  const { bioDataList } = useSelector(selectAllBioDataList);
+
   const getBioData = async () => {
     dispatch(startGettingBioDataList(true));
     try {
@@ -80,6 +77,7 @@ function App(criteria) {
   };
   useEffect(() => {
     getBioData();
+    getTextCollection();
   }, []);
 
   return (

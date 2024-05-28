@@ -6,13 +6,17 @@ import { motion } from 'framer-motion';
 import { fadeIn } from '../utils/variants';
 import { useSelector } from 'react-redux';
 import { selectAllHeroList } from '../redux/slices/heroSlice';
+import { selectAlltextsList } from '../redux/slices/textsSlice';
 
 function Hero() {
   const { heroList } = useSelector(selectAllHeroList);
+  const { textsList } = useSelector(selectAlltextsList);
   return (
     <div id="hero" className="h-[120vh] md:h-[100vh] mx-auto md:mt-2">
       <div>
-        <h2 className="title  text-emerald-700  my-2 md:my-4">_ About me</h2>
+        <h2 className="title  text-emerald-700  my-2 md:my-4">
+          {textsList.aboutTitle}
+        </h2>
       </div>
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-12 md:gap-16 md:h-full py-4">
         {/* {heroList && */}
