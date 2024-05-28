@@ -13,6 +13,6 @@ textCollectionRouter.post('/create', createTextCollection);
 textCollectionRouter.put('/update/:id', updateTextCollection);
 textCollectionRouter.delete('/delete/:id', deleteTextCollection);
 textCollectionRouter.get('/get/:id', getSingleTextCollection);
-textCollectionRouter.get('/get', getAllTextCollection);
+textCollectionRouter.get('/getAll', getAllTextCollection);
 
 module.exports = textCollectionRouter;

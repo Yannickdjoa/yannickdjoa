@@ -24,8 +24,64 @@ import AdminServices from './pages/AdminPanel/adminDashElements/AdminServices';
 import ServiceBox from './pages/AdminPanel/adminComponents/ServiceBox';
 import ServiceToDelete from './pages/AdminPanel/adminComponents/ServiceToDelete';
 import ProjectToDelete from './pages/AdminPanel/adminComponents/ProjectToDelete';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  startGettingTextCollectionList,
+  errorGettingTextCollectionList,
+  setTextCollectionList,
+  selectAllTextCollectionList,
+} from './redux/slices/textsSlice';
+import {
+  startGettingBioDataList,
+  errorGettingBioDataList,
+  setBioDataList,
+  selectAllBioDataList,
+} from './redux/slices/bioSlice';
+import { useEffect } from 'react';
 
 function App(criteria) {
+  const dispatch = useDispatch();
+  const { textCollectionList } = useSelector(selectAllTextCollectionList);
+  console.log(textCollectionList);
+  const getTextCollection = async () => {
+    dispatch(startGettingTextCollectionList(true));
+    try {
+      const response = await fetch('/api/textCollection/get/1715156244365');
+      const data = await response.json();
+      if (data.status === 'success') {
+        dispatch(setTextCollectionList(data.data));
+        dispatch(errorGettingTextCollectionList(false));
+        dispatch(startGettingTextCollectionList(false));
+      }
+    } catch (error) {
+      dispatch(errorGettingTextCollectionList(true));
+      dispatch(startGettingTextCollectionList(false));
+    }
+  };
+  useEffect(() => {
+    getTextCollection();
+    console.log(textCollectionList);
+  }, []);
+  const { bioDataList } = useSelector(selectAllBioDataList);
+  const getBioData = async () => {
+    dispatch(startGettingBioDataList(true));
+    try {
+      const response = await fetch('/api/bio/get/1715803389046');
+      const data = await response.json();
+      if (data.status === 'success') {
+        dispatch(setBioDataList(data.data));
+        dispatch(errorGettingBioDataList(false));
+        dispatch(startGettingBioDataList(false));
+      }
+    } catch (error) {
+      dispatch(errorGettingBioDataList(true));
+      dispatch(startGettingBioDataList(false));
+    }
+  };
+  useEffect(() => {
+    getBioData();
+  }, []);
+
   return (
     <Router>
       <Header />

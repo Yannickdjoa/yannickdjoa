@@ -102,12 +102,19 @@ const getSingleTextCollection = async (req, res, next) => {
 };
 
 const getAllTextCollection = async (req, res) => {
-  const textId = db.collection('text');
-  const textList = await textId.get();
-  textList.forEach((text) => {
-    console.log(text.data());
-    return text.data();
-  });
+  try {
+    const textId = db.collection('text');
+    const textListDetails = await textId.get();
+    const textCollectionList = [];
+    textListDetails.forEach((text) => {
+      textCollectionList.push(text.data());
+      return res
+        .status(200)
+        .send({ status: 'success', data: textCollectionList });
+    });
+  } catch (error) {
+    return res.status(500).send({ status: 'failed', message: error });
+  }
 };
 
 module.exports = {

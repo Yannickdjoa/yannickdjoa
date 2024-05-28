@@ -5,6 +5,8 @@ import projectsReducer from './slices/projectSlice';
 import servicesReducer from './slices/serviceSlice';
 import webintroReducer from './slices/webIntroSlice';
 import heroListReducer from './slices/heroSlice';
+import textcollectionReducer from './slices/textcollectionSlice';
+import biodataReducer from './slices/bioSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +16,7 @@ export const store = configureStore({
     services: servicesReducer,
     webintro: webintroReducer,
     hero: heroListReducer,
+    textcollection: textcollectionReducer,
+    biodata: biodataReducer,
   },
 });

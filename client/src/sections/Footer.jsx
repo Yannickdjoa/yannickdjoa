@@ -9,8 +9,11 @@ import {
   FaTiktok,
   FaTelegramPlane,
 } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import { selectAllBioDataList } from '../redux/slices/bioSlice';
 
 function Footer() {
+  const { bioDataList } = useSelector(selectAllBioDataList);
   return (
     <div className="flex flex-col md:flex-row bg-zinc-800 mt-24 h-28 md:h-36 gap-4 md:gap-8">
       <div className="flex flex-row justify-center gap-8 md:gap-12 items-center">
@@ -32,7 +35,7 @@ function Footer() {
           <div className="flex flex-row gap-1 md:gap-4 mx-4 md:mx-24 my-2 md:my-6">
             <div className="btnFooter group">
               <NavLink
-                to={Bio.linkedin}
+                to={bioDataList.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -41,7 +44,7 @@ function Footer() {
             </div>
             <div className="btnFooter group">
               <NavLink
-                to={Bio.github}
+                to={bioDataList.github}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -50,7 +53,7 @@ function Footer() {
             </div>
             <div className="btnFooter group">
               <NavLink
-                to={Bio.linkedin}
+                to={bioDataList.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -59,7 +62,7 @@ function Footer() {
             </div>
             <div className="btnFooter group">
               <NavLink
-                to={Bio.youtube}
+                to={bioDataList.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -68,7 +71,7 @@ function Footer() {
             </div>
             <div className="btnFooter group">
               <NavLink
-                to={Bio.telegram}
+                to={bioDataList.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -77,7 +80,7 @@ function Footer() {
             </div>
             <div className="btnFooter group">
               <NavLink
-                to={Bio.tikTok}
+                to={bioDataList.tikTok}
                 target="_blank"
                 rel="noopener noreferrer"
               >

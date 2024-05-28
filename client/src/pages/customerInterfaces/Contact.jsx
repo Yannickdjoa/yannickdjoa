@@ -1,16 +1,17 @@
 import React, { useRef } from 'react';
 import MessageForm from '../../components/MessageForm';
 import { MdEmail, MdOutlinePhonePaused } from 'react-icons/md';
+import { useSelector } from 'react-redux';
+import { selectAllBioDataList } from '../../redux/slices/bioSlice';
 
 function Contact() {
+  const { bioDataList } = useSelector(selectAllBioDataList);
   const contactRef = useRef(null);
   return (
     <div id="contacts" className="flex flex-col ">
       <div className="flex justify-center">
         <div className="flex flex-col justify-center max-w-[1100px] gap-4 md:gap-8 my-2 md:my-8">
-          <h1 className="text-emerald-700 title">
-            _ Let's Connect
-          </h1>
+          <h1 className="text-emerald-700 title">_ Let's Connect</h1>
           <p className="text-sm md:text-lg text-neutral-400  text-center md:max-w-[600px]">
             You want to stay in touch? drop me a message or use anther contact
             method in the list below
@@ -24,11 +25,11 @@ function Contact() {
           </h1>
           <p className="flex flex-col gap-6">
             <span className="flex flex-row gap-2 items-center ml-4 text-neutral-400 ">
-              <MdOutlinePhonePaused /> : <span>+33 (0)749 57 83 10</span>
+              <MdOutlinePhonePaused /> : <span>{bioDataList.telephone}</span>
             </span>
 
             <span className="flex flex-row gap-2 items-center ml-4 text-neutral-400">
-              <MdEmail /> : <span>yannickdjoa2@gmail.com</span>
+              <MdEmail /> : <span>{bioDataList.email}</span>
             </span>
           </p>
         </div>
