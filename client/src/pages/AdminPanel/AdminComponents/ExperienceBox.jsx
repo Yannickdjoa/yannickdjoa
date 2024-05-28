@@ -29,7 +29,7 @@ function ExperienceBox() {
     }
   };
   useEffect(() => {
-    currentData(params);
+    currentData();
   }, []);
 
   useEffect(() => {

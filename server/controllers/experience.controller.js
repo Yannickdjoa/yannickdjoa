@@ -8,7 +8,7 @@ const createExperience = async (req, res) => {
     const experienceId = db.collection('experiences').doc(`${Date.now()}`);
     await experienceId.create({
       experienceId: experienceId.id,
-      companyImage: req.body.image,
+      companyImage: req.body.companyImage,
       role: req.body.role,
       company: req.body.company,
       date: req.body.date,
@@ -36,7 +36,7 @@ const updateExperience = async (req, res, next) => {
         company: req.body.company,
         date: req.body.date,
         description: req.body.description,
-        skills: FieldValue.arrayUnion(...req.body.skills),
+        skills: req.body.skills,
       });
       return res.status(200).send({
         status: 'success',

@@ -46,6 +46,19 @@ const stackSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
+
+    getStackListStart: (state, action) => {
+      state.loading = true;
+    },
+    getStackSuccess: (state, action) => {
+      state.stacksList[action.payload.index] = action.payload.stack;
+      state.loading = false;
+      state.error = null;
+    },
+    getStackListFailure: (state, action) => {
+      state.error = action.payload;
+      state.loading = false;
+    },
     setStacksList: (state, action) => {
       state.stacksList = action.payload;
     },
@@ -63,6 +76,9 @@ export const {
   updateStackStart,
   updateStackSuccess,
   setStacksList,
+  getStackListStart,
+  getStackSuccess,
+  getStackListFailure,
 } = stackSlice.actions;
 
 export const selectAllStacks = (state) => state.stacks;

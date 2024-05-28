@@ -12,12 +12,28 @@ import 'swiper/css/navigation';
 // import required modules
 import { EffectFlip, Pagination, Navigation } from 'swiper/modules';
 import SkillCard from '../components/SkillCard';
-import { selectAllHeroList } from '../redux/slices/heroSlice';
+import { selectAllStacks } from '../redux/slices/stackSlice';
 import { useSelector } from 'react-redux';
 
 function Skills() {
   SwiperCore.use([Navigation, Pagination]);
-  const { heroList } = useSelector(selectAllHeroList);
+  const { stacksList } = useSelector(selectAllStacks);
+
+  const groupedStacksList = ()=>{
+    const listOfStacks = []
+    const groupedItems= Map.groupBy(stacksList, (stackGroup) => {
+      stackGroup.category
+
+    
+  });
+  for (const [key, value] of groupedItems) {
+    const stackGroup = value;
+    listOfStacks.push(stackGroup);
+  }
+  return listOfStacks;
+}
+
+  console.log(groupedStacksList());
   return (
     <div
       id="skills"
