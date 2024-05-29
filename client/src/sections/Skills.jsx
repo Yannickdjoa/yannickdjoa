@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import { skills } from '../data/Database';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import 'swiper/css/bundle';
@@ -10,7 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 // import required modules
-import { EffectFlip, Pagination, Navigation } from 'swiper/modules';
+import {  Pagination, Navigation } from 'swiper/modules';
 import SkillCard from '../components/SkillCard';
 import { selectAllStacks } from '../redux/slices/stackSlice';
 import { useSelector } from 'react-redux';
@@ -20,7 +19,6 @@ function Skills() {
   SwiperCore.use([Navigation, Pagination]);
   const { stacksList } = useSelector(selectAllStacks);
   const { textsList } = useSelector(selectAlltextsList);
-  console.log(stacksList);
   const groupedstacksList = stacksList.reduce((acc, currentItem) => {
     (acc[currentItem.category] = acc[currentItem.category] || []).push(
       currentItem

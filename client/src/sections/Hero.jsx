@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { fadeIn } from '../utils/variants';
 import { useSelector } from 'react-redux';
 import { selectAllHeroList } from '../redux/slices/heroSlice';
-import { selectAlltextsList } from '../redux/slices/textsSlice';
 
 function Hero() {
   const { heroList } = useSelector(selectAllHeroList);
@@ -15,7 +14,7 @@ function Hero() {
     <div id="hero" className="h-[120vh] md:h-[100vh] mx-auto md:mt-2">
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-12 md:gap-16 md:h-full py-2">
         {/* {heroList && */}
-        <div className=" p-6 md:p-12 w-full md:w-[60%] ">
+        <div className=" p-6 md:p-8 w-full md:w-[60%] ">
           <h1 className="h1 text-white">{heroList.aboutCaption}</h1>
           <p className="p text-xl md:text-3xl font-semibold text-emerald-700 my-2 md:my-6">
             <span className="text"></span>

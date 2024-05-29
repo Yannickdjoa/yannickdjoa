@@ -2,7 +2,6 @@ import {
   Route,
   BrowserRouter as Router,
   Routes,
-  Navigate,
 } from 'react-router-dom';
 import Header from './sections/Header';
 import Footer from './sections/Footer';

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { experiences } from '../data/Database';
 import { useSelector } from 'react-redux';
 import { selectAllExperiences } from '../redux/slices/experienceSlice';
 import { selectAlltextsList } from '../redux/slices/textsSlice';

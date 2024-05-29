@@ -18,7 +18,6 @@ import {
 import {
   setStacksList,
   getStackListStart,
-  getStackSuccess,
   getStackListFailure,
   selectAllStacks,
 } from '../../redux/slices/stackSlice.js';

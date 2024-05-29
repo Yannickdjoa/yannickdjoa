@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import MessageForm from '../../components/MessageForm';
 import { MdEmail, MdOutlinePhonePaused } from 'react-icons/md';
 import { useSelector } from 'react-redux';
@@ -6,7 +6,6 @@ import { selectAllBioDataList } from '../../redux/slices/bioSlice';
 
 function Contact() {
   const { bioDataList } = useSelector(selectAllBioDataList);
-  const contactRef = useRef(null);
   return (
     <div id="contacts" className="flex flex-col ">
       <div className="flex justify-center">

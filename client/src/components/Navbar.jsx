@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import React from 'react';
 import { navigationData } from '../data/Database';
 import { NavLink } from 'react-router-dom';
 

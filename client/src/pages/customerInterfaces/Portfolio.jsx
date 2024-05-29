@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { fadeIn } from '../../utils/variants';
 import ProjectCard from '../../components/ProjectCard';
-// import { projects } from '../../data/Database';
 import NewProjects from '../../components/NewProjects';
 import { selectAllProjects } from '../../redux/slices/projectSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,7 +12,6 @@ import {
 import { selectAlltextsList } from '../../redux/slices/textsSlice';
 
 function Portfolio() {
-  const [toggle, setToggle] = useState('all');
   const ref = useRef();
   const dispatch = useDispatch();
   const { projectsList } = useSelector(selectAllProjects);
