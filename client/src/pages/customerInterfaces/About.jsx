@@ -22,9 +22,11 @@ import {
   getStackListFailure,
   selectAllStacks,
 } from '../../redux/slices/stackSlice.js';
+import { selectAlltextsList } from '../../redux/slices/textsSlice.js';
 
 function About() {
   const dispatch = useDispatch();
+  const { textsList } = useSelector(selectAlltextsList);
   const { heroList } = useSelector(selectAllHeroList);
   const { experiencesList } = useSelector(selectAllExperiences);
   const { stacksList } = useSelector(selectAllStacks);
@@ -84,7 +86,12 @@ function About() {
     stacksData();
   }, []);
   return (
-    <div>
+    <div className='flex flex-col gap-2'>
+      <div>
+        <h2 className="title  text-emerald-700  my-2 md:my-4">
+          {textsList.aboutTitle}
+        </h2>
+      </div>
       {heroList && <Hero />}
       {stacksList && <Skills />}
       {experiencesList && <Experience />}
