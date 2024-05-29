@@ -11,7 +11,7 @@ function Header() {
 
   const handleNav = () => setNav(!nav);
   return (
-    <div className="bg-zinc-800 h-[100px] text-white flex mx-auto items-center justify-between md:sticky md:top-0 md:z-20 border-b-2">
+    <div className="bg-zinc-800 h-[100px] w-full text-white flex mx-auto items-center justify-between md:sticky md:top-0 md:z-20 border-b-2">
       <Logo />
       <Navbar />
       <ButtonGeneral />

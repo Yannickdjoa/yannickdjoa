@@ -11,21 +11,15 @@ import {
 import { useSelector } from 'react-redux';
 import { selectAllBioDataList } from '../redux/slices/bioSlice';
 import { selectAlltextsList } from '../redux/slices/textsSlice';
+import Logo from '../components/Logo';
 
 function Footer() {
   const { bioDataList } = useSelector(selectAllBioDataList);
   const { textsList } = useSelector(selectAlltextsList);
   return (
-    <div className="flex flex-col md:flex-row bg-zinc-800 mt-24 h-28 md:h-36 gap-4 md:gap-8">
-      <div className="flex flex-row justify-center gap-8 md:gap-12 items-center">
-        <div className="flex">
-          <h1 className=" uppercase font-bold text-lg m:text-3xl text-white ml-1 md:ml-4 mr-4 md:mr-32 ">
-            <NavLink to="/">
-              <span className="text-emerald-700">Y</span> DJOA
-            </NavLink>
-          </h1>
-        </div>
-
+    <div className=" flex flex-col  bottom-0  justify-center items-center md:flex-row bg-zinc-800 mt-24 h-28 md:h-60 gap-4 md:gap-8  p-4 w-full">
+      <div className="flex flex-row justify-center gap-4 md:gap-4 items-center">
+        <Logo />
         <div className="flex flex-col justify-center  my-1 md:my-10">
           <div className="flex mt-2 md:mt-8  justify-center">
             <h1 className="text-emerald-700 text-center text-sm md:text-xl font-bold ">
@@ -91,8 +85,13 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex justify-end mr-2 md:items-end mb-2 md:mb-4">
-        <p className="text-white text-xs md:text-xl">{textsList.copyright}</p>
+      <div className="flex flex-col gap-8 items-center justify-center">
+        <NavLink to="/admindashboard" className="btn w-52 text-center ">
+          Admin Dashboard
+        </NavLink>
+        <div className="flex justify-end mr-2 md:items-end mb-2 md:mb-4">
+          <p className="text-white text-xs md:text-xl">{textsList.copyright}</p>
+        </div>
       </div>
     </div>
   );

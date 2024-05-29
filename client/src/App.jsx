@@ -1,8 +1,4 @@
-import {
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Header from './sections/Header';
 import Footer from './sections/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -80,58 +76,71 @@ function App(criteria) {
   }, []);
 
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/contact" element={<Contact />} />
-        {/* admin routes */}
-        <Route path="/admindashboard" element={<AdminDashboard />} />
-        <Route path="/admindashboard/adminstacks" element={<AdminStacks />} />
-        <Route
-          path="/admindashboard/adminstacks/:itemId"
-          element={<StackBox />}
-        />
-        <Route
-          path="/admindashboard/adminstacks/confirmdelation/:itemId"
-          element={<StackToDelete />}
-        />
-        <Route
-          path="/admindashboard/experiences"
-          element={<AdminExperiences />}
-        />
-        <Route
-          path="/admindashboard/experiences/:experId"
-          element={<ExperienceBox />}
-        />
-        <Route
-          path="/admindashboard/experiences/confirmdelation/:experId"
-          element={<ExperienceToDelete />}
-        />
-        <Route path="/admindashboard/projects" element={<AdminProjects />} />
-        <Route
-          path="/admindashboard/projects/:projId"
-          element={<ProjectBox />}
-        />
-        <Route
-          path="/admindashboard/projects/confirmdelation/:projId"
-          element={<ProjectToDelete />}
-        />
-        <Route path="/admindashboard/services" element={<AdminServices />} />
-        <Route
-          path="/admindashboard/services/:servId"
-          element={<ServiceBox />}
-        />
-        <Route
-          path="/admindashboard/services/confirmdelation/:servId"
-          element={<ServiceToDelete />}
-        />
-      </Routes>
-      <Footer />
-      <ScrollToTop />
-    </Router>
+    <div className="flex flex-col min-h-screen">
+      <Router>
+        <Header />
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/contact" element={<Contact />} />
+            {/* admin routes */}
+            <Route path="/admindashboard" element={<AdminDashboard />} />
+            <Route
+              path="/admindashboard/adminstacks"
+              element={<AdminStacks />}
+            />
+            <Route
+              path="/admindashboard/adminstacks/:itemId"
+              element={<StackBox />}
+            />
+            <Route
+              path="/admindashboard/adminstacks/confirmdelation/:itemId"
+              element={<StackToDelete />}
+            />
+            <Route
+              path="/admindashboard/experiences"
+              element={<AdminExperiences />}
+            />
+            <Route
+              path="/admindashboard/experiences/:experId"
+              element={<ExperienceBox />}
+            />
+            <Route
+              path="/admindashboard/experiences/confirmdelation/:experId"
+              element={<ExperienceToDelete />}
+            />
+            <Route
+              path="/admindashboard/projects"
+              element={<AdminProjects />}
+            />
+            <Route
+              path="/admindashboard/projects/:projId"
+              element={<ProjectBox />}
+            />
+            <Route
+              path="/admindashboard/projects/confirmdelation/:projId"
+              element={<ProjectToDelete />}
+            />
+            <Route
+              path="/admindashboard/services"
+              element={<AdminServices />}
+            />
+            <Route
+              path="/admindashboard/services/:servId"
+              element={<ServiceBox />}
+            />
+            <Route
+              path="/admindashboard/services/confirmdelation/:servId"
+              element={<ServiceToDelete />}
+            />
+          </Routes>
+        </div>
+        <ScrollToTop />
+        <Footer />
+      </Router>
+    </div>
   );
 }
 
