@@ -29,7 +29,7 @@ function Experience() {
             <div
               onClick={() => setSelectedItemIndex(index)}
               className="cursor-pointer "
-              key={index}
+              key={experience.experienceId}
             >
               <h1
                 className={`text-xs md:text-xl px-1 md:px-5 ${
@@ -37,14 +37,13 @@ function Experience() {
                     ? 'bg-[#1a7f5a1e] text-[#008000b0] border-l-4 border-[#008000b0] font-semibold py-2 md:py-3 ml-1'
                     : 'text-white '
                 }`}
-                key={experience.experienceId}
               >
                 {experience.date}
               </h1>
             </div>
           ))}
         </div>
-        {experiencesList && selectedItemIndex ? (
+        {experiencesList.length > 0 && selectedItemIndex !== null ? (
           <div className="flex flex-col gap-4 md:gap-10  mx-1 md:mx-24 w-full md:w-4/5 mt-4 md:mt-12">
             <h1 className="text-yellow-400 text-lg md:text-2xl ">
               {experiencesList[selectedItemIndex].role}
@@ -56,6 +55,7 @@ function Experience() {
               <img
                 src={experiencesList[selectedItemIndex].companyImage}
                 className="h-12 w-12"
+                alt="No available company image"
               />
             </div>
             <p className="text-white text-wrap ">
@@ -73,7 +73,7 @@ function Experience() {
             </ul>
           </div>
         ) : (
-          'no data'
+          <p className="text-white text-center w-full">No data available</p>
         )}
       </div>
     </div>
