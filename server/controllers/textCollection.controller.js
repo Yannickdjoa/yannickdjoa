@@ -23,6 +23,9 @@ const createTextCollection = async (req, res) => {
       callToActionText: req.body.callToActionText,
       contactTitle: req.body.contactTitle,
       contactSubtitle: req.body.contactSubtitle,
+      dashboardTitle: req.body.dashboardTitle,
+      dashboardText1: req.body.dashboardText1,
+      dashboardText2: req.body.dashboardText2,
     });
     return res.status(200).send({
       status: 'success',
@@ -56,6 +59,9 @@ const updateTextCollection = async (req, res, next) => {
         callToActionText: req.body.callToActionText,
         contactTitle: req.body.contactTitle,
         contactSubtitle: req.body.contactSubtitle,
+        dashboardTitle: req.body.dashboardTitle,
+        dashboardText1: req.body.dashboardText1,
+        dashboardText2: req.body.dashboardText2,
       });
       return res.status(200).send({
         status: 'success',

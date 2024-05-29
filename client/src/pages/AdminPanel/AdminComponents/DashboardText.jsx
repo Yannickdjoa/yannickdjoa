@@ -1,20 +1,17 @@
 import React from 'react';
+import { selectAlltextsList } from '../../../redux/slices/textsSlice';
+import { useSelector } from 'react-redux';
 
 function DashboardText() {
+  const { textsList } = useSelector(selectAlltextsList);
   return (
-    <div className="flex flex-col justify-center items-center gap-16">
+    <div className="flex flex-col justify-center items-center gap-16 mt-32">
       <h1 className="flex text-2xl text-emerald-700 font-bold">
-        Welcome to Admin Dashboard
+        {textsList.dashboardTitle}
       </h1>
       <p className="text-center text-lg">
-        <span>
-          This space is exclusively for employees. Please login to be able to
-          make changes
-        </span>{' '}
-        <br />{' '}
-        <span>
-          In case you forgot your logins, please contact your administrator
-        </span>
+        <span>{textsList.dashboardText1}</span> <br />{' '}
+        <span>{textsList.dashboardText2}</span>
       </p>
       <button className="btn px-4">Login</button>
     </div>

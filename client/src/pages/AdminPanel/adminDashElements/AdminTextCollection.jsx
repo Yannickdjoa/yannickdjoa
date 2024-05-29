@@ -21,6 +21,9 @@ function AdminTextCollection() {
     callToActionText: '',
     contactTitle: '',
     contactSubtitle: '',
+    dashboardTitle: '',
+    dashboardText1: '',
+    dashboardText2: '',
   });
 
   const [uploading, setUploading] = useState(false);
@@ -101,7 +104,6 @@ function AdminTextCollection() {
             defaultValue={formData.footerSocialTitle}
           />
         </div>
-
         <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Skills Title
@@ -258,6 +260,43 @@ function AdminTextCollection() {
             defaultValue={formData.contactSubtitle}
           />
         </div>
+        <div className="flex flex-col py-1">
+          <label htmlFor="name" className="flex justify-start text-white">
+            DashboardTitle
+          </label>
+          <input
+            id="dashboardTitle"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.dashboardTitle}
+          />
+        </div>
+        <div className="flex flex-col py-1">
+          <label htmlFor="name" className="flex justify-start text-white">
+            DashboardText1
+          </label>
+          <input
+            id="dashboardText1"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.dashboardText1}
+          />
+        </div>
+        <div className="flex flex-col py-1">
+          <label htmlFor="name" className="flex justify-start text-white">
+            DashboardText2
+          </label>
+          <input
+            id="dashboardText2"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.dashboardText2}
+          />
+        </div>
+
         <button
           disabled={loading || uploading}
           type="submit"
