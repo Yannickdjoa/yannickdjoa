@@ -31,4 +31,6 @@ export const {
   startSettingServicesList,
   failedToSetServicesList,
 } = serviceSlice.actions;
+
+export const selectAllServices = (state) => state.services;
 export default serviceSlice.reducer;

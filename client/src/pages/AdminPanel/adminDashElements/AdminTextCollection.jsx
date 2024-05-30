@@ -24,6 +24,8 @@ function AdminTextCollection() {
     dashboardTitle: '',
     dashboardText1: '',
     dashboardText2: '',
+    serviceTitle: '',
+    serviceSubtitle: '',
   });
 
   const [uploading, setUploading] = useState(false);
@@ -296,7 +298,30 @@ function AdminTextCollection() {
             defaultValue={formData.dashboardText2}
           />
         </div>
-
+        <div className="flex flex-col py-1">
+          <label htmlFor="name" className="flex justify-start text-white">
+            Service Title
+          </label>
+          <input
+            id="serviceTitle"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.serviceTitle}
+          />
+        </div>
+        <div className="flex flex-col py-1">
+          <label htmlFor="name" className="flex justify-start text-white">
+            Service Subtitle
+          </label>
+          <input
+            id="serviceSubtitle"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.serviceSubtitle}
+          />
+        </div>
         <button
           disabled={loading || uploading}
           type="submit"

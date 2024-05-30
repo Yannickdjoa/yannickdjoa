@@ -26,6 +26,8 @@ const createTextCollection = async (req, res) => {
       dashboardTitle: req.body.dashboardTitle,
       dashboardText1: req.body.dashboardText1,
       dashboardText2: req.body.dashboardText2,
+      serviceTitle: req.body.serviceTitle,
+      serviceSubtitle: req.body.serviceSubtitle,
     });
     return res.status(200).send({
       status: 'success',
@@ -62,6 +64,8 @@ const updateTextCollection = async (req, res, next) => {
         dashboardTitle: req.body.dashboardTitle,
         dashboardText1: req.body.dashboardText1,
         dashboardText2: req.body.dashboardText2,
+        serviceTitle: req.body.serviceTitle,
+        serviceSubtitle: req.body.serviceSubtitle,
       });
       return res.status(200).send({
         status: 'success',

@@ -46,9 +46,7 @@ function AdminServices() {
     stacksUsed: '',
   });
   const dispatch = useDispatch();
-  const { servicesList, loading, error } = useSelector(
-    (state) => state.services
-  );
+  const { servicesList } = useSelector((state) => state.services);
   const serviceData = async () => {
     dispatch(startSettingServicesList(true));
     try {

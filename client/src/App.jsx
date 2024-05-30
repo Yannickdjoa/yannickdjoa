@@ -1,4 +1,9 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from 'react-router-dom';
 import Header from './sections/Header';
 import Footer from './sections/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -33,6 +38,7 @@ import {
   selectAllBioDataList,
 } from './redux/slices/bioSlice';
 import { useEffect } from 'react';
+import ServiceCard from './components/ServiceCard';
 
 function App(criteria) {
   const dispatch = useDispatch();
@@ -81,7 +87,9 @@ function App(criteria) {
         <Header />
         <div className="flex-grow">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Navigate replace to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/home/:serviceId" element={<ServiceCard />} />
             <Route path="/about" element={<About />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
