@@ -22,6 +22,8 @@ const style = {
   width: 1000,
   bgcolor: '#404040',
   border: '2px solid #a3a3a3',
+  maxHeight: '90vh',
+  overflowY: 'auto',
   boxShadow: 4,
   p: 4,
   display: 'grid',
@@ -44,6 +46,8 @@ function AdminServices() {
     timeFrame: '',
     serviceImage: '',
     stacksUsed: '',
+    pages: '',
+    revisions: '',
   });
   const dispatch = useDispatch();
   const { servicesList } = useSelector((state) => state.services);
@@ -261,6 +265,30 @@ function AdminServices() {
                 className="input"
                 onChange={handleArrayChange}
                 value={formData.stacksUsed}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="name" className="flex justify-start text-white">
+                Pages
+              </label>
+              <input
+                id="pages"
+                type="text"
+                className="input"
+                onChange={handleChange}
+                defaultValue={formData.pages}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="name" className="flex justify-start text-white">
+                Revisions
+              </label>
+              <input
+                id="revisions"
+                type="text"
+                className="input"
+                onChange={handleChange}
+                defaultValue={formData.revisions}
               />
             </div>
             <div className="flex flex-col">

@@ -61,7 +61,7 @@ function MainView() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="p text-xl max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16 z-10"
+              className="p text-xl text-justify max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16 z-10"
             >
               {webIntroData.introText}
             </motion.p>

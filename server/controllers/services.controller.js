@@ -15,6 +15,8 @@ const createServices = async (req, res) => {
       timeFrame: req.body.timeFrame,
       serviceImage: req.body.serviceImage,
       stacksUsed: req.body.stacksUsed,
+      pages: req.body.pages,
+      revisions: req.body.revisions,
     });
     return res
       .status(200)
@@ -39,6 +41,8 @@ const updateServices = async (req, res, next) => {
         timeFrame: req.body.timeFrame,
         serviceImage: req.body.serviceImage,
         stacksUsed: req.body.stacksUsed,
+        pages: req.body.pages,
+        revisions: req.body.revisions,
       });
       return res.status(200).send({
         status: 'success',

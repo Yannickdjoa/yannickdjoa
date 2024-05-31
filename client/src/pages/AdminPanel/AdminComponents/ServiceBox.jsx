@@ -14,6 +14,8 @@ function ServiceBox() {
     timeFrame: '',
     serviceImage: '',
     stacksUsed: '',
+    pages: '',
+    revisions: '',
   });
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
@@ -185,6 +187,30 @@ function ServiceBox() {
             className="input"
             onChange={handleChange}
             defaultValue={formData.price}
+          />
+        </div>
+        <div className="flex flex-col py-4">
+          <label htmlFor="name" className="flex justify-start text-white">
+            Pages
+          </label>
+          <input
+            id="pages"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.pages}
+          />
+        </div>
+        <div className="flex flex-col py-4">
+          <label htmlFor="name" className="flex justify-start text-white">
+            Revisions
+          </label>
+          <input
+            id="revisions"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.revisions}
           />
         </div>
         <div className="flex flex-col py-4">
