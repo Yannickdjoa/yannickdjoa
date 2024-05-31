@@ -15,7 +15,7 @@ function StackBox() {
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
 
@@ -72,7 +72,7 @@ function StackBox() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault;
+    e.preventDefault();
     try {
       setLoading(true);
       const response = await fetch(`/api/stacks/update/${params.itemId}`, {
@@ -85,6 +85,8 @@ function StackBox() {
       const data = await response.json();
       setLoading(false);
       if (data.status === 'success') {
+        setError(null);
+        setLoading(false);
         navigate('/admindashboard');
       } else {
         return setError(data.message);

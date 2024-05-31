@@ -84,7 +84,7 @@ function ServiceBox() {
   };
 
   const handleUpdate = async (e) => {
-    e.preventDefault;
+    e.preventDefault();
     try {
       setLoading(true);
       const response = await fetch(`/api/services/update/${params.servId}`, {
@@ -97,6 +97,8 @@ function ServiceBox() {
       const data = await response.json();
 
       if (data.status === 'success') {
+        setError(false);
+        setLoading(false);
         navigate('/admindashboard');
       } else {
         return setError(data.message);

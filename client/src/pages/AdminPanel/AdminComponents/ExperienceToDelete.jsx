@@ -27,7 +27,7 @@ function ExperienceToDelete() {
     currentData();
   }, []);
 
-  const handleDelete = async (e) => {
+  const handleDelete = async () => {
     try {
       const response = await fetch(
         `/api/experiences/delete/${params.experId}`,
@@ -37,14 +37,13 @@ function ExperienceToDelete() {
       );
       const data = await response.json();
       if (data.status === 'success') {
-        return data.message;
+        navigate('/admindashboard');
       } else {
         return setError(data.message);
       }
     } catch (error) {
       console.log(error);
     }
-    navigate('/admindashboard');
   };
 
   return (

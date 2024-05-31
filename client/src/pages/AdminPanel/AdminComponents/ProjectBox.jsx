@@ -84,7 +84,7 @@ function ProjectBox() {
   };
 
   const handleUpdate = async (e) => {
-    e.preventDefault;
+    e.preventDefault();
     try {
       setLoading(true);
       const response = await fetch(`/api/projects/update/${params.projId}`, {
@@ -97,6 +97,8 @@ function ProjectBox() {
       const data = await response.json();
 
       if (data.status === 'success') {
+        setError(null);
+        setLoading(false);
         navigate('/admindashboard');
       } else {
         return setError(data.message);

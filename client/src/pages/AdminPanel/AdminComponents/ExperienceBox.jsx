@@ -58,7 +58,7 @@ function ExperienceBox() {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setFormData({
             ...formData,
-            stackImage: downloadURL,
+            companyImage: downloadURL,
           });
         });
         setUploading(false);
@@ -82,7 +82,7 @@ function ExperienceBox() {
   };
 
   const handleUpdate = async (e) => {
-    e.preventDefault;
+    e.preventDefault();
     try {
       setLoading(true);
       const response = await fetch(
@@ -98,6 +98,8 @@ function ExperienceBox() {
       const data = await response.json();
 
       if (data.status === 'success') {
+        setLoading(false);
+        setError(false);
         navigate('/admindashboard');
       } else {
         return setError(data.message);
