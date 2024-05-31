@@ -66,14 +66,11 @@ function MessageForm() {
         placeholder="Write your message here"
         className="textarea"
       />
-      <button
-        type="submit"
-        value="Send"
-        className="cursor-pointer active w-full text-center bg-yellow-600 mt-1 p-3 rounded-xl text-xl font-semibold text-neutral-700"
-      >
-        Send
-      </button>
-
+      <div className="flex flex-row gap-4 justify-end mt-8">
+        <button type="submit" value="Send" className="btn px-4 ">
+          Send
+        </button>
+      </div>
       <Snackbar
         open={open}
         autoHideDuration={6000}
