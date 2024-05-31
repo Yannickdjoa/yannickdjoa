@@ -75,13 +75,12 @@ function ServiceBox() {
       [e.target.id]: e.target.value,
     });
   };
-  const handleArrayChange = async () => {
-    const inputArray = await document
-      .getElementById('stacksUsed')
-      .value.split(',');
+  //below func. get multiple elements from input and make an array of them split by coma
+  const handleArrayChange = async (id) => {
+    const inputArray = await document.getElementById(id).value.split(',');
     setFormData({
       ...formData,
-      stacksUsed: inputArray,
+      [id]: inputArray,
     });
   };
 
@@ -167,18 +166,6 @@ function ServiceBox() {
         </div>
         <div className="flex flex-col py-4">
           <label htmlFor="name" className="flex justify-start text-white">
-            Stacks Used
-          </label>
-          <input
-            id="stacksUsed"
-            type="text"
-            className="input"
-            onChange={handleArrayChange}
-            defaultValue={formData.stacksUsed}
-          />
-        </div>
-        <div className="flex flex-col py-4">
-          <label htmlFor="name" className="flex justify-start text-white">
             price
           </label>
           <input
@@ -191,26 +178,38 @@ function ServiceBox() {
         </div>
         <div className="flex flex-col py-4">
           <label htmlFor="name" className="flex justify-start text-white">
-            Pages
+            stacksUsed
           </label>
           <input
-            id="pages"
+            id="stacksUsed"
             type="text"
             className="input"
-            onChange={handleChange}
-            defaultValue={formData.pages}
+            onChange={() => handleArrayChange('stacksUsed')}
+            value={formData.stacksUsed}
           />
         </div>
         <div className="flex flex-col py-4">
           <label htmlFor="name" className="flex justify-start text-white">
-            Revisions
+            Key Features
           </label>
           <input
-            id="revisions"
+            id="keyFeatures"
             type="text"
             className="input"
-            onChange={handleChange}
-            defaultValue={formData.revisions}
+            onChange={() => handleArrayChange('keyFeatures')}
+            defaultValue={formData.keyFeatures}
+          />
+        </div>
+        <div className="flex flex-col py-4">
+          <label htmlFor="name" className="flex justify-start text-white">
+            How It Works
+          </label>
+          <input
+            id="howItWorks"
+            type="text"
+            className="input"
+            onChange={() => handleArrayChange('howItWorks')}
+            defaultValue={formData.howItWorks}
           />
         </div>
         <div className="flex flex-col py-4">

@@ -45,9 +45,9 @@ function AdminServices() {
     price: '',
     timeFrame: '',
     serviceImage: '',
-    stacksUsed: '',
-    pages: '',
-    revisions: '',
+    stacksUsed: [],
+    keyFeatures: [],
+    howItWorks: [],
   });
   const dispatch = useDispatch();
   const { servicesList } = useSelector((state) => state.services);
@@ -79,13 +79,11 @@ function AdminServices() {
     });
   };
   //below func. get multiple elements from input and make an array of them split by coma
-  const handleArrayChange = async () => {
-    const inputArray = await document
-      .getElementById('stacksUsed')
-      .value.split(',');
+  const handleArrayChange = async (id) => {
+    const inputArray = await document.getElementById(id).value.split(',');
     setFormData({
       ...formData,
-      stacksUsed: inputArray,
+      [id]: inputArray,
     });
   };
 
@@ -188,7 +186,7 @@ function AdminServices() {
         aria-labelledby="add-service"
       >
         <Box sx={style}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="text-white">
             <h1
               id="add-service"
               className="text-white text-xl font-bold text-center mb-4"
@@ -237,7 +235,7 @@ function AdminServices() {
               </label>
               <input
                 id="price"
-                type="number"
+                type="text"
                 className="input"
                 onChange={handleChange}
                 value={formData.price}
@@ -263,32 +261,32 @@ function AdminServices() {
                 id="stacksUsed"
                 type="text"
                 className="input"
-                onChange={handleArrayChange}
+                onChange={() => handleArrayChange('stacksUsed')}
                 value={formData.stacksUsed}
               />
             </div>
             <div className="flex flex-col">
               <label htmlFor="name" className="flex justify-start text-white">
-                Pages
+                Key Features
               </label>
               <input
-                id="pages"
+                id="keyFeatures"
                 type="text"
                 className="input"
-                onChange={handleChange}
-                defaultValue={formData.pages}
+                onChange={() => handleArrayChange('keyFeatures')}
+                defaultValue={formData.keyFeatures}
               />
             </div>
             <div className="flex flex-col">
               <label htmlFor="name" className="flex justify-start text-white">
-                Revisions
+                How It Works
               </label>
               <input
-                id="revisions"
+                id="howItWorks"
                 type="text"
                 className="input"
-                onChange={handleChange}
-                defaultValue={formData.revisions}
+                onChange={() => handleArrayChange('howItWorks')}
+                defaultValue={formData.howItWorks}
               />
             </div>
             <div className="flex flex-col">

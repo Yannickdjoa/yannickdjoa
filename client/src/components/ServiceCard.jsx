@@ -37,6 +37,7 @@ function ServiceCard() {
   useEffect(() => {
     getService(params.serviceId);
   }, [params.serviceId]);
+  console.log(serviceData.howItWorks);
 
   return (
     <div>
@@ -49,33 +50,87 @@ function ServiceCard() {
         </div>
         <div className="relative flex flex-col justify-between items-center border-2 p-4 mt-8">
           {serviceData && (
-            <div className="flex flex-col md:flex-row items-center justify-between gap-2 md:gap-16 p-8 m-8 w-full max-w-[900px]">
-              <div className="flex h-full w-full md:w-[30%] justify-center">
-                <img
-                  src={serviceData.serviceImage}
-                  alt="service icon"
-                  className="h-32 md:h-48 md:w-48 rounded-full md:animate-pulse"
-                />
-              </div>
-              <div className="flex flex-col gap-2 w-[70%]">
-                <h2 className="text-white text-xl mb-4 font-semibold">
-                  <span>{serviceData.category} : </span>
+            <div className="flex flex-col  items-start justify-between gap-2 md:gap-16 p-8 m-8 w-full max-w-[1100px]">
+              <div className="flex flex-row items-center gap-8">
+                <h2 className="text-white text-xl md:2xl mb-4 font-semibold">
                   <span>{serviceData.serviceName}</span>
                 </h2>
+                <div className="flex justify-center">
+                  <img
+                    src={serviceData.serviceImage}
+                    alt="service icon"
+                    className="h-16 w-16 rounded-full md:animate-pulse"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col gap-4">
                 <p>
-                  <span className=" font-bold">Expected Delevery Time : </span>
-                  <span>{serviceData.timeFrame}</span>
+                  <span className="text-white text-lg font-semibold">
+                    Delevery Time :{' '}
+                  </span>
+                  <span className="text-sm md:text-lg">
+                    {serviceData.timeFrame}
+                  </span>
                 </p>
                 <p>
-                  <span className=" font-bold">Cost : </span>
-                  <span>{serviceData.price}</span>
+                  <span className="text-white text-xl font-semibold">
+                    Cost :{' '}
+                  </span>
+                  <span className="animate-pulse text-xl text-neutral-700 rounded-lg p-1 font-semibold bg-yellow-600">
+                    {serviceData.price}
+                  </span>
                 </p>
-                <p></p>
+                <ul className="items-center gap-1 md:gap-4 text-neutral-400 flex flex-row flex-wrap">
+                  <span className="text-white text-xl font-semibold">
+                    Stacks Used :{' '}
+                  </span>{' '}
+                  <br />
+                  {serviceData.stacksUsed &&
+                    serviceData.stacksUsed.length > 0 &&
+                    serviceData.stacksUsed.map((stack, index) => (
+                      <li
+                        key={index}
+                        className=" pr-2 border-r-2  border-neutral-400 text-sm md:text-lg"
+                      >
+                        {stack}
+                      </li>
+                    ))}
+                </ul>
                 <p>
-                  <span className=" font-bold">Stacks Used : </span>{' '}
-                  <span>{serviceData.stacksUsed}</span>
+                  <span className="text-white text-xl font-semibold">
+                    Service Overview :{' '}
+                  </span>{' '}
+                  <br />
+                  <span className="text-sm md:text-lg">
+                    {serviceData.description}
+                  </span>
                 </p>
-                <p>{serviceData.description}</p>
+                <ol className="list-decimal list-inside text-neutral-400">
+                  <span className="text-white text-xl font-semibold">
+                    How It Works :{' '}
+                  </span>
+                  <br />
+                  {serviceData.howItWorks &&
+                    serviceData.howItWorks.length > 0 &&
+                    serviceData.howItWorks.map((detail, index) => (
+                      <li key={index} className=" pr-2 text-sm md:text-lg">
+                        {detail}
+                      </li>
+                    ))}
+                </ol>
+                <ol className="list-decimal list-inside text-neutral-400">
+                  <span className="text-white text-xl font-semibold">
+                    Key Features :{' '}
+                  </span>
+                  <br />
+                  {serviceData.keyFeatures &&
+                    serviceData.keyFeatures.length > 0 &&
+                    serviceData.keyFeatures.map((feature, index) => (
+                      <li key={index} className=" pr-2 text-sm md:text-lg">
+                        {feature}
+                      </li>
+                    ))}
+                </ol>
               </div>
             </div>
           )}
@@ -85,7 +140,7 @@ function ServiceCard() {
               onClick={(e) => setAddModal(true)}
               className="gap-1 md:gap-4 bg-yellow-600 text-neutral-700 px-2 md:px-6 md:py-1 text-center font-bold rounded-2xl  hover:bg-yellow-600/80"
             >
-              Book it now
+              Get Started Today!
             </button>
           </div>
         </div>
