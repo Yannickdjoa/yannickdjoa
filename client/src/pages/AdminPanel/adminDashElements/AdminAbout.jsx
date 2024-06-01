@@ -169,7 +169,6 @@ function AdminAbout() {
             defaultValue={formData.aboutsubtitle4}
           />
         </div>
-        aboutTextParag2: '', aboutTextParag3: '',
         <div className="flex flex-col py-4">
           <label htmlFor="name" className="flex justify-start text-white">
             About Text First Parag

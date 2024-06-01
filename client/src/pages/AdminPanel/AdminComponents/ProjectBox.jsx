@@ -97,7 +97,7 @@ function ProjectBox() {
       const data = await response.json();
 
       if (data.status === 'success') {
-        setError(null);
+        setError(false);
         setLoading(false);
         navigate('/admindashboard');
       } else {

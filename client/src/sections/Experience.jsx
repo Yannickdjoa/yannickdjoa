@@ -7,6 +7,8 @@ function Experience() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
   const { experiencesList } = useSelector(selectAllExperiences);
   const { textsList } = useSelector(selectAlltextsList);
+  //reversed the list to ensure that the most recent experience is rendered first
+  const reversedExperiencesList = [...experiencesList].reverse();
   return (
     <div
       id="experience"
@@ -24,7 +26,7 @@ function Experience() {
       </div>
       <div className=" bg-zinc-800 shadow-lg shadow-neutral-400 flex flex-col md:flex-row py-2 md:py-10 rounded-2xl ">
         <div className="border-l-1 md:border-l-2 border-[#1a7f5a1e]  flex flex-row md:flex-col gap-1 md:gap-10 w-full md:w-80">
-          {experiencesList.map((experience, index) => (
+          {reversedExperiencesList.map((experience, index) => (
             <div
               onClick={() => setSelectedItemIndex(index)}
               className="cursor-pointer "
@@ -42,33 +44,35 @@ function Experience() {
             </div>
           ))}
         </div>
-        {experiencesList.length > 0 && selectedItemIndex !== null ? (
+        {reversedExperiencesList.length > 0 && selectedItemIndex !== null ? (
           <div className="flex flex-col gap-4 md:gap-10  mx-1 md:mx-24 w-full md:w-4/5 mt-4 md:mt-12">
             <h1 className="text-yellow-400 text-lg md:text-2xl ">
-              {experiencesList[selectedItemIndex].role}
+              {reversedExperiencesList[selectedItemIndex].role}
             </h1>
             <div className="flex items-center gap-2 md:gap-6">
               <h1 className="text-white text-sm md:text-xl">
-                {experiencesList[selectedItemIndex].company}
+                {reversedExperiencesList[selectedItemIndex].company}
               </h1>
               <img
-                src={experiencesList[selectedItemIndex].companyImage}
-                className="h-12 w-12"
+                src={reversedExperiencesList[selectedItemIndex].companyImage}
+                className="h-12 w-12 rounded-full"
                 alt="No available company image"
               />
             </div>
             <p className="text-white text-wrap ">
-              {experiencesList[selectedItemIndex].description}
+              {reversedExperiencesList[selectedItemIndex].description}
             </p>
             <ul className="items-center gap-1 md:gap-4 text-neutral-400 flex flex-row flex-wrap">
-              {experiencesList[selectedItemIndex].skills.map((skill, index) => (
-                <li
-                  className=" pr-2 border-r-2  border-neutral-400"
-                  key={index}
-                >
-                  {skill}
-                </li>
-              ))}
+              {reversedExperiencesList[selectedItemIndex].skills.map(
+                (skill, index) => (
+                  <li
+                    className=" pr-2 border-r-2  border-neutral-400"
+                    key={index}
+                  >
+                    {skill}
+                  </li>
+                )
+              )}
             </ul>
           </div>
         ) : (

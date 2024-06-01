@@ -17,6 +17,7 @@ const createServices = async (req, res) => {
       stacksUsed: req.body.stacksUsed,
       keyFeatures: req.body.keyFeatures,
       howItWorks: req.body.howItWorks,
+      language: req.body.language,
     });
     return res
       .status(200)
@@ -43,6 +44,7 @@ const updateServices = async (req, res, next) => {
         stacksUsed: req.body.stacksUsed,
         keyFeatures: req.body.keyFeatures,
         howItWorks: req.body.howItWorks,
+        language: req.body.language,
       });
       return res.status(200).send({
         status: 'success',

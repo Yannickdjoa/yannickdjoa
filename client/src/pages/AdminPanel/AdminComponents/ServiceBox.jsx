@@ -13,9 +13,10 @@ function ServiceBox() {
     price: '',
     timeFrame: '',
     serviceImage: '',
-    stacksUsed: '',
-    pages: '',
-    revisions: '',
+    language: [],
+    stacksUsed: [],
+    keyFeatures: [],
+    howItWorks: [],
   });
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
@@ -186,6 +187,18 @@ function ServiceBox() {
             className="input"
             onChange={() => handleArrayChange('stacksUsed')}
             value={formData.stacksUsed}
+          />
+        </div>
+        <div className="flex flex-col py-4">
+          <label htmlFor="name" className="flex justify-start text-white">
+            Programming Language
+          </label>
+          <input
+            id="language"
+            type="text"
+            className="input"
+            onChange={() => handleArrayChange('language')}
+            value={formData.language}
           />
         </div>
         <div className="flex flex-col py-4">

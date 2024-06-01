@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function ProjectCard({ project }) {
   return (
@@ -41,13 +41,13 @@ function ProjectCard({ project }) {
             </p>
           </div>
           <div className="flex flex-row  justify-start gap-4 md:gap-24 ">
-            <Link
+            <NavLink
               to={project.github}
               className="flex gap-1 md:gap-4 items-center bg-yellow-600 text-neutral-700 px-2 md:px-6 md:py-1 text-center font-bold rounded-2xl  hover:bg-yellow-600/80 justify-center"
             >
               <FaGithub />
               Code
-            </Link>
+            </NavLink>
             <Link
               to={project.appLink}
               className="flex gap-1 md:gap-4 items-center bg-yellow-600 text-neutral-700 p-2 md:p-4 text-center font-bold rounded-2xl  hover:bg-yellow-600/80 justify-center"

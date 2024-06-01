@@ -45,6 +45,7 @@ function AdminServices() {
     price: '',
     timeFrame: '',
     serviceImage: '',
+    language: [],
     stacksUsed: [],
     keyFeatures: [],
     howItWorks: [],
@@ -263,6 +264,18 @@ function AdminServices() {
                 className="input"
                 onChange={() => handleArrayChange('stacksUsed')}
                 value={formData.stacksUsed}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="name" className="flex justify-start text-white">
+                Programming Language
+              </label>
+              <input
+                id="language"
+                type="text"
+                className="input"
+                onChange={() => handleArrayChange('language')}
+                value={formData.language}
               />
             </div>
             <div className="flex flex-col">

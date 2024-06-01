@@ -96,6 +96,22 @@ function ServiceCard() {
                       </li>
                     ))}
                 </ul>
+                <ul className="items-center gap-1 md:gap-4 text-neutral-400 flex flex-row flex-wrap">
+                  <span className="text-white text-xl font-semibold">
+                    Programming Language :{' '}
+                  </span>{' '}
+                  <br />
+                  {serviceData.language &&
+                    serviceData.language.length > 0 &&
+                    serviceData.language.map((language, index) => (
+                      <li
+                        key={index}
+                        className=" pr-2 border-r-2  border-neutral-400 text-sm md:text-lg"
+                      >
+                        {language}
+                      </li>
+                    ))}
+                </ul>
                 <p>
                   <span className="text-white text-xl font-semibold">
                     Service Overview :{' '}
