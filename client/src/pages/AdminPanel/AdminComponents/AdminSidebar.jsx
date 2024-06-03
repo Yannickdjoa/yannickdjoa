@@ -15,7 +15,7 @@ function AdminSidebar() {
                 return (
                   'p-2  cursor-pointer hover:underline hover:underline-offset-4' +
                   (isActive
-                    ? ' text-emerald-700 text-xl font-bold '
+                    ? ' text-emerald-700 text-xl font-semi-bold '
                     : 'text-white text-lg font-semibold')
                 );
               }}
