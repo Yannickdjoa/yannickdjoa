@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { storage } from '../../../../../firebase';
+import { storage } from '../../../../firebase';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';

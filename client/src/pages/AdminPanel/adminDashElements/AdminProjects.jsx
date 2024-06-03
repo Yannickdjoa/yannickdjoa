@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { storage } from '../../../../../firebase.js';
+import { storage } from '../../../../firebase.js';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import {
   setProjectsList,

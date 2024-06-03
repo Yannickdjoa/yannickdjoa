@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import serviceSlice from '../../../redux/slices/serviceSlice.js';
 import React, { useEffect, useState } from 'react';
-import { storage } from '../../../../../firebase.js';
+import { storage } from '../../../../firebase.js';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import {
   setServicesList,
