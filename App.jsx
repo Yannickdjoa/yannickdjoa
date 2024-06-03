@@ -13,7 +13,7 @@ import Portfolio from './client/src/pages/customerInterfaces/Portfolio';
 import Contact from './client/src/pages/customerInterfaces/Contact';
 import AdminDashboard from './client/src/pages/AdminPanel/AdminDashboard';
 import AdminStacks from './client/src/pages/AdminPanel/adminDashElements/AdminStacks';
-import StackBox from './client/src/pages/AdminPanel/adminComponents/StackBox.jsx'; // Explicitly including .jsx
+// import StackBox from './client/src/pages/AdminPanel/adminComponents/StackBox';
 import StackToDelete from './client/src/pages/AdminPanel/adminComponents/StackToDelete';
 import AdminExperiences from './client/src/pages/AdminPanel/adminDashElements/AdminExperiences';
 import ExperienceToDelete from './client/src/pages/AdminPanel/adminComponents/ExperienceToDelete';
@@ -99,10 +99,10 @@ function App(criteria) {
               path="/admindashboard/adminstacks"
               element={<AdminStacks />}
             />
-            <Route
+            {/* <Route
               path="/admindashboard/adminstacks/:itemId"
               element={<StackBox />}
-            />
+            /> */}
             <Route
               path="/admindashboard/adminstacks/confirmdelation/:itemId"
               element={<StackToDelete />}
