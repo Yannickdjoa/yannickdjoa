@@ -4,41 +4,41 @@ import {
   BrowserRouter as Router,
   Routes,
 } from 'react-router-dom';
-import Header from './sections/Header';
-import Footer from './sections/Footer';
-import ScrollToTop from './components/ScrollToTop';
-import Home from './pages/customerInterfaces/Home';
-import About from './pages/customerInterfaces/About';
-import Portfolio from './pages/customerInterfaces/Portfolio';
-import Contact from './pages/customerInterfaces/Contact';
-import AdminDashboard from './pages/AdminPanel/AdminDashboard';
-import StackBox from './pages/AdminPanel/adminComponents/StackBox.jsx';
-import AdminStacks from './pages/AdminPanel/adminDashElements/AdminStacks';
-import StackToDelete from './pages/AdminPanel/adminComponents/StackToDelete';
-import AdminExperiences from './pages/AdminPanel/adminDashElements/AdminExperiences';
-import ExperienceToDelete from './pages/AdminPanel/adminComponents/ExperienceToDelete';
-import ExperienceBox from './pages/AdminPanel/adminComponents/ExperienceBox';
-import AdminProjects from './pages/AdminPanel/adminDashElements/AdminProjects';
-import ProjectBox from './pages/AdminPanel/adminComponents/ProjectBox';
-import AdminServices from './pages/AdminPanel/adminDashElements/AdminServices';
-import ServiceBox from './pages/AdminPanel/adminComponents/ServiceBox';
-import ServiceToDelete from './pages/AdminPanel/adminComponents/ServiceToDelete';
-import ProjectToDelete from './pages/AdminPanel/adminComponents/ProjectToDelete';
+import Header from './client/src/sections/Header';
+import Footer from './client/src/sections/Footer';
+import ScrollToTop from './client/src/components/ScrollToTop';
+import Home from './client/src/pages/customerInterfaces/Home';
+import About from './client/src/pages/customerInterfaces/About';
+import Portfolio from './client/src/pages/customerInterfaces/Portfolio';
+import Contact from './client/src/pages/customerInterfaces/Contact';
+import AdminDashboard from './client/src/pages/AdminPanel/AdminDashboard';
+import StackBox from './client/src/pages/AdminPanel/adminComponents/StackBox';
+import AdminStacks from './client/src/pages/AdminPanel/adminDashElements/AdminStacks';
+import StackToDelete from './client/src/pages/AdminPanel/adminComponents/StackToDelete';
+import AdminExperiences from './client/src/pages/AdminPanel/adminDashElements/AdminExperiences';
+import ExperienceToDelete from './client/src/pages/AdminPanel/adminComponents/ExperienceToDelete';
+import ExperienceBox from './client/src/pages/AdminPanel/adminComponents/ExperienceBox';
+import AdminProjects from './client/src/pages/AdminPanel/adminDashElements/AdminProjects';
+import ProjectBox from './client/src/pages/AdminPanel/adminComponents/ProjectBox';
+import AdminServices from './client/src/pages/AdminPanel/adminDashElements/AdminServices';
+import ServiceBox from './client/src/pages/AdminPanel/adminComponents/ServiceBox';
+import ServiceToDelete from './client/src/pages/AdminPanel/adminComponents/ServiceToDelete';
+import ProjectToDelete from './client/src/pages/AdminPanel/adminComponents/ProjectToDelete';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   startGettingTextsList,
   errorGettingTextsList,
   setTextsList,
   selectAlltextsList,
-} from './redux/slices/textsSlice';
+} from './client/src/redux/slices/textsSlice';
 import {
   startGettingBioDataList,
   errorGettingBioDataList,
   setBioDataList,
   selectAllBioDataList,
-} from './redux/slices/bioSlice';
+} from './client/src/redux/slices/bioSlice';
 import { useEffect } from 'react';
-import ServiceCard from './components/ServiceCard';
+import ServiceCard from './client/src/components/ServiceCard';
 
 function App(criteria) {
   const dispatch = useDispatch();
