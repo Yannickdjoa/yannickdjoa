@@ -12,7 +12,7 @@ import About from './pages/customerInterfaces/About';
 import Portfolio from './pages/customerInterfaces/Portfolio';
 import Contact from './pages/customerInterfaces/Contact';
 import AdminDashboard from './pages/AdminPanel/AdminDashboard';
-import StackBox from './pages/AdminPanel/adminComponents/StackBox';
+import StackBox from './pages/AdminPanel/adminComponents/StackBox.jsx';
 import AdminStacks from './pages/AdminPanel/adminDashElements/AdminStacks';
 import StackToDelete from './pages/AdminPanel/adminComponents/StackToDelete';
 import AdminExperiences from './pages/AdminPanel/adminDashElements/AdminExperiences';
