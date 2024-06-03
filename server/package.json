@@ -1,0 +1,28 @@
+{
+  "name": "yannickdjoa",
+  "version": "1.0.0",
+  "description": "Yannick Djoa Personal webpage",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server/index.js",
+    "deploy": "firebase deploy --only functions"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "yannickdjoa"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase": "^10.11.1",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^5.0.1",
+    "nodemon": "^3.1.0"
+  }
+}

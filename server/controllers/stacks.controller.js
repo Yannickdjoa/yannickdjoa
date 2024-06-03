@@ -1,4 +1,4 @@
-const { db } = require('../../firebaseConfig.js');
+const { db } = require('../firebaseConfig.js');
 const { FieldValue } = require('firebase-admin/firestore');
 const { errorHandler } = require('../utils/error.js');
 

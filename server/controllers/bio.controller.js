@@ -1,4 +1,4 @@
-const { db } = require('../../firebaseConfig.js');
+const { db } = require('../firebaseConfig.js');
 const firebase = require('firebase/app');
 const { firestore } = require('firebase/firestore');
 
