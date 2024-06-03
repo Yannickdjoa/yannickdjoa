@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://us-central1-yannick-djoa.cloudfunctions.net/api',
+        target: 'http://localhost:3050',
         secure: false,
       },
     },

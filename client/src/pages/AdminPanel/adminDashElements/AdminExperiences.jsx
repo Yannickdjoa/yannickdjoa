@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import experiencesSlice from '../../../redux/slices/experienceSlice.js';
 import React, { useEffect, useState } from 'react';
-import { storage } from '../../../../firebase.js';
+import { storage } from '../../../../../firebase.js';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import {
   setExperiencesList,
