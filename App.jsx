@@ -4,41 +4,41 @@ import {
   BrowserRouter as Router,
   Routes,
 } from 'react-router-dom';
-import Header from './src/sections/Header';
-import Footer from './src/sections/Footer';
-import ScrollToTop from './src/components/ScrollToTop';
-import Home from './src/pages/customerInterfaces/Home';
-import About from './src/pages/customerInterfaces/About';
-import Portfolio from './src/pages/customerInterfaces/Portfolio';
-import Contact from './src/pages/customerInterfaces/Contact';
-import AdminDashboard from './src/pages/AdminPanel/AdminDashboard';
-import AdminStacks from './src/pages/AdminPanel/adminDashElements/AdminStacks';
-import StackBox from './src/pages/AdminPanel/adminComponents/StackBox';
-import StackToDelete from './src/pages/AdminPanel/adminComponents/StackToDelete';
-import AdminExperiences from './src/pages/AdminPanel/adminDashElements/AdminExperiences';
-import ExperienceToDelete from './src/pages/AdminPanel/adminComponents/ExperienceToDelete';
-import ExperienceBox from './src/pages/AdminPanel/adminComponents/ExperienceBox';
-import AdminProjects from './src/pages/AdminPanel/adminDashElements/AdminProjects';
-import ProjectBox from './src/pages/AdminPanel/adminComponents/ProjectBox';
-import AdminServices from './src/pages/AdminPanel/adminDashElements/AdminServices';
-import ServiceBox from './src/pages/AdminPanel/adminComponents/ServiceBox';
-import ServiceToDelete from './src/pages/AdminPanel/adminComponents/ServiceToDelete';
-import ProjectToDelete from './src/pages/AdminPanel/adminComponents/ProjectToDelete';
+import Header from './client/src/sections/Header';
+import Footer from './client/src/sections/Footer';
+import ScrollToTop from './client/src/components/ScrollToTop';
+import Home from './client/src/pages/customerInterfaces/Home';
+import About from './client/src/pages/customerInterfaces/About';
+import Portfolio from './client/src/pages/customerInterfaces/Portfolio';
+import Contact from './client/src/pages/customerInterfaces/Contact';
+import AdminDashboard from './client/src/pages/AdminPanel/AdminDashboard';
+import AdminStacks from './client/src/pages/AdminPanel/adminDashElements/AdminStacks';
+// import StackBox from './client/src/pages/AdminPanel/adminComponents/StackBox';
+// import StackToDelete from './client/src/pages/AdminPanel/adminComponents/StackToDelete';
+import AdminExperiences from './client/src/pages/AdminPanel/adminDashElements/AdminExperiences';
+import ExperienceToDelete from './client/src/pages/AdminPanel/adminComponents/ExperienceToDelete';
+import ExperienceBox from './client/src/pages/AdminPanel/adminComponents/ExperienceBox';
+import AdminProjects from './client/src/pages/AdminPanel/adminDashElements/AdminProjects';
+import ProjectBox from './client/src/pages/AdminPanel/adminComponents/ProjectBox';
+import AdminServices from './client/src/pages/AdminPanel/adminDashElements/AdminServices';
+import ServiceBox from './client/src/pages/AdminPanel/adminComponents/ServiceBox';
+import ServiceToDelete from './client/src/pages/AdminPanel/adminComponents/ServiceToDelete';
+import ProjectToDelete from './client/src/pages/AdminPanel/adminComponents/ProjectToDelete';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   startGettingTextsList,
   errorGettingTextsList,
   setTextsList,
   selectAlltextsList,
-} from './src/redux/slices/textsSlice';
+} from './client/src/redux/slices/textsSlice';
 import {
   startGettingBioDataList,
   errorGettingBioDataList,
   setBioDataList,
   selectAllBioDataList,
-} from './src/redux/slices/bioSlice';
+} from './client/src/redux/slices/bioSlice';
 import { useEffect } from 'react';
-import ServiceCard from './src/components/ServiceCard';
+import ServiceCard from './client/src/components/ServiceCard';
 
 function App(criteria) {
   const dispatch = useDispatch();
@@ -99,14 +99,14 @@ function App(criteria) {
               path="/admindashboard/adminstacks"
               element={<AdminStacks />}
             />
-            <Route
+            {/* <Route
               path="/admindashboard/adminstacks/:itemId"
               element={<StackBox />}
-            />
-            <Route
+            /> */}
+            {/* <Route
               path="/admindashboard/adminstacks/confirmdelation/:itemId"
               element={<StackToDelete />}
-            />
+            /> */}
             <Route
               path="/admindashboard/experiences"
               element={<AdminExperiences />}

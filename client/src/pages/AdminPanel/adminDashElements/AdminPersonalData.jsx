@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { app, storage } from '../../../../firebase.js';
+import { app, storage } from '../../../../../firebase.js';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
 
@@ -107,9 +107,7 @@ function AdminPersonalData() {
   return (
     <div>
       <div>
-        <h1 className="text-center text-emerald-700 text-2xl font-bold">
-          Update Personal Data Here
-        </h1>
+        <h1 className='text-center text-emerald-700 text-2xl font-bold'>Update Personal Data Here</h1>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col py-4">
