@@ -10,7 +10,7 @@ import { getStorage } from 'firebase/storage';
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTHDOMAIN,
-  projectId: yannick-djoa,
+  projectId: 'yannick-djoa',
   // import.meta.env.VITE_FIREBASE_PROJECTID,
   storageBucket: 'yannick-djoa.appspot.com',
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGEINGSENDERID,
