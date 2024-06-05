@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy":"firebase deploy",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:deploy": "env-cmd -f .env vite build && firebase deploy -P yannick-djoa"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
@@ -38,6 +40,7 @@
     "@vitejs/plugin-react": "^4.2.1",
     "@xpd/tailwind-3dtransforms": "^1.0.3",
     "autoprefixer": "^10.4.19",
+    "env-cmd": "^10.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
