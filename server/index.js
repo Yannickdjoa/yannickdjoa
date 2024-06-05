@@ -35,4 +35,4 @@ app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
 
-exports.api = functions.https.onRequest(app);
+exports.backend = functions.https.onRequest(app);
