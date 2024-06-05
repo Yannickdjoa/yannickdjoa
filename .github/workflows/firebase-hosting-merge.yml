@@ -10,37 +10,37 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v4
+      - name: Checkout Repo
+        uses: actions/checkout@v4
 
-    - name: setup node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20'
-    
-    - name: install dependencies
-      run: nm install
-    - name: install firebase CLI
-      run: npm install -g firebase-tools
+      - name: setup node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
 
-    - name: build
-      env:
-        REACT_APP_EMAILJS_SERVICE_ID: ${{vars.REACT_APP_EMAILJS_SERVICE_ID}}
-        REACT_APP_EMAILJS_TEMPLATE_ID: ${{vars.REACT_APP_EMAILJS_TEMPLATE_ID}}
-        REACT_APP_EMAILJS_PUBLIC_KEY: ${{vars.REACT_APP_EMAILJS_PUBLIC_KEY}}
-        VITE_FIREBASE_APIKEY: ${{vars.VITE_FIREBASE_APIKEY}}
-        VITE_FIREBASE_AUTHDOMAIN: ${{vars.VITE_FIREBASE_AUTHDOMAIN}}
-        VITE_FIREBASE_PROJECTID: ${{vars.VITE_FIREBASE_PROJECTID}}
-        VITE_FIREBASE_MESSAGEINGSENDERID: ${{vars.VITE_FIREBASE_MESSAGEINGSENDERID}}
-        VITE_FIREBASE_APPID: ${{vars.VITE_FIREBASE_APPID}}
-        VITE_FIREBASE_MEASUREMENTID: ${{vars.VITE_FIREBASE_MEASUREMENTID}}
-      run: CI=false npm run build
+      - name: install dependencies
+        run: npm install
+      - name: install firebase CLI
+        run: npm install -g firebase-tools
 
-    - name: Deploy to Firebase Hosting on merge
-      uses: FirebaseExtended/action-hosting-deploy@v0
-      with:
-        repoToken: ${{ secrets.GITHUB_TOKEN }}
-        firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_YANNICK_DJOA }}
-        channelId: live
-        projectId: yannick-djoa
-      # run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN}} --project --force
+      - name: build
+        env:
+          REACT_APP_EMAILJS_SERVICE_ID: ${{vars.REACT_APP_EMAILJS_SERVICE_ID}}
+          REACT_APP_EMAILJS_TEMPLATE_ID: ${{vars.REACT_APP_EMAILJS_TEMPLATE_ID}}
+          REACT_APP_EMAILJS_PUBLIC_KEY: ${{vars.REACT_APP_EMAILJS_PUBLIC_KEY}}
+          VITE_FIREBASE_APIKEY: ${{vars.VITE_FIREBASE_APIKEY}}
+          VITE_FIREBASE_AUTHDOMAIN: ${{vars.VITE_FIREBASE_AUTHDOMAIN}}
+          VITE_FIREBASE_PROJECTID: ${{vars.VITE_FIREBASE_PROJECTID}}
+          VITE_FIREBASE_MESSAGEINGSENDERID: ${{vars.VITE_FIREBASE_MESSAGEINGSENDERID}}
+          VITE_FIREBASE_APPID: ${{vars.VITE_FIREBASE_APPID}}
+          VITE_FIREBASE_MEASUREMENTID: ${{vars.VITE_FIREBASE_MEASUREMENTID}}
+        run: CI=false npm run build
+
+      - name: Deploy to Firebase Hosting on merge
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_YANNICK_DJOA }}
+          channelId: live
+          projectId: yannick-djoa
+        # run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN}} --project --force
