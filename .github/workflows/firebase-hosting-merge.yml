@@ -28,12 +28,7 @@ jobs:
           REACT_APP_EMAILJS_SERVICE_ID: ${{secrets.REACT_APP_EMAILJS_SERVICE_ID}}
           REACT_APP_EMAILJS_TEMPLATE_ID: ${{secrets.REACT_APP_EMAILJS_TEMPLATE_ID}}
           REACT_APP_EMAILJS_PUBLIC_KEY: ${{secrets.REACT_APP_EMAILJS_PUBLIC_KEY}}
-          VITE_FIREBASE_APIKEY: ${{secrets.VITE_FIREBASE_APIKEY}}
-          VITE_FIREBASE_AUTHDOMAIN: ${{secrets.VITE_FIREBASE_AUTHDOMAIN}}
-          VITE_FIREBASE_PROJECTID: ${{secrets.VITE_FIREBASE_PROJECTID}}
-          VITE_FIREBASE_MESSAGEINGSENDERID: ${{secrets.VITE_FIREBASE_MESSAGEINGSENDERID}}
-          VITE_FIREBASE_APPID: ${{secrets.VITE_FIREBASE_APPID}}
-          VITE_FIREBASE_MEASUREMENTID: ${{secrets.VITE_FIREBASE_MEASUREMENTID}}
+
         run: CI=false npm run build
 
       - name: Deploy to Firebase Hosting on merge
@@ -43,4 +38,3 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_YANNICK_DJOA }}
           channelId: live
           projectId: yannick-djoa
-        # run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN}} --project --force
