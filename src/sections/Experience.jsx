@@ -4,6 +4,7 @@ import { selectAllExperiences } from '../redux/slices/experienceSlice';
 import { selectAlltextsList } from '../redux/slices/textsSlice';
 
 function Experience() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
   const { experiencesList } = useSelector(selectAllExperiences);
   const { textsList } = useSelector(selectAlltextsList);

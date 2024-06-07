@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
 
 function ServiceToDelete() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const navigate = useNavigate();
   const [serviceData, setServiceData] = useState({
@@ -18,7 +19,9 @@ function ServiceToDelete() {
   const [error, setError] = useState(false);
 
   const currentData = async () => {
-    const response = await fetch(`/api/services/get/${params.servId}`);
+    const response = await fetch(
+      `${baseUrl}/api/services/get/${params.servId}`
+    );
     const data = await response.json();
     if (data.status == 'success') {
       setServiceData({ ...data.data });
@@ -30,9 +33,12 @@ function ServiceToDelete() {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`/api/services/delete/${params.servId}`, {
-        method: 'DELETE',
-      });
+      const response = await fetch(
+        `${baseUrl}/api/services/delete/${params.servId}`,
+        {
+          method: 'DELETE',
+        }
+      );
       const data = await response.json();
       if (data.status === 'success') {
         navigate('/admindashboard');

@@ -11,13 +11,14 @@ import {
 } from '../redux/slices/webIntroSlice';
 import { useSelector, useDispatch } from 'react-redux';
 function MainView() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const { webIntroData } = useSelector(selectAllWebIntro);
   const dispatch = useDispatch();
 
   const getWebIntro = async () => {
     try {
       startSettingWebIntroData(true);
-      const response = await fetch('/api/webIntro/get/1716567889750');
+      const response = await fetch(`${baseUrl}/api/webIntro/get/1716567889750`);
       const data = await response.json();
       if (data.status === 'success') {
         dispatch(setWebIntroData({ ...data.data }));

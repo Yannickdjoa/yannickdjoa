@@ -4,6 +4,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
 function ExperienceBox() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -22,7 +23,9 @@ function ExperienceBox() {
   const [fileUploadError, setFileUploadError] = useState(false);
 
   const currentData = async () => {
-    const response = await fetch(`/api/experiences/get/${params.experId}`);
+    const response = await fetch(
+      `${baseUrl}/api/experiences/get/${params.experId}`
+    );
     const data = await response.json();
     if (data.status == 'success') {
       setFormData({ ...data.data });
@@ -86,7 +89,7 @@ function ExperienceBox() {
     try {
       setLoading(true);
       const response = await fetch(
-        `/api/experiences/update/${params.experId}`,
+        `${baseUrl}/api/experiences/update/${params.experId}`,
         {
           method: 'PUT',
           headers: {

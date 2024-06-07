@@ -41,6 +41,7 @@ import { useEffect } from 'react';
 import ServiceCard from './src/components/ServiceCard';
 
 function App(criteria) {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const dispatch = useDispatch();
   const { textsList } = useSelector(selectAlltextsList);
   const { bioDataList } = useSelector(selectAllBioDataList);
@@ -48,7 +49,9 @@ function App(criteria) {
   const getTextCollection = async () => {
     dispatch(startGettingTextsList(true));
     try {
-      const response = await fetch('/api/textCollection/get/1715156244365');
+      const response = await fetch(
+        `${baseUrl}/api/textCollection/get/1715156244365`
+      );
       const data = await response.json();
       if (data.status === 'success') {
         dispatch(setTextsList(data.data));
@@ -64,7 +67,7 @@ function App(criteria) {
   const getBioData = async () => {
     dispatch(startGettingBioDataList(true));
     try {
-      const response = await fetch('/api/bio/get/1715803389046');
+      const response = await fetch(`${baseUrl}/api/bio/get/1715803389046`);
       const data = await response.json();
       if (data.status === 'success') {
         dispatch(setBioDataList(data.data));

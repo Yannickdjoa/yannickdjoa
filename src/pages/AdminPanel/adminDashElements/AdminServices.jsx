@@ -31,6 +31,7 @@ const style = {
   gridTemplateColumns: 'repeat(2)',
 };
 function AdminServices() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
@@ -55,7 +56,7 @@ function AdminServices() {
   const serviceData = async () => {
     dispatch(startSettingServicesList(true));
     try {
-      const response = await fetch('/api/services/getAll');
+      const response = await fetch(`${baseUrl}/api/services/getAll`);
       const data = await response.json();
 
       if (data.status === 'success') {
@@ -120,7 +121,7 @@ function AdminServices() {
     );
   };
   const handleSubmit = async () => {
-    const response = await fetch('/api/services/create', {
+    const response = await fetch(`${baseUrl}/api/services/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

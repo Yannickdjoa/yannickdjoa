@@ -3,6 +3,7 @@ import { TiArrowBackOutline } from 'react-icons/ti';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function ProjectToDelete() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const navigate = useNavigate();
   const [projectData, setProjectData] = useState({
@@ -19,7 +20,9 @@ function ProjectToDelete() {
   const [error, setError] = useState(false);
 
   const currentData = async () => {
-    const response = await fetch(`/api/projects/get/${params.projId}`);
+    const response = await fetch(
+      `${baseUrl}/api/projects/get/${params.projId}`
+    );
     const data = await response.json();
     if (data.status == 'success') {
       setProjectData({ ...data.data });
@@ -31,9 +34,12 @@ function ProjectToDelete() {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`/api/projects/delete/${params.projId}`, {
-        method: 'DELETE',
-      });
+      const response = await fetch(
+        `${baseUrl}/api/projects/delete/${params.projId}`,
+        {
+          method: 'DELETE',
+        }
+      );
       const data = await response.json();
       if (data.status === 'success') {
         navigate('/admindashboard');

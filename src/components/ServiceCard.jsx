@@ -20,12 +20,15 @@ const style = {
   gridTemplateColumns: 'repeat(2)',
 };
 function ServiceCard() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const [serviceData, setServiceData] = useState({});
   const [showAddModal, setAddModal] = useState(false);
   const getService = async () => {
     try {
-      const response = await fetch(`/api/services/get/${params.serviceId}`);
+      const response = await fetch(
+        `${baseUrl}/api/services/get/${params.serviceId}`
+      );
       const data = await response.json();
       if (data.status === 'success') {
         setServiceData({ ...data.data });

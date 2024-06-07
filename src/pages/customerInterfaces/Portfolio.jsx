@@ -10,6 +10,7 @@ import {
   failedToSetProjectsList,
 } from '../../redux/slices/projectSlice';
 import { selectAlltextsList } from '../../redux/slices/textsSlice';
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 function Portfolio() {
   const ref = useRef();
@@ -24,7 +25,7 @@ function Portfolio() {
   const projectsData = async () => {
     dispatch(startSettingProjectsList(true));
     try {
-      const response = await fetch('/api/projects/getAll');
+      const response = await fetch(`${baseUrl}/api/projects/getAll`);
       const data = await response.json();
       if (data.status === 'success') {
         dispatch(setProjectsList(data.data));

@@ -4,6 +4,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
 
 function AdminTextCollection() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     copyright: '',
@@ -33,7 +34,9 @@ function AdminTextCollection() {
   const [error, setError] = useState(false);
   useEffect(() => {
     const currentData = async () => {
-      const response = await fetch('/api/textCollection/get/1715156244365');
+      const response = await fetch(
+        `${baseUrl}/api/textCollection/get/1715156244365`
+      );
       const data = await response.json();
 
       if (data.status == 'success') {
@@ -54,13 +57,16 @@ function AdminTextCollection() {
     e.preventDefault;
     try {
       setLoading(true);
-      const response = await fetch('/api/textCollection/update/1715156244365', {
-        method: 'PUT',
-        headers: {
-          'content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${baseUrl}/api/textCollection/update/1715156244365`,
+        {
+          method: 'PUT',
+          headers: {
+            'content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await response.json();
 
       setLoading(false);

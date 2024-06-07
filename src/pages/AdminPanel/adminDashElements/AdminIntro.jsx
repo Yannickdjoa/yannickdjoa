@@ -4,6 +4,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
 
 function AdminIntro() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     mainCaption: '',
@@ -25,7 +26,7 @@ function AdminIntro() {
 
   useEffect(() => {
     const currentData = async () => {
-      const response = await fetch('/api/webIntro/get/1716567889750');
+      const response = await fetch(`${baseUrl}/api/webIntro/get/1716567889750`);
       const data = await response.json();
       if (data.status == 'success') {
         setFormData({ ...data.data });
@@ -113,13 +114,16 @@ function AdminIntro() {
     e.preventDefault;
     try {
       setLoading(true);
-      const response = await fetch('/api/webIntro/update/1716567889750', {
-        method: 'PUT',
-        headers: {
-          'content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${baseUrl}/api/webIntro/update/1716567889750`,
+        {
+          method: 'PUT',
+          headers: {
+            'content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await response.json();
       setLoading(false);
       if (data.status === 'success') {

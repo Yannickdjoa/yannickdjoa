@@ -3,6 +3,7 @@ import { TiArrowBackOutline } from 'react-icons/ti';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function ExperienceToDelete() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const navigate = useNavigate();
   const [experienceData, setExperienceData] = useState({
@@ -17,7 +18,9 @@ function ExperienceToDelete() {
   const [error, setError] = useState(false);
 
   const currentData = async () => {
-    const response = await fetch(`/api/experiences/get/${params.experId}`);
+    const response = await fetch(
+      `${baseUrl}/api/experiences/get/${params.experId}`
+    );
     const data = await response.json();
     if (data.status == 'success') {
       setExperienceData({ ...data.data });
@@ -30,7 +33,7 @@ function ExperienceToDelete() {
   const handleDelete = async () => {
     try {
       const response = await fetch(
-        `/api/experiences/delete/${params.experId}`,
+        `${baseUrl}/api/experiences/delete/${params.experId}`,
         {
           method: 'DELETE',
         }

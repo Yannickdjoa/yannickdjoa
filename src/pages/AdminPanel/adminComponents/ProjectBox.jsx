@@ -4,6 +4,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
 function ProjectBox() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -24,7 +25,9 @@ function ProjectBox() {
   const [fileUploadError, setFileUploadError] = useState(false);
 
   const currentData = async () => {
-    const response = await fetch(`/api/projects/get/${params.projId}`);
+    const response = await fetch(
+      `${baseUrl}/api/projects/get/${params.projId}`
+    );
     const data = await response.json();
     if (data.status == 'success') {
       setFormData({ ...data.data });
@@ -87,13 +90,16 @@ function ProjectBox() {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await fetch(`/api/projects/update/${params.projId}`, {
-        method: 'PUT',
-        headers: {
-          'content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${baseUrl}/api/projects/update/${params.projId}`,
+        {
+          method: 'PUT',
+          headers: {
+            'content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await response.json();
 
       if (data.status === 'success') {

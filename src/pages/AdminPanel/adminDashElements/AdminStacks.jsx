@@ -23,6 +23,7 @@ const style = {
   p: 4,
 };
 function AdminStacks() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
@@ -40,7 +41,7 @@ function AdminStacks() {
   const { stacksList, loading, error } = useSelector(selectAllStacks);
   const stacksData = async () => {
     try {
-      const response = await fetch('/api/stacks/getAll');
+      const response = await fetch(`${baseUrl}/api/stacks/getAll`);
       const data = await response.json();
 
       if (data.status === 'success') {
@@ -92,7 +93,7 @@ function AdminStacks() {
     );
   };
   const handleSubmit = async () => {
-    const response = await fetch('/api/stacks/create', {
+    const response = await fetch(`${baseUrl}/api/stacks/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

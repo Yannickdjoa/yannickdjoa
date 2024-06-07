@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 // import required modules
-import {  Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation } from 'swiper/modules';
 import SkillCard from '../components/SkillCard';
 import { selectAllStacks } from '../redux/slices/stackSlice';
 import { useSelector } from 'react-redux';

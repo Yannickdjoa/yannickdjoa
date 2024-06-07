@@ -24,6 +24,7 @@ const style = {
   p: 4,
 };
 function AdminExperiences() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
@@ -46,7 +47,7 @@ function AdminExperiences() {
   const experienceData = async () => {
     dispatch(startSettingExperiencesList(true));
     try {
-      const response = await fetch('/api/experiences/get');
+      const response = await fetch(`${baseUrl}/api/experiences/get`);
       const data = await response.json();
 
       if (data.status === 'success') {
@@ -110,7 +111,7 @@ function AdminExperiences() {
     );
   };
   const handleSubmit = async () => {
-    const response = await fetch('/api/experiences/create', {
+    const response = await fetch(`${baseUrl}/api/experiences/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

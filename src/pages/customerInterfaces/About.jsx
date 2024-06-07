@@ -29,11 +29,12 @@ function About() {
   const { heroList } = useSelector(selectAllHeroList);
   const { experiencesList } = useSelector(selectAllExperiences);
   const { stacksList } = useSelector(selectAllStacks);
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const getHeroList = async () => {
     dispatch(startGettingHeroList(true));
     try {
-      const response = await fetch('/api/aboutMe/get/1716617407911');
+      const response = await fetch(`${baseUrl}/api/aboutMe/get/1716617407911`);
       const data = await response.json();
       if (data.status === 'success') {
         dispatch(setHeroList(data.data));
@@ -48,7 +49,7 @@ function About() {
   const experienceData = async () => {
     dispatch(startSettingExperiencesList(true));
     try {
-      const response = await fetch('/api/experiences/get');
+      const response = await fetch(`${baseUrl}/api/experiences/get`);
       const data = await response.json();
 
       if (data.status === 'success') {
@@ -65,7 +66,7 @@ function About() {
   const stacksData = async () => {
     dispatch(getStackListStart(true));
     try {
-      const response = await fetch('/api/stacks//getAll');
+      const response = await fetch(`${baseUrl}/api/stacks/getAll`);
       const data = await response.json();
 
       if (data.status === 'success') {
@@ -85,7 +86,7 @@ function About() {
     stacksData();
   }, []);
   return (
-    <div className='flex flex-col gap-2'>
+    <div className="flex flex-col gap-2">
       <div>
         <h2 className="title  text-emerald-700  my-2 md:my-4">
           {textsList.aboutTitle}

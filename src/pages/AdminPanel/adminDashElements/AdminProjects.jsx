@@ -23,6 +23,7 @@ const style = {
   p: 4,
 };
 function AdminProjects() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
@@ -46,7 +47,7 @@ function AdminProjects() {
   );
   const projectsData = async () => {
     try {
-      const response = await fetch('/api/projects/getAll');
+      const response = await fetch(`${baseUrl}/api/projects/getAll`);
       const data = await response.json();
       if (data.status === 'success') {
         dispatch(setProjectsList(data.data));
@@ -106,7 +107,7 @@ function AdminProjects() {
     );
   };
   const handleSubmit = async () => {
-    const response = await fetch('/api/projects/create', {
+    const response = await fetch(`${baseUrl}/api/projects/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -4,6 +4,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
 
 function AdminPersonalData() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     author: '',
@@ -28,7 +29,7 @@ function AdminPersonalData() {
 
   useEffect(() => {
     const currentData = async () => {
-      const response = await fetch('/api/bio/get/1715803389046');
+      const response = await fetch(`${baseUrl}/api/bio/get/1715803389046`);
       const data = await response.json();
 
       if (data.status == 'success') {
@@ -84,7 +85,7 @@ function AdminPersonalData() {
     e.preventDefault;
     try {
       setLoading(true);
-      const response = await fetch('/api/bio/update/1715803389046', {
+      const response = await fetch(`${baseUrl}/api/bio/update/1715803389046`, {
         method: 'PUT',
         headers: {
           'content-Type': 'application/json',
@@ -107,7 +108,9 @@ function AdminPersonalData() {
   return (
     <div>
       <div>
-        <h1 className='text-center text-emerald-700 text-2xl font-bold'>Update Personal Data Here</h1>
+        <h1 className="text-center text-emerald-700 text-2xl font-bold">
+          Update Personal Data Here
+        </h1>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col py-4">

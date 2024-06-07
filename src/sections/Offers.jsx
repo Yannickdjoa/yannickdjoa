@@ -10,13 +10,14 @@ import {
 } from '../redux/slices/serviceSlice';
 import { selectAlltextsList } from '../redux/slices/textsSlice';
 function Offers() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const dispatch = useDispatch();
   const { servicesList } = useSelector(selectAllServices);
   const { textsList } = useSelector(selectAlltextsList);
   const serviceData = async () => {
     dispatch(startSettingServicesList(true));
     try {
-      const response = await fetch('/api/services/getAll');
+      const response = await fetch(`${baseUrl}/api/services/getAll`);
       const data = await response.json();
 
       if (data.status === 'success') {

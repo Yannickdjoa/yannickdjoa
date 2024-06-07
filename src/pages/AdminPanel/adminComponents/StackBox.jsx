@@ -4,6 +4,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
 function StackBox() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ function StackBox() {
   const [fileUploadError, setFileUploadError] = useState(false);
 
   const currentData = async () => {
-    const response = await fetch(`/api/stacks/getSingleStack/${params.itemId}`);
+    const response = await fetch(`${baseUrl}/api/stacks/getSingleStack/${params.itemId}`);
     const data = await response.json();
     if (data.status == 'success') {
       setFormData({ ...data.data });
@@ -75,7 +76,7 @@ function StackBox() {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await fetch(`/api/stacks/update/${params.itemId}`, {
+      const response = await fetch(`${baseUrl}/api/stacks/update/${params.itemId}`, {
         method: 'PUT',
         headers: {
           'content-Type': 'application/json',

@@ -3,6 +3,7 @@ import { TiArrowBackOutline } from 'react-icons/ti';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function StackToDelete() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const navigate = useNavigate();
   const [stackData, setStackData] = useState({
@@ -15,7 +16,9 @@ function StackToDelete() {
   const [error, setError] = useState(false);
 
   const currentData = async () => {
-    const response = await fetch(`/api/stacks/getSingleStack/${params.itemId}`);
+    const response = await fetch(
+      `${baseUrl}/api/stacks/getSingleStack/${params.itemId}`
+    );
     const data = await response.json();
     if (data.status == 'success') {
       setStackData({ ...data.data });
@@ -27,9 +30,12 @@ function StackToDelete() {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`/api/stacks/delete/${params.itemId}`, {
-        method: 'DELETE',
-      });
+      const response = await fetch(
+        `${baseUrl}/api/stacks/delete/${params.itemId}`,
+        {
+          method: 'DELETE',
+        }
+      );
       const data = await response.json();
       if (data.status === 'success') {
         navigate('/admindashboard');

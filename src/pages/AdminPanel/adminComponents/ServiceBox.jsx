@@ -4,6 +4,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
 function ServiceBox() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -26,7 +27,9 @@ function ServiceBox() {
   const [fileUploadError, setFileUploadError] = useState(false);
 
   const currentData = async () => {
-    const response = await fetch(`/api/services/get/${params.servId}`);
+    const response = await fetch(
+      `${baseUrl}/api/services/get/${params.servId}`
+    );
     const data = await response.json();
     if (data.status == 'success') {
       setFormData({ ...data.data });
@@ -89,13 +92,16 @@ function ServiceBox() {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await fetch(`/api/services/update/${params.servId}`, {
-        method: 'PUT',
-        headers: {
-          'content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${baseUrl}/api/services/update/${params.servId}`,
+        {
+          method: 'PUT',
+          headers: {
+            'content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await response.json();
 
       if (data.status === 'success') {
