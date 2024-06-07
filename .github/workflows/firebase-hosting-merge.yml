@@ -35,6 +35,6 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICEACCOUNT_YANNICKDJOA}}
           channelId: live
           projectId: yannick-djoa
