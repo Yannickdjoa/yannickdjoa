@@ -31,7 +31,7 @@ jobs:
 
         run: CI=false npm run build
 
-      - name: Deploy to Firebase Hosting on merge
+      - name: Deploy to Firebase Hosting on merge new
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
