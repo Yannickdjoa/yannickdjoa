@@ -19,7 +19,7 @@ console.log('Firebase Configuration:', {
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTHDOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECTID,
+  projectId: 'yannick-djoa',
   storageBucket: 'yannick-djoa.appspot.com',
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGEINGSENDERID,
   appId: import.meta.env.VITE_FIREBASE_APPID,

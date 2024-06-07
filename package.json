@@ -6,10 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy":"firebase deploy",
+    "deploy": "firebase deploy",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "build:deploy": "env-cmd -f .env vite build && firebase deploy -P yannick-djoa"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
