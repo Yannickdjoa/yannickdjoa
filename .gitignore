@@ -25,4 +25,5 @@ dist-ssr
 # Editor directories and files
 serviceAccountKey.json
 .env
+.env.production
 *.local
