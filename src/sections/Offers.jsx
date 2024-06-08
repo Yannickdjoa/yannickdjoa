@@ -42,7 +42,7 @@ function Offers() {
           {textsList.serviceSubtitle}
         </p>
       </div>
-      <div className="flex flex-row flex-wrap gap-8">
+      <div className="flex flex-col items-center  md:flex-row md:flex-wrap gap-4 md:gap-8">
         {servicesList.length > 0 &&
           servicesList.map((service) => (
             <div

@@ -31,8 +31,8 @@ app.use('/api/textCollection', textCollectionRouter);
 app.use('/api/webIntro', webIntroRouter);
 app.use('/api/aboutMe', aboutMeRouter);
 
-// app.listen(port, () => {
-//   console.log(`Server is running on port: ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
+});
 
 exports.backend = functions.https.onRequest(app);

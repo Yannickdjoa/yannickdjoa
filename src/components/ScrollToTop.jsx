@@ -20,7 +20,7 @@ function ScrollToTop() {
     });
   };
   return (
-    <div>
+    <div className='hidden md:flex'>
       {showScrollTopButton && (
         <button
           onClick={scrollToTop}
