@@ -10,13 +10,12 @@ env:
   REACT_APP_EMAILJS_SERVICE_ID: ${{secrets.REACT_APP_EMAILJS_SERVICE_ID}}
   REACT_APP_EMAILJS_TEMPLATE_ID: ${{secrets.REACT_APP_EMAILJS_TEMPLATE_ID}}
   REACT_APP_EMAILJS_PUBLIC_KEY: ${{secrets.REACT_APP_EMAILJS_PUBLIC_KEY}}
-  REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_REACT_APP_ }}
-  FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
-  FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
-  FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
-  FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
-  FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
-  FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
+  FIREBASE_APIKEY: ${{ secrets.FIREBASE_APIKEY}}
+  FIREBASE_AUTHDOMAIN: ${{ secrets.FIREBASE_AUTHDOMAIN }}
+  FIREBASE_PROJECTID: ${{ secrets.FIREBASE_PROJECTID }}
+  FIREBASE_MESSAGEINGSENDERID: ${{ secrets.FIREBASE_MESSAGEINGSENDERID }}
+  FIREBASE_APPID: ${{ secrets.FIREBASE_APPID }}
+  FIREBASE_MEASUREMENTID: ${{ secrets.FIREBASE_MEASUREMENTID }}
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -35,9 +34,7 @@ jobs:
         run: npm install -g firebase-tools
 
       - name: build
-        run: |
-          cp.env.production.env
-          CI=false npm run build
+        run: CI=false npm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
