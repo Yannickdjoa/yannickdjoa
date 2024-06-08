@@ -36,7 +36,13 @@ jobs:
           REACT_APP_FIREBASE_APP_ID: ${{ secrets.REACT_APP_FIREBASE_APP_ID }}
           REACT_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.REACT_APP_FIREBASE_MEASUREMENT_ID }}
 
-        run: CI=false vite build
+        run: CI=false npm run build
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-files
+          path: ./dist
 
       - name: Deploy to Firebase Hosting on merge
         uses: FirebaseExtended/action-hosting-deploy@v0
