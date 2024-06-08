@@ -24,6 +24,7 @@ jobs:
         run: npm install -g firebase-tools
 
       - name: build
+        run: CI=false npm run build
         env:
           REACT_APP_EMAILJS_SERVICE_ID: ${{vars.REACT_APP_EMAILJS_SERVICE_ID}}
           REACT_APP_EMAILJS_TEMPLATE_ID: ${{vars.REACT_APP_EMAILJS_TEMPLATE_ID}}
@@ -35,8 +36,6 @@ jobs:
           REACT_APP_FIREBASE_MESSAGING_SENDER_ID: ${{ vars.REACT_APP_FIREBASE_MESSAGING_SENDER_ID }}
           REACT_APP_FIREBASE_APP_ID: ${{ vars.REACT_APP_FIREBASE_APP_ID }}
           REACT_APP_FIREBASE_MEASUREMENT_ID: ${{ vars.REACT_APP_FIREBASE_MEASUREMENT_ID }}
-
-        run: CI=false npm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
