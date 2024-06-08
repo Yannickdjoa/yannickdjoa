@@ -23,18 +23,18 @@ jobs:
       - name: install firebase CLI
         run: npm install -g firebase-tools
 
-      - name: dist
+      - name: build
         env:
           REACT_APP_EMAILJS_SERVICE_ID: ${{secrets.REACT_APP_EMAILJS_SERVICE_ID}}
           REACT_APP_EMAILJS_TEMPLATE_ID: ${{secrets.REACT_APP_EMAILJS_TEMPLATE_ID}}
           REACT_APP_EMAILJS_PUBLIC_KEY: ${{secrets.REACT_APP_EMAILJS_PUBLIC_KEY}}
-          REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
-          REACT_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }}
+          apiKey: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
+          authDomain: ${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }}
           REACT_APP_FIREBASE_PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
           REACT_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }}
-          REACT_APP_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID }}
-          REACT_APP_FIREBASE_APP_ID: ${{ secrets.REACT_APP_FIREBASE_APP_ID }}
-          REACT_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.REACT_APP_FIREBASE_MEASUREMENT_ID }}
+          messagingSenderId: ${{ secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID }}
+          appId: ${{ secrets.REACT_APP_FIREBASE_APP_ID }}
+          measurementId: ${{ secrets.REACT_APP_FIREBASE_MEASUREMENT_ID }}
 
         run: CI=false npm run build
 
