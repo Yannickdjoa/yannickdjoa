@@ -14,6 +14,9 @@
 .swiper-rtl .swiper-button-prev:after {
   color: #ca8a04;
 }
+.object-cover {
+  object-fit: cover;
+}
 
 .MuiTabs-indicator {
   color: #047857;

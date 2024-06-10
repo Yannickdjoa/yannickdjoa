@@ -34,11 +34,14 @@ function MainView() {
     getWebIntro();
   }, []);
   return (
-    <div id="mainview" className="bg-primary/60 h-screen ">
+    <div
+      id="mainview"
+      className=" flex flex-row justify-between bg-primary/60 h-screen "
+    >
       {/* text area div */}
-      <div className="flex flex-col-reverse xl:flex-row items-center justify-between w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
+      <div className="flex flex-col xl:flex-row items-center justify-between w-[60%] h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
         {webIntroData && (
-          <div className="text-center flex flex-col justify-center xl:text-left xl:pt-40 h-full container mx-auto">
+          <div className="text-center flex flex-col justify-center xl:text-left xl:pt-5 xl:pl-10 h-full container mx-auto">
             {/* title */}
 
             <motion.h1
@@ -62,7 +65,7 @@ function MainView() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="p text-xl text-justify max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16 z-10"
+              className="p text-xl text-justify mx-auto xl:mx-0 mb-10 xl:mb-16 pr-24 z-10"
             >
               {webIntroData.introText}
             </motion.p>
@@ -84,16 +87,16 @@ function MainView() {
         )}
       </div>
       {/* images of hero section */}
-      <div className="w-[1200px] h-full absolute right-0 bottom-0">
+      <div className="w-[40%] h-full absolute right-0">
         {/* background image */}
-        <div className="bg-none xl:bg-world xl:bg-cover xl:bg-no-repeat xl:bg-right h-full w-full absolute mix-blend-color-dodge translate-z-0"></div>
+        {/* <div className="bg-none xl:bg-world xl:bg-cover xl:bg-no-repeat xl:bg-right h-full w-full absolute mix-blend-color-dodge translate-z-0"></div> */}
         {/* hero image */}
         <motion.div
           variants={fadeIn('up', 0.5)}
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="w-full h-full max-w-[537px] max-h-[478px] absolute -bottom-40  lg:right-[2%] translate-z-0"
+          className="w-full h-full  max-h-[478px]  lg:right-[2%] translate-z-0"
         >
           <Avatar />
         </motion.div>

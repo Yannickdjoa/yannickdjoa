@@ -19,9 +19,9 @@ export default {
         secondary: '#393A47',
         accent: '#F13024',
       },
-      backgroundImage: {
-        world: 'url("/world.png")',
-      },
+      // backgroundImage: {
+      //   world: 'url("/world.png")',
+      // },
       animation: {
         'spin-slow': 'spin 6s linear infinite',
       },
