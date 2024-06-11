@@ -36,12 +36,12 @@ function MainView() {
   return (
     <div
       id="mainview"
-      className=" flex flex-row justify-between bg-primary/60 h-screen "
+      className=" flex flex-row justify-between bg-primary/60 h-screen bg-gradient-to-r from-primary/10 via-black/30 to-black/10"
     >
       {/* text area div */}
-      <div className="flex flex-col xl:flex-row items-center justify-between w-[60%] h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
+      <div className="flex flex-col xl:flex-row items-center justify-between w-[60%] max-w-[800px] ml-2 lg:ml-20 h-full ">
         {webIntroData && (
-          <div className="text-center flex flex-col justify-center xl:text-left xl:pt-5 xl:pl-10 h-full container mx-auto">
+          <div className="text-center flex flex-col justify-center md:text-left xl:pt-5 xl:pl-10 h-full container mx-auto">
             {/* title */}
 
             <motion.h1
@@ -49,7 +49,7 @@ function MainView() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="h1 text-white z-10"
+              className="h1  text-white z-10"
             >
               {webIntroData.mainCaption}
               <br />
@@ -70,7 +70,7 @@ function MainView() {
               {webIntroData.introText}
             </motion.p>
             {/* button on small screens */}
-            <div className="flex justify-center xl:hidden relative ">
+            <div className="flex justify-center md:hidden relative ">
               <ProjectButton />
             </div>
             {/* button bigger screens */}
@@ -79,7 +79,7 @@ function MainView() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="hidden xl:flex"
+              className="hidden md:flex"
             >
               <ProjectButton />
             </motion.div>
