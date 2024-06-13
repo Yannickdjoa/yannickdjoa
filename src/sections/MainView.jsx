@@ -32,16 +32,16 @@ function MainView() {
   };
   useEffect(() => {
     getWebIntro();
-  }, []);
+  }, [getWebIntro]);
   return (
     <div
       id="mainview"
       className=" flex flex-row justify-between bg-primary/60 h-screen bg-gradient-to-r from-primary/10 via-black/30 to-black/10"
     >
       {/* text area div */}
-      <div className="flex flex-col xl:flex-row items-center justify-between w-[60%] max-w-[800px] ml-2 lg:ml-20 h-full ">
+      <div className="flex flex-col xl:flex-row items-center justify-between md:w-[60%] md:max-w-[800px] ml-2 lg:ml-20 h-full ">
         {webIntroData && (
-          <div className="text-center flex flex-col justify-center md:text-left xl:pt-5 xl:pl-10 h-full container mx-auto">
+          <div className=" flex flex-col items-center px-4 md:text-left pt-5 xl:pl-10 h-full ">
             {/* title */}
 
             <motion.h1
@@ -65,7 +65,7 @@ function MainView() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="p text-xl text-justify mx-auto xl:mx-0 mb-10 xl:mb-16 pr-24 z-10"
+              className="p text-xl text-justify mx-auto xl:mx-0 mb-10 xl:mb-16 md:pr-24 z-10"
             >
               {webIntroData.introText}
             </motion.p>
