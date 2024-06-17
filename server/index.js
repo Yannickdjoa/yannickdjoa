@@ -9,6 +9,7 @@ const servicesRouter = require('./routes/services.route.js');
 const textCollectionRouter = require('./routes/textCollection.route.js');
 const webIntroRouter = require('./routes/webIntro.route.js');
 const aboutMeRouter = require('./routes/about.route.js');
+const userRouter = require('./routes/user.route.js');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use('/api/services', servicesRouter);
 app.use('/api/textCollection', textCollectionRouter);
 app.use('/api/webIntro', webIntroRouter);
 app.use('/api/aboutMe', aboutMeRouter);
+app.use('/api/user', userRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
