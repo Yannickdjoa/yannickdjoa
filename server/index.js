@@ -31,7 +31,7 @@ app.use('/api/services', servicesRouter);
 app.use('/api/textCollection', textCollectionRouter);
 app.use('/api/webIntro', webIntroRouter);
 app.use('/api/aboutMe', aboutMeRouter);
-app.use('/api/user', userRouter);
+app.use('/api/users', userRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

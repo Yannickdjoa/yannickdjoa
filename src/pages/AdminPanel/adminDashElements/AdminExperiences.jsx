@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-import experiencesSlice from '../../../redux/slices/experienceSlice.js';
 import React, { useEffect, useState } from 'react';
 import { storage } from '../../../../firebase.js';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
@@ -111,7 +110,7 @@ function AdminExperiences() {
     );
   };
   const handleSubmit = async () => {
-    const response = await fetch(`${baseUrl}/api/experiences/create`, {
+    await fetch(`${baseUrl}/api/experiences/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

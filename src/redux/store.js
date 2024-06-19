@@ -7,6 +7,7 @@ import webintroReducer from './slices/webIntroSlice';
 import heroListReducer from './slices/heroSlice';
 import textsReducer from './slices/textsSlice';
 import biodataReducer from './slices/bioSlice';
+import userReducer from './slices/userSlice';
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     hero: heroListReducer,
     texts: textsReducer,
     biodata: biodataReducer,
+    user: userReducer,
   },
 });

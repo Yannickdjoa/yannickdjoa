@@ -24,6 +24,7 @@ import AdminServices from './src/pages/AdminPanel/adminDashElements/AdminService
 import ServiceBox from './src/pages/AdminPanel/adminComponents/ServiceBox';
 import ServiceToDelete from './src/pages/AdminPanel/adminComponents/ServiceToDelete';
 import ProjectToDelete from './src/pages/AdminPanel/adminComponents/ProjectToDelete';
+import UserManagement from './src/pages/AdminPanel/UserManagement';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   startGettingTextsList,
@@ -145,6 +146,10 @@ function App(criteria) {
             <Route
               path="/admindashboard/services/confirmdelation/:servId"
               element={<ServiceToDelete />}
+            />
+            <Route
+              path="/admindashboard/usermanagement"
+              element={<UserManagement />}
             />
           </Routes>
         </div>

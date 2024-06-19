@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import Avatar from '../components/Avatar';
 import ProjectButton from '../components/ProjectButton';
 import { motion } from 'framer-motion';

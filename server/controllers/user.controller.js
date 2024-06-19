@@ -5,9 +5,10 @@ const { errorHandler } = require('../utils/error.js');
 const createUsers = async (req, res) => {
   try {
     const {
+      uid,
       name,
       userName,
-      phone,
+      phoneNumber,
       email,
       password,
       role,
@@ -16,14 +17,16 @@ const createUsers = async (req, res) => {
       contractType,
       category,
       avatar,
+      position,
     } = req.body;
     const hashPassword = await bcryptjs.hashSync(password, 10);
-    const userId = db.collection('users').doc(`${Date.now()}`);
+    const userId = db.collection('users').doc(uid);
     await userId.create({
       userId: userId.id,
+      uid,
       name,
       userName,
-      phone,
+      phoneNumber,
       email,
       password: hashPassword,
       role,
@@ -32,6 +35,7 @@ const createUsers = async (req, res) => {
       avatar,
       contractType,
       category,
+      position,
     });
     return res.status(200).send({
       status: 'success',
@@ -62,6 +66,7 @@ const updateUser = async (req, res, next) => {
           github: req.body.github,
           contractType: req.body.contractType,
           category: req.body.category,
+          position: req.body.position,
           avatar: req.body.avatar,
         });
         return res.status(200).send({
@@ -110,12 +115,13 @@ const getUser = async (req, res, next) => {
 const getAllUsers = async (req, res) => {
   try {
     const userList = [];
-    const userDetails = await db.collection('users').get();
+    const userId = db.collection('users');
+    const userDetails = await userId.get();
     userDetails.forEach((user) => {
       const { password: pass, ...rest } = user.data();
       userList.push(rest);
     });
-    
+
     return res.status(200).send({ status: 'success', data: userList });
   } catch (error) {
     return res.status(500).send({ status: 'failed', message: error });

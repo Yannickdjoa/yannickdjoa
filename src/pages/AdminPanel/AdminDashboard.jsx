@@ -11,6 +11,7 @@ import AdminTextCollection from './adminDashElements/AdminTextCollection';
 import AdminPersonalData from './adminDashElements/AdminPersonalData';
 import DashboardText from './adminComponents/DashboardText';
 import AdminExperiences from './adminDashElements/AdminExperiences';
+import { Link } from 'react-router-dom';
 
 function a11yProps(index) {
   return {
@@ -175,6 +176,15 @@ function AdminDashboard() {
             color: 'white',
           }}
         />
+        <div className="flex justify-center mt-10">
+          <Link
+            type="button"
+            to={'/admindashboard/usermanagement'}
+            className="btn px-4 "
+          >
+            Manage Users
+          </Link>
+        </div>
       </Tabs>
       <TabPanel value={value} index={0}>
         <DashboardText />
