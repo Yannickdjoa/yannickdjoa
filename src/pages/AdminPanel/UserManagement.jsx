@@ -10,7 +10,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import {
   setUserList,
   failedToUploadUserList,
-  UploadingUserList,
+  uploadingUserList,
 } from '../../redux/slices/userSlice';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -60,23 +60,22 @@ function UserManagement() {
     position: '',
   });
 
-  const usersList = async () => {
-    dispatch(UploadingUserList(true));
+  const fetchUsersList = async () => {
+    dispatch(uploadingUserList(true));
     try {
       const response = await fetch('/api/users/getAll');
       const data = await response.json();
       dispatch(setUserList(data.data));
-      dispatch(UploadingUserList(false));
+      dispatch(uploadingUserList(false));
       dispatch(failedToUploadUserList(false));
-      console.log(data);
     } catch (error) {
-      dispatch(UploadingUserList(false));
-      dispatch(failedToUploadUserList(error));
+      dispatch(uploadingUserList(false));
+      dispatch(failedToUploadUserList(error.message));
     }
   };
   useEffect(() => {
-    usersList();
-  }, []);
+    fetchUsersList();
+  }, [dispatch]);
 
   const handleUploadFile = async (file) => {
     setUploading(true);
@@ -113,25 +112,34 @@ function UserManagement() {
       [e.target.id]: e.target.value,
     });
   };
+  const resetFormFields = () => {
+    setFormData({
+      name: '',
+      userName: '',
+      phoneNumber: '',
+      email: '',
+      password: '',
+      role: '',
+      location: '',
+      github: '',
+      contractType: '',
+      category: '',
+      avatar: '',
+      position: '',
+    });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const auth = getAuth(app);
-      const email = formData.email;
-      const password = formData.password;
-      const photoURL = formData.avatar;
-      const phoneNumber = formData.phoneNumber;
-      const displayName = formData.userName;
+    const auth = getAuth(app);
+    const { email, password } = formData;
 
-      const result = await createUserWithEmailAndPassword(
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
-        password,
-        photoURL,
-        phoneNumber,
-        displayName
+        password
       );
-      console.log(result);
+      const { user } = userCredential;
       const res = await fetch('/api/users/create', {
         method: 'POST',
         headers: {
@@ -139,14 +147,16 @@ function UserManagement() {
         },
         body: JSON.stringify({
           ...formData,
-          uid: result.user.uid,
+          uid: user.uid,
         }),
       });
       const data = await res.json();
       console.log(data);
       if (data.status === 'success') {
         setAddModal(false);
+        resetFormFields();
       }
+      return;
     } catch (error) {
       console.log('error detected', error);
     }

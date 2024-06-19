@@ -54,7 +54,7 @@ const userSlice = createSlice({
     signOutFailure: (state, action) => {
       (state.loading = false), (state.error = action.payload);
     },
-    UploadingUserList: (state) => {
+    uploadingUserList: (state) => {
       state.loading = true;
       state.error = false;
     },
@@ -85,7 +85,7 @@ export const {
   signOutSuccess,
   setUserList,
   failedToUploadUserList,
-  UploadingUserList,
+  uploadingUserList,
 } = userSlice.actions;
 
 export const loginUser = (state) => state.user;
