@@ -63,7 +63,7 @@ function UserManagement() {
   const fetchUsersList = async () => {
     dispatch(uploadingUserList(true));
     try {
-      const response = await fetch('/api/users/getAll');
+      const response = await fetch(`${baseUrl}/api/users/getAll`);
       const data = await response.json();
       dispatch(setUserList(data.data));
       dispatch(uploadingUserList(false));
@@ -140,7 +140,7 @@ function UserManagement() {
         password
       );
       const { user } = userCredential;
-      const res = await fetch('/api/users/create', {
+      const res = await fetch(`${baseUrl}/api/users/create`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -190,7 +190,7 @@ function UserManagement() {
           {userList &&
             userList.map((user) => (
               <div
-                key={user.userId}
+                key={user.uid}
                 className="flex flex-col justify-between items-start border-2 border-neutral-400 mt-8 p-4  "
               >
                 <div className="mb-4">
@@ -219,13 +219,13 @@ function UserManagement() {
 
                 <div className="flex flex-row gap-8 justify-end mt-8">
                   <Link
-                    to={`/admindashboard/usermanagement/deleteteuser/${user.userId}`}
+                    to={`/admindashboard/usermanagement/deleteteuser/${user.uid}`}
                     className="btn bg-red-700 text-white font-normal"
                   >
                     Delete
                   </Link>
                   <Link
-                    to={`/admindashboard/usermanagement/updateuser/${user.userId}`}
+                    to={`/admindashboard/usermanagement/updateuser/${user.uid}`}
                     className="btn px-4 "
                   >
                     Edit

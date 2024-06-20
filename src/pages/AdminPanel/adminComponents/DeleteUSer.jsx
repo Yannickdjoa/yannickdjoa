@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
 
@@ -6,42 +6,48 @@ function DeleteUSer() {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const params = useParams();
   const navigate = useNavigate();
-  const [serviceData, setServiceData] = useState({
+  const [userData, setUserData] = useState({
+    uid: '',
+    name: '',
+    userName: '',
+    phoneNumber: '',
+    email: '',
+    password: '',
+    role: '',
+    location: '',
+    github: '',
+    contractType: '',
     category: '',
-    serviceName: '',
-    description: '',
-    price: '',
-    timeFrame: '',
-    serviceImage: '',
-    stacksUsed: '',
+    avatar: '',
+    position: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const currentData = async () => {
-    const response = await fetch(
-      `${baseUrl}/api/services/get/${params.servId}`
-    );
+  const userToDeleteData = async () => {
+    const response = await fetch(`${baseUrl}/api/users/get/${params.userId}`);
     const data = await response.json();
     if (data.status == 'success') {
-      setServiceData({ ...data.data });
+      setUserData({ ...data.data });
     }
   };
   useEffect(() => {
-    currentData();
+    userToDeleteData();
   }, []);
 
-  const handleDelete = async () => {
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch(
-        `${baseUrl}/api/services/delete/${params.servId}`,
+        `${baseUrl}/api/users/delete/${params.userId}`,
         {
           method: 'DELETE',
         }
       );
       const data = await response.json();
       if (data.status === 'success') {
-        navigate('/admindashboard');
+        navigate('/admindashboard/usermanagement');
       } else {
         return setError(data.message);
       }
@@ -52,28 +58,20 @@ function DeleteUSer() {
 
   return (
     <div>
-      {serviceData && (
+      {userData && (
         <div className="flex flex-col justify-center items-center h-[80vh] w-full">
           <h1 className="text-2xl font-semibold text-red-500">
-            Review {serviceData.serviceName} service's details before deleting
+            Review {userData.userName} users details before deleting
           </h1>
           <div className="flex flex-col mt-8 gap-8 border-2 border-neutral-500 justify-center items-start p-16">
-            <img src={serviceData.serviceImage} className="h-24 w24" />
+            <img src={userData.serviceImage} className="h-24 w24" />
+            <p className="text-white text-xl">user: {userData.userName}</p>
+            <p className="text-white text-xl">Category: {userData.category}</p>
+            <p className="text-white text-xl">uid Number: {userData.uid}</p>
+            <p className="text-white text-xl">Name: {userData.name}</p>
+            <p className="text-white text-xl">Email: {userData.email}</p>
             <p className="text-white text-xl">
-              Service: {serviceData.serviceName}
-            </p>
-            <p className="text-white text-xl">
-              Category: {serviceData.category}
-            </p>
-            <p className="text-white text-xl">
-              Time Needed: {serviceData.timeFrame}
-            </p>
-            <p className="text-white text-xl">Price: {serviceData.price}</p>
-            <p className="text-white text-xl">
-              Description: {serviceData.description}
-            </p>
-            <p className="text-white text-xl">
-              Stacks used: {serviceData.stacksUsed}
+              Phone Number: {userData.stacksUsed}
             </p>
           </div>
         </div>
@@ -90,7 +88,7 @@ function DeleteUSer() {
           disabled={loading}
           type="button"
           className="flex  cursor-pointer active items-center gap-2 text-center bg-neutral-600 p-2 rounded-xl text-xl font-semibold text-yellow-600 disabled:opacity-70 disabled:bg-yellow-600/50 disabled:cursor-wait"
-          onClick={() => navigate('/admindashboard')}
+          onClick={() => navigate('/admindashboard/usermanagement')}
         >
           <TiArrowBackOutline className=" md:h-6 md:w-6" />
           Cancel

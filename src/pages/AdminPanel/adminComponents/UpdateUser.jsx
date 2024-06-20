@@ -40,7 +40,7 @@ function UpdateUser() {
   const [fileUploadError, setFileUploadError] = useState(false);
 
   const UpdatedUserData = async () => {
-    const response = await fetch(`/api/users/get/${params.userId}`);
+    const response = await fetch(`${baseUrl}/api/users/get/${params.userId}`);
     const data = await response.json();
     if (data.status == 'success') {
       setFormData({ ...data.data });
@@ -96,13 +96,16 @@ function UpdateUser() {
     try {
       dispatch(updateUserStart(true));
 
-      const response = await fetch(`/api/users/update/${params.userId}`, {
-        method: 'PUT',
-        headers: {
-          'content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${baseUrl}/api/users/update/${params.userId}`,
+        {
+          method: 'PUT',
+          headers: {
+            'content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await response.json();
       dispatch(updateUserStart(false));
 

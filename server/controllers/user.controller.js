@@ -23,7 +23,6 @@ const createUsers = async (req, res) => {
     const hashPassword = await bcryptjs.hashSync(password, 10);
     const userId = db.collection('users').doc(uid);
     await userId.create({
-      userId: userId.id,
       uid,
       name,
       userName,
@@ -101,18 +100,23 @@ const updateUser = async (req, res, next) => {
 const deleteUser = async (req, res, next) => {
   const userId = db.collection('users').doc(req.params.id);
   const userDetails = await userId.get();
+  const uid = req.params.id;
 
   if (!userDetails.exists) {
     return next(errorHandler(404, 'user not found'));
-  } else {
-    try {
-      await userId.delete();
-      return res
-        .status(200)
-        .send({ status: 'success', message: 'user deleted successfully' });
-    } catch (error) {
-      return res.status(500).send({ status: 'failed', message: error });
-    }
+  }
+  try {
+    getAuth()
+      .deleteUser(uid)
+      .then(() => {
+        console.log('Successfully deleted user');
+      });
+    await userId.delete();
+    return res
+      .status(200)
+      .send({ status: 'success', message: 'user deleted successfully' });
+  } catch (error) {
+    return res.status(500).send({ status: 'failed', message: error });
   }
 };
 
