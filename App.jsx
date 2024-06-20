@@ -40,6 +40,8 @@ import {
 } from './src/redux/slices/bioSlice';
 import { useEffect } from 'react';
 import ServiceCard from './src/components/ServiceCard';
+import UpdateUser from './src/pages/AdminPanel/adminComponents/UpdateUser';
+import DeleteUSer from './src/pages/AdminPanel/adminComponents/DeleteUSer';
 
 function App(criteria) {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -150,6 +152,14 @@ function App(criteria) {
             <Route
               path="/admindashboard/usermanagement"
               element={<UserManagement />}
+            />
+            <Route
+              path="/admindashboard/usermanagement/updateuser/:userId"
+              element={<UpdateUser />}
+            />
+            <Route
+              path="/admindashboard/usermanagement/deleteteuser/:userId"
+              element={<DeleteUSer />}
             />
           </Routes>
         </div>

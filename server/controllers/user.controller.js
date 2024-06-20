@@ -1,6 +1,7 @@
 const { db } = require('../firebaseConfig.js');
 const bcryptjs = require('bcryptjs');
 const { errorHandler } = require('../utils/error.js');
+const { getAuth } = require('firebase-admin/auth');
 
 const createUsers = async (req, res) => {
   try {
@@ -49,40 +50,58 @@ const createUsers = async (req, res) => {
 const updateUser = async (req, res, next) => {
   const userId = db.collection('users').doc(req.params.id);
   const userDetails = await userId.get();
+  const uid = req.params.id;
   if (!userDetails.exists) {
     return next(errorHandler(404, 'user not found'));
-  } else {
-    try {
-      if (req.body.password) {
-        const hashPassword = await bcryptjs.hashSync(req.body.password, 10);
-        await userId.update({
-          name: req.body.name,
-          userName: req.body.userName,
-          phone: req.body.phone,
-          email: req.body.email,
-          password: hashPassword,
-          role: req.body.role,
-          location: req.body.location,
-          github: req.body.github,
-          contractType: req.body.contractType,
-          category: req.body.category,
-          position: req.body.position,
-          avatar: req.body.avatar,
-        });
-        return res.status(200).send({
-          status: 'success',
-          message: 'user updated successfully',
-        });
-      }
-    } catch (error) {
-      return next(error);
+  }
+
+  try {
+    getAuth()
+      .updateUser(uid, {
+        email: req.body.email,
+        password: req.body.password,
+      })
+      .then((userRecord) => {
+        // See the UserRecord reference doc for the contents of userRecord.
+        console.log('Successfully updated user', userRecord.toJSON());
+      });
+
+    const updatedData = {
+      name: req.body.name,
+      userName: req.body.userName,
+      phone: req.body.phone,
+      email: req.body.email,
+      role: req.body.role,
+      location: req.body.location,
+      github: req.body.github,
+      contractType: req.body.contractType,
+      category: req.body.category,
+      position: req.body.position,
+      avatar: req.body.avatar,
+    };
+
+    if (req.body.password) {
+      const hashPassword = await bcryptjs.hashSync(req.body.password, 10);
+      updatedData.password = hashPassword;
     }
+
+    await userId.update(updatedData);
+    const updatedUserDetails = await userId.get();
+
+    return res.status(200).send({
+      status: 'success',
+      message: 'user updated successfully',
+      data: updatedUserDetails.data(),
+    });
+  } catch (error) {
+    return next(error);
   }
 };
 
 const deleteUser = async (req, res, next) => {
   const userId = db.collection('users').doc(req.params.id);
   const userDetails = await userId.get();
+
   if (!userDetails.exists) {
     return next(errorHandler(404, 'user not found'));
   } else {

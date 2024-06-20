@@ -161,6 +161,7 @@ function UserManagement() {
       console.log('error detected', error);
     }
   };
+  console.log(userList);
   return (
     <div>
       <div className="flex flex-col justify-between gap-10">
@@ -218,12 +219,15 @@ function UserManagement() {
 
                 <div className="flex flex-row gap-8 justify-end mt-8">
                   <Link
-                    to={'/'}
+                    to={`/admindashboard/usermanagement/deleteteuser/${user.userId}`}
                     className="btn bg-red-700 text-white font-normal"
                   >
                     Delete
                   </Link>
-                  <Link to={'/'} className="btn px-4 ">
+                  <Link
+                    to={`/admindashboard/usermanagement/updateuser/${user.userId}`}
+                    className="btn px-4 "
+                  >
                     Edit
                   </Link>
                 </div>
