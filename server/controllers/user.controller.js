@@ -2,47 +2,126 @@ const { db } = require('../firebaseConfig.js');
 const bcryptjs = require('bcryptjs');
 const { errorHandler } = require('../utils/error.js');
 const { getAuth } = require('firebase-admin/auth');
+const auth = getAuth();
 
+// const createUsers = async (req, res) => {
+//   // {
+//   //   // uid,
+//   //   name,
+//   //   userName,
+//   //   phoneNumber,
+//   //   email,
+//   //   password,
+//   //   role,
+//   //   location,
+//   //   github,
+//   //   contractType,
+//   //   category,
+//   //   avatar,
+//   //   position,
+//   // } = req.body;
+//   // console.log(req.body);
+//   try {
+//     // const userCredential = await createUser(
+//     //   auth,
+//     //   email,
+//     //   password
+//     // );
+//     // const { user } = userCredential;
+//     // const { uid } = user;
+//     // const hashPassword = await bcryptjs.hashSync(password, 10);
+//     const userCredential = auth.createUser({
+//       name: req.body.name,
+//       userName: req.body.userName,
+//       phoneNumber: req.body.phoneNumber,
+//       email: req.body.email,
+//       password: req.body.password,
+//       role: req.body.role,
+//       location: req.body.location,
+//       github: req.body.github,
+//       avatar: req.body.avatar,
+//       contractType: req.body.contractType,
+//       category: req.body.category,
+//       position: req.body.position,
+//     });
+//     const newUser = await userCredential.get();
+//     console.log(newUser);
+//     // const { uid } = userCredential;
+//     // const userId = db.collection('users').doc(uid);
+//     // await userId.create({
+//     //   uid,
+//     //   name,
+//     //   userName,
+//     //   phoneNumber,
+//     //   email,
+//     //   password: hashPassword,
+//     //   role,
+//     //   location,
+//     //   github,
+//     //   avatar,
+//     //   contractType,
+//     //   category,
+//     //   position,
+//     // });
+//     return res.status(200).send({
+//       status: 'success',
+//       message: 'user created successfully',
+//       user: userCredential.user,
+//     });
+//   } catch (error) {
+//     return res.status(500).send({ status: 'failed', message: error });
+//   }
+// };
+const validatePhoneNumber = (phoneNumber) => {
+  const e164Regex = /^\+?[1-9]\d{1,14}$/;
+  return e164Regex.test(phoneNumber);
+};
 const createUsers = async (req, res) => {
+  console.log(req.body);
   try {
-    const {
-      uid,
-      name,
-      userName,
-      phoneNumber,
+    const { phoneNumber, email, password, displayName } = req.body;
+
+    if (phoneNumber && !validatePhoneNumber(phoneNumber)) {
+      return res.status(400).json({
+        status: 'failed',
+        message:
+          'The phone number must be contain the country code in format (+1)',
+      });
+    }
+
+    const userCredential = await auth.createUser({
+      displayName,
       email,
       password,
-      role,
-      location,
-      github,
-      contractType,
-      category,
-      avatar,
-      position,
-    } = req.body;
-    const hashPassword = await bcryptjs.hashSync(password, 10);
-    const userId = db.collection('users').doc(uid);
-    await userId.create({
-      uid,
-      name,
-      userName,
+      phoneNumber,
+    });
+    console.log(userCredential.uid);
+    const hashPassword = await bcryptjs.hash(password, 10);
+
+    await db.collection('users').doc(userCredential.uid).set({
+      uid: userCredential.uid,
+      name: req.body.name,
+      displayName,
       phoneNumber,
       email,
       password: hashPassword,
-      role,
-      location,
-      github,
-      avatar,
-      contractType,
-      category,
-      position,
+      role: req.body.role,
+      location: req.body.location,
+      github: req.body.github,
+      contractType: req.body.contractType,
+      category: req.body.category,
+      avatar: req.body.avatar,
+      position: req.body.position,
     });
-    return res.status(200).send({
+
+    return res.status(200).json({
       status: 'success',
-      message: 'user created successfully',
+      message: 'User created successfully',
+      user: { uid: userCredential.uid, email },
     });
   } catch (error) {
-    return res.status(500).send({ status: 'failed', message: error });
+    console.error('Error creating user:', error);
+    return res.status(500).json({ status: 'failed', message: error.message });
   }
 };
 
@@ -51,48 +130,68 @@ const updateUser = async (req, res, next) => {
   const userDetails = await userId.get();
   const uid = req.params.id;
   if (!userDetails.exists) {
-    return next(errorHandler(404, 'user not found'));
+    return next(errorHandler(404, 'User not found'));
   }
 
   try {
-    getAuth()
-      .updateUser(uid, {
-        email: req.body.email,
-        password: req.body.password,
-      })
-      .then((userRecord) => {
-        // See the UserRecord reference doc for the contents of userRecord.
-        console.log('Successfully updated user', userRecord.toJSON());
+    const {
+      phoneNumber,
+      email,
+      password,
+      displayName,
+      name,
+      role,
+      location,
+      github,
+      contractType,
+      category,
+      position,
+      avatar,
+    } = req.body;
+
+    if (phoneNumber && !validatePhoneNumber(phoneNumber)) {
+      return res.status(400).json({
+        status: 'failed',
+        message:
+          'The phone number must be contain the country code in format (+1)',
       });
-
-    const updatedData = {
-      name: req.body.name,
-      userName: req.body.userName,
-      phone: req.body.phone,
-      email: req.body.email,
-      role: req.body.role,
-      location: req.body.location,
-      github: req.body.github,
-      contractType: req.body.contractType,
-      category: req.body.category,
-      position: req.body.position,
-      avatar: req.body.avatar,
-    };
-
-    if (req.body.password) {
-      const hashPassword = await bcryptjs.hashSync(req.body.password, 10);
-      updatedData.password = hashPassword;
     }
 
-    await userId.update(updatedData);
+    await auth.updateUser(uid, {
+      email,
+      password,
+      displayName,
+      phoneNumber,
+    });
+
+    if (password) {
+      const hashPassword = await bcryptjs.hash(password, 10);
+      let password = hashPassword;
+    }
+
+    await userId.update({
+      phoneNumber,
+      email,
+      password,
+      displayName,
+      name,
+      role,
+      location,
+      github,
+      contractType,
+      category,
+      position,
+      avatar,
+    });
     const updatedUserDetails = await userId.get();
 
-    return res.status(200).send({
+    return res.status(200).json({
       status: 'success',
-      message: 'user updated successfully',
+      message: 'User updated successfully',
       data: updatedUserDetails.data(),
     });
   } catch (error) {
+    console.error('Error updating user:', error);
     return next(error);
   }
 };

@@ -42,6 +42,7 @@ import { useEffect } from 'react';
 import ServiceCard from './src/components/ServiceCard';
 import UpdateUser from './src/pages/AdminPanel/adminComponents/UpdateUser';
 import DeleteUSer from './src/pages/AdminPanel/adminComponents/DeleteUSer';
+import AdminLogin from './src/pages/AdminPanel/AdminLogin';
 
 function App(criteria) {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -161,6 +162,7 @@ function App(criteria) {
               path="/admindashboard/usermanagement/deleteteuser/:userId"
               element={<DeleteUSer />}
             />
+            <Route path="/adminLogin" element={<AdminLogin />} />
           </Routes>
         </div>
         <ScrollToTop />

@@ -47,7 +47,7 @@ function UserManagement() {
   const [showAddModal, setAddModal] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
-    userName: '',
+    displayName: '',
     phoneNumber: '',
     email: '',
     password: '',
@@ -59,11 +59,11 @@ function UserManagement() {
     avatar: '',
     position: '',
   });
-
+  // `${baseUrl}
   const fetchUsersList = async () => {
     dispatch(uploadingUserList(true));
     try {
-      const response = await fetch(`${baseUrl}/api/users/getAll`);
+      const response = await fetch('/api/users/getAll');
       const data = await response.json();
       dispatch(setUserList(data.data));
       dispatch(uploadingUserList(false));
@@ -115,7 +115,7 @@ function UserManagement() {
   const resetFormFields = () => {
     setFormData({
       name: '',
-      userName: '',
+      displayName: '',
       phoneNumber: '',
       email: '',
       password: '',
@@ -130,26 +130,28 @@ function UserManagement() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const auth = getAuth(app);
-    const { email, password } = formData;
+    // const auth = getAuth(app);
+    // const { email, password } = formData;
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const { user } = userCredential;
-      const res = await fetch(`${baseUrl}/api/users/create`, {
+      // const userCredential = await createUserWithEmailAndPassword(
+      //   auth,
+      //   email,
+      //   password
+      // );
+      // const { user } = userCredential;
+      // ${baseUrl}
+      const res = await fetch('/api/users/create', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
           ...formData,
-          uid: user.uid,
+          // uid: user.uid,
         }),
       });
+      console.log(formData);
       const data = await res.json();
       console.log(data);
       if (data.status === 'success') {
@@ -201,7 +203,7 @@ function UserManagement() {
                 <div className="flex flex-col items-start">
                   <p className="text-neutral-400 text-xl">
                     <span className="text-white">userName: </span>
-                    {user.userName}
+                    {user.displayName}
                   </p>
                   <p className="text-neutral-400 text-xl">
                     <span className="text-white">Email: </span>
@@ -276,11 +278,11 @@ function UserManagement() {
                 userName
               </label>
               <input
-                id="userName"
+                id="displayName"
                 type="text"
                 className="input"
                 onChange={handleChange}
-                value={formData.userName}
+                value={formData.displayName}
               />
             </div>
             <div className="flex flex-col">

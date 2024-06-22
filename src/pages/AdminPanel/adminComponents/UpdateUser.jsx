@@ -20,10 +20,10 @@ function UpdateUser() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
-    userName: '',
+    displayName: '',
     phoneNumber: '',
     email: '',
-    // password: '',
+    password: '',
     role: '',
     location: '',
     github: '',
@@ -38,9 +38,9 @@ function UpdateUser() {
   //   const [error, setError] = useState(null);
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
-
+  // ${baseUrl}
   const UpdatedUserData = async () => {
-    const response = await fetch(`${baseUrl}/api/users/get/${params.userId}`);
+    const response = await fetch(`/api/users/get/${params.userId}`);
     const data = await response.json();
     if (data.status == 'success') {
       setFormData({ ...data.data });
@@ -93,19 +93,17 @@ function UpdateUser() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // ${baseUrl}
     try {
       dispatch(updateUserStart(true));
 
-      const response = await fetch(
-        `${baseUrl}/api/users/update/${params.userId}`,
-        {
-          method: 'PUT',
-          headers: {
-            'content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(`/api/users/update/${params.userId}`, {
+        method: 'PUT',
+        headers: {
+          'content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
       const data = await response.json();
       dispatch(updateUserStart(false));
 
@@ -150,11 +148,11 @@ function UpdateUser() {
             userName
           </label>
           <input
-            id="userName"
+            id="displayName"
             type="text"
             className="input"
             onChange={handleChange}
-            value={formData.userName || ''}
+            value={formData.displayName || ''}
           />
         </div>
         <div className="flex flex-col">

@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-function Oauth() {
-  return (
-    <div>
-      
-    </div>
-  )
+function OAuth() {
+  return <div></div>;
 }
 
-export default Oauth
+export default OAuth;

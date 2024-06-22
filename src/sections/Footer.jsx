@@ -90,7 +90,7 @@ function Footer() {
       </div>
       <div className="flex flex-col md:gap-8 items-center justify-center">
         <NavLink
-          to="/admindashboard"
+          to="/adminLogin"
           className="btn w-52 text-center hidden md:flex "
         >
           Admin Dashboard
