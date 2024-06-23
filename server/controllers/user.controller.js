@@ -4,74 +4,6 @@ const { errorHandler } = require('../utils/error.js');
 const { getAuth } = require('firebase-admin/auth');
 const auth = getAuth();
 
-// const createUsers = async (req, res) => {
-//   // {
-//   //   // uid,
-//   //   name,
-//   //   userName,
-//   //   phoneNumber,
-//   //   email,
-//   //   password,
-//   //   role,
-//   //   location,
-//   //   github,
-//   //   contractType,
-//   //   category,
-//   //   avatar,
-//   //   position,
-//   // } = req.body;
-//   // console.log(req.body);
-//   try {
-//     // const userCredential = await createUser(
-//     //   auth,
-//     //   email,
-//     //   password
-//     // );
-//     // const { user } = userCredential;
-//     // const { uid } = user;
-//     // const hashPassword = await bcryptjs.hashSync(password, 10);
-//     const userCredential = auth.createUser({
-//       name: req.body.name,
-//       userName: req.body.userName,
-//       phoneNumber: req.body.phoneNumber,
-//       email: req.body.email,
-//       password: req.body.password,
-//       role: req.body.role,
-//       location: req.body.location,
-//       github: req.body.github,
-//       avatar: req.body.avatar,
-//       contractType: req.body.contractType,
-//       category: req.body.category,
-//       position: req.body.position,
-//     });
-//     const newUser = await userCredential.get();
-//     console.log(newUser);
-//     // const { uid } = userCredential;
-//     // const userId = db.collection('users').doc(uid);
-//     // await userId.create({
-//     //   uid,
-//     //   name,
-//     //   userName,
-//     //   phoneNumber,
-//     //   email,
-//     //   password: hashPassword,
-//     //   role,
-//     //   location,
-//     //   github,
-//     //   avatar,
-//     //   contractType,
-//     //   category,
-//     //   position,
-//     // });
-//     return res.status(200).send({
-//       status: 'success',
-//       message: 'user created successfully',
-//       user: userCredential.user,
-//     });
-//   } catch (error) {
-//     return res.status(500).send({ status: 'failed', message: error });
-//   }
-// };
 const validatePhoneNumber = (phoneNumber) => {
   const e164Regex = /^\+?[1-9]\d{1,14}$/;
   return e164Regex.test(phoneNumber);
@@ -220,7 +152,8 @@ const deleteUser = async (req, res, next) => {
 };
 
 const getUser = async (req, res, next) => {
-  const userId = db.collection('users').doc(req.params.id);
+  const uid = req.params.id;
+  const userId = db.collection('users').doc(uid);
   const userDetails = await userId.get();
   if (!userDetails.exists) {
     return next(errorHandler(404, 'user not found'));

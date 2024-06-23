@@ -51,56 +51,59 @@ function AdminLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(userLogInStart());
-    const auth = getAuth();
-    const { email, password } = formData;
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const { user } = userCredential;
-      console.log(user);
+      const response = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+        }),
+      });
+      const data = await response.json();
+      if (data.status === false) {
+        dispatch(userLoginfailed(true));
+        return;
+      }
+      console.log(data);
+      dispatch(userLoginsuccess(data.data));
+      dispatch(userLogInStart(false));
+      dispatch(userLoginfailed(false));
+      navigate('/admindashboard');
+      console.log(currentUser);
     } catch (error) {
-      // const response = await fetch('/api/auth/signin', {
-      //   method: 'POST',
-      //   headers: {
-      //     'content-type': 'application/json',
-      //   },
-      //   body: JSON.stringify({
-      //     email,
-      //     password,
-      //   }),
-      // });
-      // const data = response.json();
-      // if (data.status === false) {
-      //   dispatch(userLoginfailed(true));
-      //   return;
-      // }
-      // dispatch(userLoginsuccess(data.data));
-      // dispatch(userLogInStart(false));
-      // navigate('/admindashboard');
-
-      
-      // import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
-      // const auth = getAuth();
-      // onAuthStateChanged(auth, (user) => {
-      //   if (user) {
-      //     // User is signed in, see docs for a list of available properties
-      //     // https://firebase.google.com/docs/reference/js/auth.user
-      //     const uid = user.uid;
-      //     // ...
-      //   } else {
-      //     // User is signed out
-      //     // ...
-      //   }
-      // });
       dispatch(userLoginfailed(true));
       dispatch(userLogInStart(false));
       console.log(error);
     }
   };
+
+  //   const auth = getAuth();
+  // const { email, password } = formData;
+  //   const userCredential = await signInWithEmailAndPassword(
+  //     auth,
+  //     email,
+  //     password
+  //   );
+  //   const { user } = userCredential;
+  //   console.log(user);
+  // } catch (error) {
+  // import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
+  // const auth = getAuth();
+  // onAuthStateChanged(auth, (user) => {
+  //   if (user) {
+  //     // User is signed in, see docs for a list of available properties
+  //     // https://firebase.google.com/docs/reference/js/auth.user
+  //     const uid = user.uid;
+  //     // ...
+  //   } else {
+  //     // User is signed out
+  //     // ...
+  //   }
+  // });
+
   return (
     <div className="flex flex-col items-center mb-52">
       <div className="flex flex-col justify-center items-center gap-16 mt-32">
@@ -158,6 +161,7 @@ function AdminLogin() {
                 id="password"
                 value={formData.password}
               />
+
               <div className="flex flex-row items-center justify-center gap-4 mt-8 ">
                 <button disabled={loading} type="submit" className="btn px-4 ">
                   {loading ? 'is loading...' : 'Log In'}

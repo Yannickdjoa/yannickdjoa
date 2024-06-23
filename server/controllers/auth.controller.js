@@ -1,66 +1,66 @@
 const { db } = require('../firebaseConfig.js');
 const bcryptjs = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const { errorHandler } = require('../utils/error.js');
-const {
-  getAuth,
-  createUserWithEmailAndPassword,
-} = require('firebase-admin/auth');
-const auth = getAuth();
+const dotenv = require('dotenv');
+require('dotenv').config();
 
-// export const createUser = async (req, res, next) => {
-//   const { username, email, password } = req.body;
-//   const hashedPassword = await bcryptjs.hashSync(password, 10);
-//   const newUser = new User({ username, email, password: hashedPassword });
-//   try {
-//     await newUser.save();
-//     res.status(201).json('user created successfully');
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+const signIn = async (req, res, next) => {
+  const jwtToken = process.env.JWT_SECRET_KEY;
+  const { email, password } = req.body;
+  try {
+    const userSnapshot = await db
+      .collection('users')
+      .where('email', '==', email)
+      .get();
 
-// export const signIn = async (req, res, next) => {
+    if (userSnapshot.empty)
+      return next(errorHandler(404, 'wrong credentials!'));
+    const validUser = userSnapshot.docs[0].data();
 
-// }
-// const { idToken } = req.body;
-// try {
-//   // Verify the ID token
-//   const decodedToken = await admin.auth().verifyIdToken(idToken);
-//   const uid = decodedToken.uid;
-//   // Retrieve the user record
-//   const userRecord = await admin.auth().getUser(uid);
-//   // Generate a JWT token (optional, for your own session management)
-//   const token = jwt.sign({ uid: userRecord.uid }, jwtSecret);
-//   // Set the JWT token as a cookie
-//   res.cookie('access_token', token, { httpOnly: true, secure: true });
-//   // Respond with the user data
-//   const { password, ...rest } = userRecord;
-//   res.status(200).json(rest);
-// } catch (error) {
-//   console.error(error);
-//   next(error);
-// }
-// };
-// const { email, password } = req.body;
-// try {
-//   const validUser = await db.collection('users').doc;
-//   if (!validUser) return next(errorHandler(404, 'wrong credentials!'));
-//   const validPassword = await bcryptjs.compareSync(
-//     password,
-//     validUser.password
-//   );
-//   if (!validPassword) return next(errorHandler(404, 'wrong credentials!'));
-//   const token = jwt.sign({ id: validUser._id }, jwtToken);
-//   const { password: pass, ...rest } = validUser._doc;
-//   res.cookie('access_token', token, { httpOnly: true }).status(200).json(rest);
-// } catch (error) {
-//   next(error);
+    //get password and compare
+    const passwordMatch = await bcryptjs.compare(password, validUser.password);
+    if (!passwordMatch) {
+      return res
+        .status(401)
+        .send({ status: 'failed', message: 'wrong password' });
+    }
 
-// export const signOut = async (req, res, next) => {
-//   try {
-//     res.clearCookie('access_token');
-//     res.status(200).json('user logged out');
-//   } catch (error) {
-//     next(errorHandler(error));
-//   }
-// };
+    // Generate JWT
+    const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days
+    const token = jwt.sign(
+      { uid: validUser.uid, email: validUser.email },
+      jwtToken,
+      {
+        expiresIn,
+      }
+    );
+    console.log('JWT created:', token);
+    //set session cookie
+    res.cookie('access_session', token, {
+      maxAge: expiresIn,
+      httpOnly: true,
+      secure: true,
+    });
+
+    // Sign out from Firebase Client SDK if applicable
+    // admin.auth().signOut();
+
+    res
+      .status(200)
+      .json({ status: 'success', message: 'Signed in successfully' });
+  } catch (error) {
+    return res.status(500).send({ status: 'failed', message: error });
+  }
+};
+
+const signOut = async (req, res, next) => {
+  try {
+    res.clearCookie('access_session');
+    res.status(200).json({ status: 'success', message: 'user logged out' });
+  } catch (error) {
+    next(errorHandler(error));
+  }
+};
+
+module.exports = { signIn, signOut };
