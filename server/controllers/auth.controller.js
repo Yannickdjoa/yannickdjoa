@@ -46,9 +46,11 @@ const signIn = async (req, res, next) => {
     // Sign out from Firebase Client SDK if applicable
     // admin.auth().signOut();
 
-    res
-      .status(200)
-      .json({ status: 'success', message: 'Signed in successfully' });
+    res.status(200).json({
+      status: 'success',
+      message: 'Signed in successfully',
+      data: validUser,
+    });
   } catch (error) {
     return res.status(500).send({ status: 'failed', message: error });
   }
@@ -59,7 +61,7 @@ const signOut = async (req, res, next) => {
     res.clearCookie('access_session');
     res.status(200).json({ status: 'success', message: 'user logged out' });
   } catch (error) {
-    next(errorHandler(error));
+    next(errorHandler(404, error));
   }
 };
 
