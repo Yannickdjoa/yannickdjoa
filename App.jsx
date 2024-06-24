@@ -43,6 +43,7 @@ import ServiceCard from './src/components/ServiceCard';
 import UpdateUser from './src/pages/AdminPanel/adminComponents/UpdateUser';
 import DeleteUSer from './src/pages/AdminPanel/adminComponents/DeleteUSer';
 import AdminLogin from './src/pages/AdminPanel/AdminLogin';
+import ProtectedPages from './src/pages/ProtectedPages';
 
 function App(criteria) {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -50,6 +51,12 @@ function App(criteria) {
   const { textsList } = useSelector(selectAlltextsList);
   const { bioDataList } = useSelector(selectAllBioDataList);
 
+  useEffect(() => {
+    if (!sessionStorage.getItem('reloaded')) {
+      sessionStorage.setItem('reloaded', 'true');
+      window.location.reload();
+    }
+  }, []);
   const getTextCollection = async () => {
     dispatch(startGettingTextsList(true));
     try {
@@ -101,67 +108,69 @@ function App(criteria) {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
             {/* admin routes  */}
-            <Route path="/admindashboard" element={<AdminDashboard />} />
-            <Route
-              path="/admindashboard/adminstacks"
-              element={<AdminStacks />}
-            />
-            <Route
-              path="/admindashboard/adminstacks/:itemId"
-              element={<StackBox />}
-            />
-            <Route
-              path="/admindashboard/adminstacks/confirmdelation/:itemId"
-              element={<StackToDelete />}
-            />
-            <Route
-              path="/admindashboard/experiences"
-              element={<AdminExperiences />}
-            />
-            <Route
-              path="/admindashboard/experiences/:experId"
-              element={<ExperienceBox />}
-            />
-            <Route
-              path="/admindashboard/experiences/confirmdelation/:experId"
-              element={<ExperienceToDelete />}
-            />
-            <Route
-              path="/admindashboard/projects"
-              element={<AdminProjects />}
-            />
-            <Route
-              path="/admindashboard/projects/:projId"
-              element={<ProjectBox />}
-            />
-            <Route
-              path="/admindashboard/projects/confirmdelation/:projId"
-              element={<ProjectToDelete />}
-            />
-            <Route
-              path="/admindashboard/services"
-              element={<AdminServices />}
-            />
-            <Route
-              path="/admindashboard/services/:servId"
-              element={<ServiceBox />}
-            />
-            <Route
-              path="/admindashboard/services/confirmdelation/:servId"
-              element={<ServiceToDelete />}
-            />
-            <Route
-              path="/admindashboard/usermanagement"
-              element={<UserManagement />}
-            />
-            <Route
-              path="/admindashboard/usermanagement/updateuser/:userId"
-              element={<UpdateUser />}
-            />
-            <Route
-              path="/admindashboard/usermanagement/deleteteuser/:userId"
-              element={<DeleteUSer />}
-            />
+            <Route Component={ProtectedPages}>
+              <Route path="/admindashboard" element={<AdminDashboard />} />
+              <Route
+                path="/admindashboard/adminstacks"
+                element={<AdminStacks />}
+              />
+              <Route
+                path="/admindashboard/adminstacks/:itemId"
+                element={<StackBox />}
+              />
+              <Route
+                path="/admindashboard/adminstacks/confirmdelation/:itemId"
+                element={<StackToDelete />}
+              />
+              <Route
+                path="/admindashboard/experiences"
+                element={<AdminExperiences />}
+              />
+              <Route
+                path="/admindashboard/experiences/:experId"
+                element={<ExperienceBox />}
+              />
+              <Route
+                path="/admindashboard/experiences/confirmdelation/:experId"
+                element={<ExperienceToDelete />}
+              />
+              <Route
+                path="/admindashboard/projects"
+                element={<AdminProjects />}
+              />
+              <Route
+                path="/admindashboard/projects/:projId"
+                element={<ProjectBox />}
+              />
+              <Route
+                path="/admindashboard/projects/confirmdelation/:projId"
+                element={<ProjectToDelete />}
+              />
+              <Route
+                path="/admindashboard/services"
+                element={<AdminServices />}
+              />
+              <Route
+                path="/admindashboard/services/:servId"
+                element={<ServiceBox />}
+              />
+              <Route
+                path="/admindashboard/services/confirmdelation/:servId"
+                element={<ServiceToDelete />}
+              />
+              <Route
+                path="/admindashboard/usermanagement"
+                element={<UserManagement />}
+              />
+              <Route
+                path="/admindashboard/usermanagement/updateuser/:userId"
+                element={<UpdateUser />}
+              />
+              <Route
+                path="/admindashboard/usermanagement/deleteteuser/:userId"
+                element={<DeleteUSer />}
+              />
+            </Route>
             <Route path="/adminLogin" element={<AdminLogin />} />
           </Routes>
         </div>

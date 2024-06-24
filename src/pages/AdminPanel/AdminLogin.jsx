@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { selectAlltextsList } from '../../redux/slices/textsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
@@ -7,7 +7,7 @@ import { loginUser } from '../../redux/slices/userSlice';
 import {
   userLogInStart,
   userLoginfailed,
-  userLoginsuccess,
+  userLoginSuccess,
 } from '../../redux/slices/userSlice';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -45,9 +45,12 @@ function AdminLogin() {
   });
   const { loading, currentUser, error } = useSelector(loginUser);
   console.log(currentUser);
+  
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(userLogInStart());
@@ -67,9 +70,7 @@ function AdminLogin() {
         return;
       }
       console.log(data);
-      dispatch(userLoginsuccess(data.data));
-      dispatch(userLogInStart(false));
-      dispatch(userLoginfailed(false));
+      dispatch(userLoginSuccess(data.data));
       navigate('/admindashboard');
       console.log(currentUser);
     } catch (error) {

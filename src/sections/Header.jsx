@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { navigationData } from '../data/Database';
 import { Link, NavLink } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import ButtonGeneral from '../components/ButtonGeneral';
 import Logo from '../components/Logo';
+import Profile from '../components/Profile';
+import { useSelector } from 'react-redux';
+import { loginUser } from '../redux/slices/userSlice';
 
 function Header() {
   const [nav, setNav] = useState(false);
+  const { isAuthenticated } = useSelector(loginUser);
 
   const handleNav = () => setNav(!nav);
   return (
     <div className="bg-zinc-800 h-[100px] w-full text-white flex mx-auto items-center justify-between md:sticky md:top-0 md:z-20 border-b-2">
       <Logo />
       <Navbar />
-      <ButtonGeneral />
+      <div>{isAuthenticated ? <Profile /> : <ButtonGeneral />}</div>
       <div onClick={handleNav} className="block md:hidden z-20">
         {nav ? <AiOutlineClose size={30} /> : <AiOutlineMenu size={30} />}
       </div>
