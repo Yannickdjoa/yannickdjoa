@@ -1,4 +1,3 @@
-import React from 'react';
 import { selectAlltextsList } from '../../../redux/slices/textsSlice';
 import { useSelector } from 'react-redux';
 
@@ -13,7 +12,6 @@ function DashboardText() {
         <span>{textsList.dashboardText1}</span> <br />{' '}
         <span>{textsList.dashboardText2}</span>
       </p>
-      <button className="btn px-4">Login</button>
     </div>
   );
 }

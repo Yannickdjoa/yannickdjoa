@@ -43,20 +43,11 @@ import ServiceCard from './src/components/ServiceCard';
 import UpdateUser from './src/pages/AdminPanel/adminComponents/UpdateUser';
 import DeleteUSer from './src/pages/AdminPanel/adminComponents/DeleteUSer';
 import AdminLogin from './src/pages/AdminPanel/AdminLogin';
-import ProtectedPages from './src/pages/ProtectedPages';
+import ProtectedPages from './src/pages/AdminPanel/ProtectedPages';
 
-function App(criteria) {
+function App() {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const dispatch = useDispatch();
-  const { textsList } = useSelector(selectAlltextsList);
-  const { bioDataList } = useSelector(selectAllBioDataList);
-
-  useEffect(() => {
-    if (!sessionStorage.getItem('reloaded')) {
-      sessionStorage.setItem('reloaded', 'true');
-      window.location.reload();
-    }
-  }, []);
   const getTextCollection = async () => {
     dispatch(startGettingTextsList(true));
     try {

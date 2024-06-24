@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import { loginUser } from '../../redux/slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { storage } from '../../../firebase.js';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { app } from '../../../firebase.js';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import {
   setUserList,
   failedToUploadUserList,
@@ -36,7 +34,6 @@ const style = {
 
 function UserManagement() {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
-  const params = useParams();
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
   const [filePerc, setFilePerc] = useState(0);
@@ -59,11 +56,10 @@ function UserManagement() {
     avatar: '',
     position: '',
   });
-  // `${baseUrl}
   const fetchUsersList = async () => {
     dispatch(uploadingUserList(true));
     try {
-      const response = await fetch('/api/users/getAll');
+      const response = await fetch(`${baseUrl}/api/users/getAll`);
       const data = await response.json();
       dispatch(setUserList(data.data));
       dispatch(uploadingUserList(false));
@@ -130,25 +126,15 @@ function UserManagement() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const auth = getAuth(app);
-    // const { email, password } = formData;
 
     try {
-      // const userCredential = await createUserWithEmailAndPassword(
-      //   auth,
-      //   email,
-      //   password
-      // );
-      // const { user } = userCredential;
-      // ${baseUrl}
-      const res = await fetch('/api/users/create', {
+      const res = await fetch(`${baseUrl}/api/users/create`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
           ...formData,
-          // uid: user.uid,
         }),
       });
       console.log(formData);

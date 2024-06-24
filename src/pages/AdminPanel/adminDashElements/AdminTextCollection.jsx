@@ -84,7 +84,7 @@ function AdminTextCollection() {
     <div>
       <div>
         <h1 className="text-center text-emerald-700 text-2xl font-bold">
-          Update Any Text Collection's Element here
+          Update Any Text Collections Element here
         </h1>
       </div>
       <form onSubmit={handleSubmit}>

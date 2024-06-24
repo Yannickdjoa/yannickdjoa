@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   loginUser,
@@ -17,7 +16,7 @@ function Profile() {
     e.preventDefault();
     dispatch(signOutStart());
     try {
-      const response = await fetch('/api/auth/signout', {
+      const response = await fetch(`${baseUrl}/api/auth/signout`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

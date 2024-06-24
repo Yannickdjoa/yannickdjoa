@@ -3,7 +3,6 @@ import { storage } from '../../../../firebase';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
-import { getAuth, updateEmail } from 'firebase/auth';
 import {
   updateUserStart,
   updateUserFailure,
@@ -15,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 function UpdateUser() {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const dispatch = useDispatch();
-  const { currentUser, loading, error } = useSelector(loginUser);
+  const { loading, error } = useSelector(loginUser);
   const params = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -34,13 +33,11 @@ function UpdateUser() {
   });
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
-  //   const [loading, setLoading] = useState(false);
-  //   const [error, setError] = useState(null);
+
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
-  // ${baseUrl}
   const UpdatedUserData = async () => {
-    const response = await fetch(`/api/users/get/${params.userId}`);
+    const response = await fetch(`${baseUrl}/api/users/get/${params.userId}`);
     const data = await response.json();
     if (data.status == 'success') {
       setFormData({ ...data.data });
@@ -97,13 +94,16 @@ function UpdateUser() {
     try {
       dispatch(updateUserStart(true));
 
-      const response = await fetch(`/api/users/update/${params.userId}`, {
-        method: 'PUT',
-        headers: {
-          'content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${baseUrl}/api/users/update/${params.userId}`,
+        {
+          method: 'PUT',
+          headers: {
+            'content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await response.json();
       dispatch(updateUserStart(false));
 
@@ -111,7 +111,7 @@ function UpdateUser() {
         dispatch(updateUserFailure(null));
         dispatch(updateUserSuccess(data.data));
         dispatch(updateUserStart(false));
-        navigate('/admindashboard/usermanagement');
+        navigate(`${baseUrl}/admindashboard/usermanagement`);
       } else {
         dispatch(updateUserFailure(data.message));
       }

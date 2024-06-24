@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { selectAlltextsList } from '../../redux/slices/textsSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-// import { OAuth } from '../../components/OAuth';
 import { loginUser } from '../../redux/slices/userSlice';
 import {
   userLogInStart,
   userLoginfailed,
   userLoginSuccess,
 } from '../../redux/slices/userSlice';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
@@ -38,14 +36,12 @@ function AdminLogin() {
   const [showAddModal, setAddModal] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const params = useParams();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
   const { loading, currentUser, error } = useSelector(loginUser);
   console.log(currentUser);
-  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -55,7 +51,7 @@ function AdminLogin() {
     e.preventDefault();
     dispatch(userLogInStart());
     try {
-      const response = await fetch('/api/auth/signin', {
+      const response = await fetch(`${baseUrl}/api/auth/signin`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -79,31 +75,6 @@ function AdminLogin() {
       console.log(error);
     }
   };
-
-  //   const auth = getAuth();
-  // const { email, password } = formData;
-  //   const userCredential = await signInWithEmailAndPassword(
-  //     auth,
-  //     email,
-  //     password
-  //   );
-  //   const { user } = userCredential;
-  //   console.log(user);
-  // } catch (error) {
-  // import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
-  // const auth = getAuth();
-  // onAuthStateChanged(auth, (user) => {
-  //   if (user) {
-  //     // User is signed in, see docs for a list of available properties
-  //     // https://firebase.google.com/docs/reference/js/auth.user
-  //     const uid = user.uid;
-  //     // ...
-  //   } else {
-  //     // User is signed out
-  //     // ...
-  //   }
-  // });
 
   return (
     <div className="flex flex-col items-center mb-52">
