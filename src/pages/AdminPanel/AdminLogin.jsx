@@ -61,7 +61,7 @@ function AdminLogin() {
         }),
       });
       const data = await response.json();
-      if (data.status === false) {
+      if (data.status === 'failed') {
         dispatch(userLoginfailed(true));
         return;
       }
