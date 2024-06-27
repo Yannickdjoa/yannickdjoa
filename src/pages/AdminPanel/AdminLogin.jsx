@@ -72,7 +72,7 @@ function AdminLogin() {
     } catch (error) {
       dispatch(userLoginfailed(true));
       dispatch(userLogInStart(false));
-      console.log(error);
+      console.log(error.message);
     }
   };
 

@@ -111,7 +111,7 @@ function UpdateUser() {
         dispatch(updateUserFailure(null));
         dispatch(updateUserSuccess(data.data));
         dispatch(updateUserStart(false));
-        navigate(`${baseUrl}/admindashboard/usermanagement`);
+        navigate('/admindashboard/usermanagement');
       } else {
         dispatch(updateUserFailure(data.message));
       }
