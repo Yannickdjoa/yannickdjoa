@@ -185,6 +185,7 @@ const getUser = async (req, res, next) => {
 };
 
 const getAllUsers = async (req, res) => {
+  console.log(req.isAdmin);
   if (!req.isAdmin) {
     return res.status(403).json({
       status: 'failed',

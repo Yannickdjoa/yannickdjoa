@@ -60,7 +60,7 @@ function UserManagement() {
   const fetchUsersList = async () => {
     dispatch(uploadingUserList(true));
     try {
-      //
+      // 
       const response = await fetch(`${baseUrl}/api/users/getAll`);
       const data = await response.json();
       dispatch(setUserList(data.data));
