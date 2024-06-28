@@ -1,4 +1,5 @@
 const express = require('express');
+const { verifyUser } = require('../utils/verifyUser');
 const {
   createUsers,
   updateUser,
@@ -9,10 +10,10 @@ const {
 
 const userRouter = express.Router();
 
-userRouter.post('/create', createUsers);
-userRouter.put('/update/:id', updateUser);
-userRouter.delete('/delete/:id', deleteUser);
-userRouter.get('/get/:id', getUser);
-userRouter.get('/getAll', getAllUsers);
+userRouter.post('/create', verifyUser, createUsers);
+userRouter.put('/update/:id', verifyUser, updateUser);
+userRouter.delete('/delete/:id', verifyUser, deleteUser);
+userRouter.get('/get/:id', verifyUser, getUser);
+userRouter.get('/getAll', verifyUser, getAllUsers);
 
 module.exports = userRouter;

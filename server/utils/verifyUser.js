@@ -18,6 +18,7 @@ const verifyUser = (req, res, next) => {
     }
 
     req.user = decodedUser; // Attach decoded user information to the request
+    req.isAdmin = decodedUser.role === 'admin'; // Set isAdmin based on user role
     next();
   });
 };

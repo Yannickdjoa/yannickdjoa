@@ -9,7 +9,12 @@ const validatePhoneNumber = (phoneNumber) => {
   return e164Regex.test(phoneNumber);
 };
 const createUsers = async (req, res) => {
-  console.log(req.body);
+  if (!req.isAdmin) {
+    return res.status(403).json({
+      status: 'failed',
+      message: 'Permission denied. Only admins can create users.',
+    });
+  }
   try {
     const { phoneNumber, email, password, displayName } = req.body;
 
@@ -58,6 +63,12 @@ const createUsers = async (req, res) => {
 };
 
 const updateUser = async (req, res, next) => {
+  if (!req.isAdmin) {
+    return res.status(403).json({
+      status: 'failed',
+      message: 'Permission denied. Only admins can update users.',
+    });
+  }
   const userId = db.collection('users').doc(req.params.id);
   const userDetails = await userId.get();
   const uid = req.params.id;
@@ -129,6 +140,12 @@ const updateUser = async (req, res, next) => {
 };
 
 const deleteUser = async (req, res, next) => {
+  if (!req.isAdmin) {
+    return res.status(403).json({
+      status: 'failed',
+      message: 'Permission denied. Only admins can delete users.',
+    });
+  }
   const userId = db.collection('users').doc(req.params.id);
   const userDetails = await userId.get();
   const uid = req.params.id;
