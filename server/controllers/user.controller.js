@@ -109,7 +109,7 @@ const updateUser = async (req, res, next) => {
 
     if (password) {
       const hashPassword = await bcryptjs.hash(password, 10);
-      let password = hashPassword;
+      const password = hashPassword;
     }
 
     await userId.update({
@@ -185,6 +185,12 @@ const getUser = async (req, res, next) => {
 };
 
 const getAllUsers = async (req, res) => {
+  if (!req.isAdmin) {
+    return res.status(403).json({
+      status: 'failed',
+      message: 'Only Admin can see users details',
+    });
+  }
   try {
     const userList = [];
     const userId = db.collection('users');

@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const functions = require('firebase-functions');
 const bioRouter = require('./routes/bio.route.js');
@@ -20,6 +21,7 @@ const port = process.env.OUT_PORT || 8080;
 //Main apps
 
 const app = express();
+app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 

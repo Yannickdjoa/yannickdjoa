@@ -36,6 +36,7 @@ function UserManagement() {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [file, setFile] = useState(undefined);
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState(false);
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const navigate = useNavigate();
@@ -59,6 +60,7 @@ function UserManagement() {
   const fetchUsersList = async () => {
     dispatch(uploadingUserList(true));
     try {
+      //
       const response = await fetch(`${baseUrl}/api/users/getAll`);
       const data = await response.json();
       dispatch(setUserList(data.data));
@@ -137,16 +139,16 @@ function UserManagement() {
           ...formData,
         }),
       });
-      console.log(formData);
       const data = await res.json();
-      console.log(data);
       if (data.status === 'success') {
         setAddModal(false);
         resetFormFields();
       }
+      setError(data.message);
       return;
     } catch (error) {
       console.log('error detected', error);
+      setError(error.message);
     }
   };
   console.log(userList);
@@ -420,6 +422,7 @@ function UserManagement() {
               </button>
             </div>
           </form>
+          {error && <p className="text-red-700 text-sm">{error}</p>}
         </Box>
       </Modal>
     </div>

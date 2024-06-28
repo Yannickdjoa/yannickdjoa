@@ -3,21 +3,30 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { errorHandler } = require('../utils/error.js');
 const dotenv = require('dotenv');
+const { getAuth } = require('firebase-admin/auth');
 require('dotenv').config();
 
 const signIn = async (req, res, next) => {
   const jwtToken = process.env.JWT_SECRET_KEY;
+  const auth = getAuth();
   const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res
+      .status(400)
+      .json({ status: 'failed', message: 'missing credentials' });
+  }
   try {
     const userSnapshot = await db
       .collection('users')
       .where('email', '==', email)
       .get();
 
-    if (userSnapshot.empty)
+    if (userSnapshot.empty) {
       return next(errorHandler(404, 'wrong credentials!'));
-    const validUser = userSnapshot.docs[0].data();
+    }
 
+    const validUser = userSnapshot.docs[0].data();
     //get password and compare
     const passwordMatch = await bcryptjs.compare(password, validUser.password);
     if (!passwordMatch) {
@@ -25,6 +34,13 @@ const signIn = async (req, res, next) => {
         .status(401)
         .send({ status: 'failed', message: 'wrong password' });
     }
+
+    // Set custom claims
+    await auth.setCustomUserClaims(validUser.uid, {
+      role: validUser.role,
+    });
+    // Fetch the user record to confirm custom claims are set
+    const userRecord = await auth.getUser(validUser.uid);
 
     // Generate JWT
     const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days
@@ -35,7 +51,7 @@ const signIn = async (req, res, next) => {
         expiresIn,
       }
     );
-    console.log('JWT created:', token);
+
     //set session cookie
     res.cookie('access_session', token, {
       maxAge: expiresIn,

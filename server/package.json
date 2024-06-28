@@ -20,6 +20,7 @@
     "@firebase/app": "^0.10.5",
     "@firebase/auth": "^1.7.4",
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "csrf": "^3.1.0",
     "dotenv": "^16.4.5",
