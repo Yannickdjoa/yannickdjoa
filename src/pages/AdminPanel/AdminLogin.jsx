@@ -52,7 +52,7 @@ function AdminLogin() {
     dispatch(userLogInStart());
     try {
       // ${baseUrl}
-      const response = await fetch(`${baseUrl}/api/auth/signin`, {
+      const response = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

@@ -60,8 +60,8 @@ function UserManagement() {
   const fetchUsersList = async () => {
     dispatch(uploadingUserList(true));
     try {
-      // 
-      const response = await fetch(`${baseUrl}/api/users/getAll`);
+      //
+      const response = await fetch('/api/users/getAll');
       const data = await response.json();
       dispatch(setUserList(data.data));
       dispatch(uploadingUserList(false));
@@ -130,7 +130,7 @@ function UserManagement() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${baseUrl}/api/users/create`, {
+      const res = await fetch('/api/users/create', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

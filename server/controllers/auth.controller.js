@@ -7,9 +7,7 @@ const { getAuth } = require('firebase-admin/auth');
 require('dotenv').config();
 
 const signIn = async (req, res, next) => {
-  // process.env.JWT_SECRET_KEY;
-  const jwtToken =
-    '9564b3c9f7dd19b318ebff9e4bee5afad87a1011ce02afc9839cf63d0b84970a42cee6ddc7c54b9a37a90a609459eac4115101b498aa444fa55b7a353202c0c5';
+  const jwtToken = process.env.JWT_SECRET_KEY;
   const auth = getAuth();
   const { email, password } = req.body;
 
@@ -57,7 +55,7 @@ const signIn = async (req, res, next) => {
     res.cookie('access_session', token, {
       maxAge: expiresIn,
       httpOnly: true,
-      secure: true, // ensure the cookie is only sent over HTTPS
+      secure: false, // ensure the cookie is only sent over HTTPS
       sameSite: 'None', // ensure the cookie is not sent with cross-site requests
     });
 
