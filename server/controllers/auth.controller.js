@@ -55,7 +55,7 @@ const signIn = async (req, res, next) => {
     res.cookie('access_session', token, {
       maxAge: expiresIn,
       httpOnly: true,
-      secure: false, // ensure the cookie is only sent over HTTPS
+      secure: true, // ensure the cookie is only sent over HTTPS
       sameSite: 'None', // ensure the cookie is not sent with cross-site requests
     });
 
