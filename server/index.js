@@ -22,7 +22,7 @@ const port = process.env.OUT_PORT || 8080;
 
 const app = express();
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({ credentials: true, origin: 'https://www.yannickdjoa.org' }));
 app.use(express.json());
 
 //individual routes
