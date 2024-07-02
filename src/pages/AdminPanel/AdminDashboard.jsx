@@ -94,7 +94,7 @@ function AdminDashboard() {
         flexGrow: 1,
         bgcolor: '#393A47',
         display: 'flex',
-        height: 1500,
+        height: 1900,
       }}
     >
       <Tabs

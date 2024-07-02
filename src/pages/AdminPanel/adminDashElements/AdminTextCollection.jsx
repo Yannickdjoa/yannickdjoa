@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { app, storage } from '../../../../firebase.js';
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function AdminTextCollection() {
@@ -32,7 +30,6 @@ function AdminTextCollection() {
     serviceSubtitle: '',
   });
 
-  const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   useEffect(() => {
@@ -368,7 +365,7 @@ function AdminTextCollection() {
           />
         </div>
         <button
-          disabled={loading || uploading}
+          disabled={loading}
           type="submit"
           className="flex justify-end cursor-pointer active text-center bg-yellow-600 mt-1 p-3 rounded-xl text-xl font-semibold text-neutral-700 disabled:opacity-70 disabled:bg-yellow-600/50 disabled:cursor-wait"
         >
