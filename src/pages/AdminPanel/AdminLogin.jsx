@@ -82,11 +82,11 @@ function AdminLogin() {
     <div className="flex flex-col items-center mb-52">
       <div className="flex flex-col justify-center items-center gap-16 mt-32">
         <h1 className="flex text-2xl text-emerald-700 font-bold">
-          {textsList.dashboardTitle}
+          {textsList.adminLoginTitle}
         </h1>
         <p className="text-center text-lg">
-          <span>{textsList.dashboardText1}</span> <br />{' '}
-          <span>{textsList.dashboardText2}</span>
+          <span>{textsList.adminLoginText1}</span> <br />{' '}
+          <span>{textsList.adminLoginText2}</span>
         </p>
         <button
           type="button"

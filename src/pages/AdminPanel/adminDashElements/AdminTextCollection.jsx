@@ -25,9 +25,9 @@ function AdminTextCollection() {
     dashboardTitle: '',
     dashboardText1: '',
     dashboardText2: '',
-    admindashboardTitle: '',
-    admindashboardText1: '',
-    admindashboardText2: '',
+    adminLoginTitle: '',
+    adminLoginText1: '',
+    adminLoginText2: '',
     serviceTitle: '',
     serviceSubtitle: '',
   });
@@ -309,38 +309,38 @@ function AdminTextCollection() {
         </div>
         <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
-            admindashboardTitle
+            adminLoginTitle
           </label>
           <input
-            id="admindashboardTitle"
+            id="adminLoginTitle"
             type="text"
             className="input"
             onChange={handleChange}
-            defaultValue={formData.admindashboardTitle}
+            defaultValue={formData.adminLoginTitle}
           />
         </div>
         <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
-            AdmindashboardText1
+            AdminLoginText1
           </label>
           <input
-            id="admindashboardText1"
+            id="adminLoginText1"
             type="text"
             className="input"
             onChange={handleChange}
-            defaultValue={formData.admindashboardText1}
+            defaultValue={formData.adminLoginText1}
           />
         </div>
         <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
-            admindashboardText2
+            adminLoginText2
           </label>
           <input
-            id="admindashboardText2"
+            id="adminLoginText2"
             type="text"
             className="input"
             onChange={handleChange}
-            defaultValue={formData.admindashboardText2}
+            defaultValue={formData.adminLoginText2}
           />
         </div>
         <div className="flex flex-col py-1">
