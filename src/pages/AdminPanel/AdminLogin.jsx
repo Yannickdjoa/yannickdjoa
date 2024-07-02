@@ -57,7 +57,6 @@ function AdminLogin() {
         mode: 'same-origin',
         headers: {
           'content-type': 'application/json',
-          Accept: 'application/json',
         },
         body: JSON.stringify({
           ...formData,
