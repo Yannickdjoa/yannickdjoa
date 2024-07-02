@@ -66,6 +66,7 @@ const signIn = async (req, res, next) => {
         status: 'success',
         message: 'Signed in successfully',
         data: validUser,
+        token: token,
       });
 
     // Sign out from Firebase Client SDK if applicable
