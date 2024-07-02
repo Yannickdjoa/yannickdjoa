@@ -27,9 +27,10 @@ app.use(
   cors({
     credentials: true,
     exposedHeaders: ['set-cookie'],
-    origin: true,
-    // 'https://www.yannickdjoa.org',
-    // 'https://us-central1-yannick-djoa.cloudfunctions.net/backend'
+    origin: [
+      'https://www.yannickdjoa.org',
+      'https://us-central1-yannick-djoa.cloudfunctions.net/backend',
+    ],
   })
 );
 app.use(cookieParser());
