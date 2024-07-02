@@ -5,6 +5,7 @@ const { errorHandler } = require('../utils/error.js');
 const dotenv = require('dotenv');
 const { getAuth } = require('firebase-admin/auth');
 require('dotenv').config();
+require('firebase-functions/logger/compat');
 
 const signIn = async (req, res, next) => {
   const jwtToken = process.env.JWT_SECRET_KEY;
@@ -51,22 +52,24 @@ const signIn = async (req, res, next) => {
         expiresIn,
       }
     );
+    console.log(token);
     //set session cookie
-    res.cookie('access_session', token, {
-      maxAge: expiresIn,
-      httpOnly: true,
-      secure: true, // ensure the cookie is only sent over HTTPS
-      sameSite: 'None', // ensure the cookie is not sent with cross-site requests
-    });
+    res
+      .cookie('access_session', token, {
+        maxAge: expiresIn,
+        httpOnly: true,
+        secure: true, // ensure the cookie is only sent over HTTPS
+        sameSite: 'None', // ensure the cookie is not sent with cross-site requests
+      })
+      .status(200)
+      .json({
+        status: 'success',
+        message: 'Signed in successfully',
+        data: validUser,
+      });
 
     // Sign out from Firebase Client SDK if applicable
     // admin.auth().signOut();
-
-    res.status(200).json({
-      status: 'success',
-      message: 'Signed in successfully',
-      data: validUser,
-    });
   } catch (error) {
     return res.status(500).send({ status: 'failed', message: error });
   }

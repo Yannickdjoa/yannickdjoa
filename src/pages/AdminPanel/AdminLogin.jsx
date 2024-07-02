@@ -51,7 +51,8 @@ function AdminLogin() {
     e.preventDefault();
     dispatch(userLogInStart());
     try {
-      const response = await fetch(`${baseUrl}/api/auth/signin`, {
+      // ${baseUrl}
+      const response = await fetch("/api/auth/signin", {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

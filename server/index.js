@@ -21,18 +21,19 @@ const port = process.env.OUT_PORT || 8080;
 //Main apps
 // exposedHeaders: ['set-cookie'];
 const app = express();
-app.use(cookieParser());
+
+app.use(express.json());
 app.use(
   cors({
     credentials: true,
+    exposedHeaders: ['set-cookie'],
     origin: [
       'https://www.yannickdjoa.org',
       'https://us-central1-yannick-djoa.cloudfunctions.net/backend',
     ],
   })
 );
-app.use(express.json());
-
+app.use(cookieParser());
 //individual routes
 app.use('/api/bio', bioRouter);
 app.use('/api/projects', projectsRouter);
