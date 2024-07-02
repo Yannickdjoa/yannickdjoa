@@ -54,7 +54,7 @@ function AdminLogin() {
       const response = await fetch(`${baseUrl}/api/auth/signin`, {
         method: 'POST',
         credentials: 'include',
-        mode: 'same-origin',
+        // mode: 'same-origin',
         headers: {
           'content-type': 'application/json',
         },
