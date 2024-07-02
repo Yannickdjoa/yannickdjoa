@@ -98,6 +98,7 @@ function UpdateUser() {
         `${baseUrl}/api/users/update/${params.userId}`,
         {
           method: 'PUT',
+          credentials: 'include', // This ensures cookies are sent with the request
           headers: {
             'content-Type': 'application/json',
           },

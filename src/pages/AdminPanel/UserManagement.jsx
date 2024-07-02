@@ -135,6 +135,7 @@ function UserManagement() {
     try {
       const res = await fetch(`${baseUrl}/api/users/create`, {
         method: 'POST',
+        credentials: 'include', // This ensures cookies are sent with the request
         headers: {
           'content-type': 'application/json',
         },

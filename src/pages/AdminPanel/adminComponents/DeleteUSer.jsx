@@ -43,6 +43,7 @@ function DeleteUSer() {
         `${baseUrl}/api/users/delete/${params.userId}`,
         {
           method: 'DELETE',
+          credentials: 'include', // This ensures cookies are sent with the request
         }
       );
       const data = await response.json();
