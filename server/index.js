@@ -26,11 +26,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    exposedHeaders: ['set-cookie'],
-    origin: [
-      'https://www.yannickdjoa.org',
-      'https://us-central1-yannick-djoa.cloudfunctions.net/backend',
-    ],
+    origin: true,
   })
 );
 app.use(cookieParser());

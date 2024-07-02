@@ -54,20 +54,18 @@ const signIn = async (req, res, next) => {
     );
     console.log(token);
     //set session cookie
-    res
-      .cookie('access_session', token, {
-        maxAge: expiresIn,
-        httpOnly: true,
-        secure: true, // ensure the cookie is only sent over HTTPS
-        sameSite: 'None', // ensure the cookie is not sent with cross-site requests
-      })
-      .status(200)
-      .json({
-        status: 'success',
-        message: 'Signed in successfully',
-        data: validUser,
-        token: token,
-      });
+    res.cookie('access_session', token, {
+      maxAge: expiresIn,
+      httpOnly: true,
+      secure: true, // ensure the cookie is only sent over HTTPS
+      sameSite: 'None', // ensure the cookie is not sent with cross-site requests
+    });
+
+    res.status(200).json({
+      status: 'success',
+      message: 'Signed in successfully',
+      data: validUser,
+    });
 
     // Sign out from Firebase Client SDK if applicable
     // admin.auth().signOut();
