@@ -61,7 +61,10 @@ function UserManagement() {
     dispatch(uploadingUserList(true));
     try {
       //
-      const response = await fetch(`${baseUrl}/api/users/getAll`);
+      const response = await fetch(`${baseUrl}/api/users/getAll`, {
+        method: 'GET',
+        credentials: 'include', // This ensures cookies are sent with the request
+      });
       const data = await response.json();
       dispatch(setUserList(data.data));
       dispatch(uploadingUserList(false));

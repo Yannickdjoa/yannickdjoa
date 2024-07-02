@@ -22,13 +22,13 @@ const port = process.env.OUT_PORT || 8080;
 // exposedHeaders: ['set-cookie'];
 const app = express();
 app.use(cookieParser());
-app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: true,
+    origin: 'https://www.yannickdjoa.org',
   })
 );
+app.use(express.json());
 
 //individual routes
 app.use('/api/bio', bioRouter);
