@@ -26,6 +26,9 @@ const createTextCollection = async (req, res) => {
       dashboardTitle: req.body.dashboardTitle,
       dashboardText1: req.body.dashboardText1,
       dashboardText2: req.body.dashboardText2,
+      admindashboardTitle: req.body.admindashboardTitle,
+      admindashboardText1: req.body.admindashboardText1,
+      admindashboardText2: req.body.admindashboardText2,
       serviceTitle: req.body.serviceTitle,
       serviceSubtitle: req.body.serviceSubtitle,
     });
@@ -64,6 +67,9 @@ const updateTextCollection = async (req, res, next) => {
         dashboardTitle: req.body.dashboardTitle,
         dashboardText1: req.body.dashboardText1,
         dashboardText2: req.body.dashboardText2,
+        admindashboardTitle: req.body.admindashboardTitle,
+        admindashboardText1: req.body.admindashboardText1,
+        admindashboardText2: req.body.admindashboardText2,
         serviceTitle: req.body.serviceTitle,
         serviceSubtitle: req.body.serviceSubtitle,
       });

@@ -25,6 +25,9 @@ function AdminTextCollection() {
     dashboardTitle: '',
     dashboardText1: '',
     dashboardText2: '',
+    admindashboardTitle: '',
+    admindashboardText1: '',
+    admindashboardText2: '',
     serviceTitle: '',
     serviceSubtitle: '',
   });
@@ -302,6 +305,42 @@ function AdminTextCollection() {
             className="input"
             onChange={handleChange}
             defaultValue={formData.dashboardText2}
+          />
+        </div>
+        <div className="flex flex-col py-1">
+          <label htmlFor="name" className="flex justify-start text-white">
+            admindashboardTitle
+          </label>
+          <input
+            id="admindashboardTitle"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.admindashboardTitle}
+          />
+        </div>
+        <div className="flex flex-col py-1">
+          <label htmlFor="name" className="flex justify-start text-white">
+            AdmindashboardText1
+          </label>
+          <input
+            id="admindashboardText1"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.admindashboardText1}
+          />
+        </div>
+        <div className="flex flex-col py-1">
+          <label htmlFor="name" className="flex justify-start text-white">
+            admindashboardText2
+          </label>
+          <input
+            id="admindashboardText2"
+            type="text"
+            className="input"
+            onChange={handleChange}
+            defaultValue={formData.admindashboardText2}
           />
         </div>
         <div className="flex flex-col py-1">
