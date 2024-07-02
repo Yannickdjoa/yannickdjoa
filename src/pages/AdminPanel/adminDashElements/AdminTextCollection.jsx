@@ -90,7 +90,7 @@ function AdminTextCollection() {
           Update Any Text Collections Element here
         </h1>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="scroll-smooth">
         <div className="flex flex-col py-1">
           <label htmlFor="name" className="flex justify-start text-white">
             Copyright

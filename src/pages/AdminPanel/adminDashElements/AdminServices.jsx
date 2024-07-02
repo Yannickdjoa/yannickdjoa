@@ -16,7 +16,6 @@ const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
-
   marginBottom: 5,
   transform: 'translate(-50%, -50%)',
   width: 1000,
