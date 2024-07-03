@@ -137,6 +137,7 @@ root
 2. Install dependencies:
 
 - For the client
+
   - cd client
   - npm install
 
@@ -152,10 +153,12 @@ root
 ### Running Locally
 
 1. Start the client:
+
    - cd client
    - npm run dev
 
 2. Start the server:
+
    - cd server
    - npm run dev
 
@@ -168,9 +171,9 @@ root
 
 1. Build the client:
 
-- cd client
-- push the code to github using git
-- The project is configured with GitHub Actions for CI/CD. Ensure your GitHub repository is set up with the appropriate Firebase secrets.
+   - cd client
+   - push the code to github using git
+   - The project is configured with GitHub Actions for CI/CD. Ensure your GitHub repository is set up with the appropriate Firebase secrets.
 
 2. Deploy Backend to Firebase:
    - cd server
