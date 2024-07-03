@@ -131,18 +131,18 @@ root
 
 1. Clone the repository:
 
-git clone https://github.com/Yannickdjoa/yannickdjoa.git
-cd yannickdjoa
+- git clone https://github.com/Yannickdjoa/yannickdjoa.git
+- cd yannickdjoa
 
 2. Install dependencies:
 
 - For the client
-  cd client
-  npm install
+  - cd client
+  - npm install
 
 - For the server
-  cd ../server
-  npm install
+  - cd ../server
+  - npm install
 
 3. Setup Firebase:
 
@@ -152,15 +152,15 @@ cd yannickdjoa
 ### Running Locally
 
 1. Start the client:
-   cd client
-   npm run dev
+   - cd client
+   - npm run dev
 
 2. Start the server:
-   cd server
-   npm run dev
+   - cd server
+   - npm run dev
 
 3. Open the application:
-   Navigate to http://localhost:3000 in your browser.
+   - Navigate to http://localhost:3000 in your browser.
 
 ## Deployment
 
@@ -173,8 +173,8 @@ cd yannickdjoa
 - The project is configured with GitHub Actions for CI/CD. Ensure your GitHub repository is set up with the appropriate Firebase secrets.
 
 2. Deploy Backend to Firebase:
-   cd server
-   firebase deploy
+   - cd server
+   - firebase deploy
 
 ## Contributing
 
